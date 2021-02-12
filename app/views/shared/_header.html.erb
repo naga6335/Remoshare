@@ -16,14 +16,14 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "プロフィール", current_user %></li>
-              <li><%= link_to "設定", '#' %></li>
+              <li><%= link_to "設定", edit_user_path(current_user) %></li>
               <li class="divider"></li>
               <li>
                 <%= link_to "ログアウト", logout_path, method: :delete %>
               </li>
             </ul>
           </li>
-        <% else %>
+          <% else %>
           <li><%= link_to "ログイン", login_path %></li>
         <% end %>
       </ul>

@@ -26,6 +26,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "tailwindcss-rails", "~> 0.3.3"
 #error.messageの日本語化
 gem 'rails-i18n'
+gem 'jquery-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
