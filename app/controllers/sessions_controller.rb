@@ -9,13 +9,14 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_to root_path
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = 'メールアドレスとパスワードが一致しません'
       render 'new'
     end
   end
 
   def destroy
     log_out if logged_in?
-    redirect_to root_path
+    flash[:success] = "ログアウトしました"
+    redirect_to root_url
   end
 end
