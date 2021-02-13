@@ -46,6 +46,26 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  # def guest
+  #   if logged_in?
+  #     flash[:notice] = 'すでにログインしています'
+  #   else
+  #     guest_user = User.find_by(email: "guest@guest.com")
+  #     log_in(guest_user)
+  #     flash[:notice] = 'ゲストユーザーとしてログインしました'
+  #   end
+  #     redirect_to root_path
+  # end
+
+  def guest
+    user = User.find_or_create_by!(email: 'guest@example.com') do |user|
+      user.name = "guestuser"
+      user.password = SecureRandom.urlsafe_base64
+    end
+    log_in user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+
   private
 
     def user_params
