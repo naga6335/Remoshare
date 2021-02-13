@@ -12,12 +12,12 @@
 
       <%= f.label :remember_me, class: "checkbox inline" do %>
         <%= f.check_box :remember_me %>
-        <span>パスワードを保持する</span>
+        <span>次回から自動でログイン</span>
       <% end %>
 
       <%= f.submit "ログイン", class: "btn btn-primary" %>
     <% end %>
 
-    <p>新規登録の方はこちらから <%= link_to "新規登録", signup_path %></p>
+    <p>新規登録の方は <%= link_to "こちら", signup_path %></p>
   </div>
 </div>

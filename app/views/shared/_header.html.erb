@@ -5,10 +5,10 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "投稿一覧", root_path %></li>
-        <li><%= link_to "ユーザー一覧", '#' %></li>
         <li><%= link_to "チャットで相談", '#' %></li>
 
         <% if logged_in? %>
+          <li><%= link_to "ユーザー一覧", users_path %></li>
           <li><%= link_to "通知", '#' %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -19,7 +19,7 @@
               <li><%= link_to "設定", edit_user_path(current_user) %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to "ログアウト", logout_path, method: :delete %>
+                <%= button_to "ログアウト", logout_path, method: :delete %>
               </li>
             </ul>
           </li>
