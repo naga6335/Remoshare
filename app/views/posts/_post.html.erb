@@ -1,0 +1,11 @@
+<li id="post-<%= post.id %>">
+  <span class="user"><%= link_to post.user.name, post.user %></span>
+  <span class="content"><%= post.content %></span>
+  <%= image_tag post.image.url(:small) %>
+  <span class="timestamp">
+    投稿記事 <%= time_ago_in_words(post.created_at) %>前
+    <% if current_user?(post.user) %>
+      <%= button_to "delete", post, method: :delete %>
+    <% end %>
+  </span>
+</li>

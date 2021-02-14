@@ -27,6 +27,10 @@ gem "tailwindcss-rails", "~> 0.3.3"
 #error.messageの日本語化
 gem 'rails-i18n'
 gem 'jquery-rails'
+gem 'faker'
+gem 'kaminari'
+gem 'carrierwave'
+gem 'rmagick'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

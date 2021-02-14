@@ -1,0 +1,20 @@
+<div class="d-flex align-items-center">
+    <h1>投稿一覧</h1>
+    <table>
+    <thead>
+        <tr>
+            <th>投稿者名</th>
+            <th>本文</th>
+        </tr>
+    </thead>
+    <tbody>
+    <span class="user"><%= link_to　"詳細",%></span>
+        <% @posts.each do |post| %>
+            <tr>
+                <td><%= post.user.name %></td>
+                <td><%= post.content %></td>
+                <td> <%= image_tag post.image.url(:small) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

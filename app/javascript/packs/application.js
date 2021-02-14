@@ -14,5 +14,5 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-import "stylesheets/application"
+import './stylesheets/application.css'
 import '../css/tailwind.css';
