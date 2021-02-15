@@ -6,3 +6,34 @@
 <div>
   <p><%= @post.user.name %></p>
 </div>
+
+<% if current_user %>
+  <%= form_with(model: [@post, @comment], local: true) do |f| %>
+    <%= f.text_area :comment, size: "60x5", placeholder: "コメントする" %>
+    <%= f.submit '送信', class: "btn-sm btn-primary" %>
+  <% end %>
+<% else %>
+  <p>コメントの投稿には新規登録/ログインが必要です</p>
+<% end %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>コメント投稿者</th>
+      <th>コメント内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.user.name %></td>
+        <td><%= comment.comment %></td>
+      <% if logged_in? && comment.user == current_user %>
+        <td><%= button_to "削除", post_comment_path(@post, comment), method: :delete %></td>
+      <% end %>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
