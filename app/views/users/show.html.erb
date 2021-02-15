@@ -1,18 +1,1 @@
-<div>
-  <aside>
-    <section>
-      <h1>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-  <div>
-    <% if @user.posts.any? %>
-      <h3>posts(<%= @user.posts.count %>)</h3>
-      <ol>
-        <%= render @posts %>
-      </ol>
-      <%= paginate @posts %>
-    <% end %>
-  </div>
-</div>
+<%= @user.name %>, <%= @user.email %>
