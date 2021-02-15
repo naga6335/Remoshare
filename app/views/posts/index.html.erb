@@ -1,0 +1,12 @@
+<div>
+  <h1>投稿一覧</h1>
+    <p>投稿者名</p>
+    <p>本文</p>
+
+    <% @posts.each do |post| %>
+      <%= link_to '詳細', post, class: 'btn btn-outline-info' %>
+      <%= post.user.name %>
+      <%= post.content %>
+      <%= image_tag post.image.url(:small) %>
+    <% end %>
+ </div>

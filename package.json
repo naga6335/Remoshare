@@ -9,6 +9,7 @@
     "autoprefixer": "^9",
     "jquery": "3.4.1",
     "postcss": "^7",
+    "rails-ujs": "^5.2.4-5",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "turbolinks": "^5.2.0"
   },

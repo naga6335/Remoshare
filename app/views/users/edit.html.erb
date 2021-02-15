@@ -1,9 +1,9 @@
 <h1>ユーザー編集</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div>
+  <div>
     <%= form_with(model: @user, local: true) do |f| %>
-      <%= render 'shared/error_messages' %>
+       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :名前 %>
       <%= f.text_field :name, class: 'form-control' %>

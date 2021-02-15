@@ -1,0 +1,15 @@
+<h1>Posts#new</h1>
+<p>現在ログイン中のユーザー：<%= current_user.name %></p>
+
+<%= form_with(model: @post, local: true) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :本文 %>
+  <%= f.text_field :content, placeholder: "Compose new micropost..."%>
+  <%= f.label :画像 %>
+  <%= f.file_field :image %>
+
+  <%= f.submit "投稿", class: "btn btn-primary" %>
+
+<% end %>
