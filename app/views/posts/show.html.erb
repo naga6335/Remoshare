@@ -1,15 +1,8 @@
-<div class="d-flex align-items-center mt-4 mb-4">
-    <div class="ml-auto posts_button">
-        <a class="btn btn-outline-info" href="/posts" role="button">投稿一覧</a>
-        <a class="btn btn-outline-info" href="/posts" role="button">編集</a>
-    </div>
+<div >
+  <p><%= @post.content %></p>
+  <%= image_tag @post.image.url(:small) %>
 </div>
 
-<div class="card">
-  <div class="card-header bg-info text-white">
-      <h4><%= @post.content %></h4>
-      <%= image_tag @post.image.url(:small) %>
-  </div>
-  <div class="card-footer">
-      <p class="text-right font-weight-bold mr-10"><%= @post.user.name %></p>
-  </div>
+<div>
+  <p><%= @post.user.name %></p>
+</div>
