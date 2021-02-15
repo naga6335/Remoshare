@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   get    '/guest',   to: 'users#guest'
   resources :users
-  resources :posts
+  resources :posts, expect: [:index] do
+    resources :comments, only: [:create, :destroy]
+  end
 end

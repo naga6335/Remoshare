@@ -53,8 +53,8 @@ class UsersController < ApplicationController
       user.name = "guestuser"
       user.password = SecureRandom.urlsafe_base64
     end
-    log_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+      log_in user
+      redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
   private

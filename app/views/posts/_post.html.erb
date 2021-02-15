@@ -4,8 +4,8 @@
   <%= image_tag post.image.url(:small) %>
 
 <p>投稿記事 <%= time_ago_in_words(post.created_at) %> 前 </p>
-  <% if current_user?(post.user) %>
+  <% if logged_in? && post.user == current_user %>
     <%= link_to   "編集", edit_post_path(post) %>
     <%= button_to "削除", post_path(post), method: :delete %>
-  <% end %>
+ <% end %>
 </li>
