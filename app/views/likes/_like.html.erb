@@ -1,9 +1,9 @@
-<% if logged_in? && post.user == current_user %>
-    <% if post.liked_by?(current_user) %>
-        <p><span>お気に入り解除: </span><%=link_to post.likes.count, post_likes_path(post.id), method: :delete, remote: true %></p>
-    <% else %>
-        <p><span>お気に入り登録: </span><%=link_to post.likes.count, post_likes_path(post.id), method: :post, remote: true %></p>
-    <% end %>
+<% if @post.liked?(current_user) %>
+   <%= button_to(post_path(@post), method: :delete, remote: true, id: :"like-button-#{@post.id}") do %>
+       <i class="fa-lg fas fa-heart icon-btn liked"><%= @post.likes.count %></i>
+   <% end %>
 <% else %>
-       <p><span>お気に入り数: </span><%= post.likes.count %></p>
+   <%= link_to(post_path(@post), method: :post, remote: true, id: :"like-button-#{@post.id}") do %>
+       <i class="fa-lg fas fa-heart icon-btn not-like"><%= @post.likes.count %></i>
+   <% end %>
 <% end %>
