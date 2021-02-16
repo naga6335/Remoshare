@@ -1,0 +1,9 @@
+<% if @post.liked?(current_user) %>
+   <%= button_to(post_path(@post), method: :delete, remote: true, id: :"like-button-#{@post.id}") do %>
+       <i class="fa-lg fas fa-heart icon-btn liked"><%= @post.likes.count %></i>
+   <% end %>
+<% else %>
+   <%= link_to(post_path(@post), method: :post, remote: true, id: :"like-button-#{@post.id}") do %>
+       <i class="fa-lg fas fa-heart icon-btn not-like"><%= @post.likes.count %></i>
+   <% end %>
+<% end %>

@@ -1,11 +1,14 @@
-<div >
-  <p><%= @post.content %></p>
-  <%= image_tag @post.image.url(:small) %>
+<div>
+  <div>
+    <%= @post.user.name %> posted at <%= @post.created_at %>
+  </div>
+  <div>
+    <p><%= @post.content %></p>
+    <%= image_tag @post.image.url(:small) %>
+  </div>
 </div>
 
-<div>
-  <p><%= @post.user.name %></p>
-</div>
+<%= render 'likes/like', post: @post %>
 
 <% if current_user %>
   <%= form_with(model: [@post, @comment], local: true) do |f| %>

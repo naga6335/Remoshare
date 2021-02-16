@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page])
+    @favorite_posts = User.find(params[:user_id]).favorites
   end
 
   def new
