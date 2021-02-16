@@ -6,10 +6,16 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get    '/guest',   to: 'users#guest'
-  resources :users
-  resources :posts, expect: [:index] do
-    resources :comments, only: [:create, :destroy]
-    resources :likes, only: [:create, :destroy]
 
+  resources  :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
+
+  resources  :posts,  expect: [:index] do
+    resource :comments, only: [:create, :destroy]
+    resource :likes,    only: [:create, :destroy]
   end
 end

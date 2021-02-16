@@ -6,6 +6,10 @@
       </h1>
     </section>
   </aside>
+  <section class="status">
+    <%= render 'shared/status' %>
+  </section>
+    <%= render 'shared/follow_form' if logged_in? %>
   <div>
     <% if @user.posts.any? %>
       <h3>posts(<%= @user.posts.count %>)</h3>

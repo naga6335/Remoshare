@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: [:destroy]
 
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page])
-    @favorite_posts = User.find(params[:user_id]).favorites
+    # @favorite_posts = User.find(params[:user_id]).favorites
   end
 
   def new
@@ -56,6 +56,20 @@ class UsersController < ApplicationController
     end
       log_in user
       redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+
+  def following
+    # @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.page(params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    # @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.page(params[:page])
+    render 'show_follow'
   end
 
   private

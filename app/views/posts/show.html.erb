@@ -19,7 +19,6 @@
   <p>コメントの投稿には新規登録/ログインが必要です</p>
 <% end %>
 
-
 <table>
   <thead>
     <tr>
@@ -33,7 +32,7 @@
         <td><%= comment.user.name %></td>
         <td><%= comment.comment %></td>
       <% if logged_in? && comment.user == current_user %>
-        <td><%= button_to "削除", post_comment_path(@post, comment), method: :delete %></td>
+        <td><%= button_to "削除", post_comments_path(@post, comment), method: :delete %></td>
       <% end %>
       </tr>
     <% end %>
