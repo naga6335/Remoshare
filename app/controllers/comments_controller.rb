@@ -4,9 +4,11 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
+    @comment_post = @comment.post
     @comment.user_id = current_user.id
     if @comment.save
       flash[:succes] = '投稿しました'
+      @comment_post.create_notification_comment(current_user, @comment.id)
       redirect_to request.referer
     else
       flash[:alert] = "入力に誤りがあります"

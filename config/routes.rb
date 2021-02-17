@@ -12,10 +12,12 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :relationships, only: [:create, :destroy]
 
   resources  :posts do
     resources :comments, only: [:create, :destroy]
-    resource :likes,    only: [:create, :destroy]
+    resource :likes,     only: [:create, :destroy]
   end
+
+  resources :relationships, only: [:create, :destroy]
+  resources :notifications, only: [:index, :destroy]
 end

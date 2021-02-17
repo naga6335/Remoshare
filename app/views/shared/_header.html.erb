@@ -10,7 +10,7 @@
         <% if logged_in? %>
           <li><%= link_to "投稿", new_post_path %></li>
           <li><%= link_to "ユーザー一覧", users_path %></li>
-          <li><%= link_to "通知", '#' %></li>
+          <li><%= link_to "通知", notifications_path %></li>
           <li><%= link_to "プロフィール", current_user %></li>
           <li><%= link_to "設定", edit_user_path(current_user) %></li>
           <li><%= button_to "ログアウト", logout_path, method: :delete %></li>
