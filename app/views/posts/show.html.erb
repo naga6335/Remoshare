@@ -32,7 +32,7 @@
         <td><%= comment.user.name %></td>
         <td><%= comment.comment %></td>
       <% if logged_in? && comment.user == current_user %>
-        <td><%= button_to "削除", post_comments_path(@post, comment), method: :delete %></td>
+        <td><%= button_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete %></td>
       <% end %>
       </tr>
     <% end %>
