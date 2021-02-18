@@ -1,23 +1,31 @@
-<h1>ログイン</h1>
-
-<div>
-  <div>
-    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-      <%= f.label :メールアドレス %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :パスワード %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
-        <p>次回から自動でログイン</p>
-      <% end %>
-
-      <%= f.submit "ログイン", class: "btn btn-primary" %>
-    <% end %>
-
-    <p>新規登録の方は <%= link_to "こちら", signup_path %></p>
-    <%= link_to 'ゲストログイン（閲覧用）', guest_path %>
+<div class="flex items-center min-h-screen">
+  <div class="container mx-auto">
+    <div class="max-w-md mx-auto my-10">
+      <h1 class="my-3 text-3xl text-center font-semibold text-gray-700">ログイン</h1>
+        <div class="m-7">
+          <div class="mb-6">
+            <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+            <%= f.label :メールアドレス, class: 'block mb-2 text-sm text-gray-600' %>
+            <%= f.email_field :email, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300' %>
+          </div>
+          <div class="mb-6">
+            <%= f.label :パスワード, class: 'block mb-2 text-sm text-gray-600' %>
+            <%= f.password_field :password, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+          </div>
+          <div class="mb-6">
+            <%= f.label :remember_me, class: "checkbox inline" do %>
+            <%= f.check_box :remember_me %> <span class = 'text-sm text-gray-600'>次回から自動でログイン</span>
+            <% end %>
+          </div>
+          <div class="mb-6">
+            <%= f.submit "ログイン", class: "w-full px-2 py-3 text-white bg-blue-900 rounded-md focus:bg-blue-700 focus:outline-none" %>
+          </div>
+          <div class="mb-6">
+            <%= link_to 'ゲストログイン（閲覧用）', guest_path, class: "block text-center w-full px-2 py-3 text-white bg-gray-500 rounded-md focus:bg-gray-400 focus:outline-none" %>
+          </div>
+            <p class= 'text-sm text-center text-gray-600'>新規登録の方は<%= link_to "こちら", signup_path, class:'text-blue-900 focus:underline focus:text-blue-600'%></p>
+          <% end %>
+        </div>
+    </div>
   </div>
 </div>

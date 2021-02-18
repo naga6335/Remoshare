@@ -1,23 +1,17 @@
 
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "Remoshare", root_url, id: "logo" %>
-    <nav>
-      <ul>
-          <li><%= link_to "投稿一覧", root_path %></li>
-          <li><%= link_to "チャットで相談", '#' %></li>
-
-        <% if logged_in? %>
-          <li><%= link_to "投稿", new_post_path %></li>
-          <li><%= link_to "ユーザー一覧", users_path %></li>
-          <li><%= link_to "通知", notifications_path %></li>
-          <li><%= link_to "プロフィール", current_user %></li>
-          <li><%= link_to "設定", edit_user_path(current_user) %></li>
-          <li><%= button_to "ログアウト", logout_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "ログイン", login_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
+<nav class="font-sans text-center flex justify-between my-4 mx-auto container overflow-hidden">
+    <%= link_to "Remoshare", root_url, id: "logo", class: "block text-2xl text-indigo-900 text-left sm:h-10 rounded-full"%>
+  <ul class="text-sm text-indigo-900 list-none p-0 flex items-center font-extrabold">
+    <li><%= link_to "投稿一覧", root_url, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
+    <li><%= link_to "投稿する", new_post_path, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
+    <li><%= link_to "チャット相談", "#", class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
+    <% if logged_in? %>
+    <li><%= link_to "通知", notifications_path, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
+    <li><%= link_to "ユーザー一覧", users_path, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
+    <li><%= link_to "プロフィール", current_user, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
+    <li><%= link_to "ログアウト", logout_path, method: :delete, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
+    <% else %>
+    <li><%= link_to "ログイン", login_path, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
+    <% end %>
+  </ul>
+</nav>

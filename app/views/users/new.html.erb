@@ -1,23 +1,33 @@
-<h1>新規登録</h1>
-
-<div>
-  <div>
-    <%= form_with(model: @user, local: true) do |f| %>
-     <%= render 'shared/error_messages', object: f.object %>
-
-      <%= f.label :名前 %>
-      <%= f.text_field :name, class: 'form-control' %>
-
-      <%= f.label :メールアドレス %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :パスワード %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :パスワード再入力 %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit "登録する", class: "btn btn-primary" %>
-    <% end %>
+<div class="flex items-center min-h-screen">
+  <div class="container mx-auto">
+    <div class="max-w-md mx-auto my-10">
+      <h1 class="my-3 text-3xl text-center font-semibold text-gray-700">新規登録</h1>
+        <div class="m-7">
+          <div class="mb-6">
+            <%= form_with(model: @user, local: true) do |f| %>
+            <%# エラーメッセージの修正必要！ %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <%= f.label :名前, class: 'block mb-2 text-sm text-gray-600' %>
+            <%= f.text_field :name, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300' %>
+          </div>
+          <div class="mb-6">
+            <%= f.label :メールアドレス, class: 'block mb-2 text-sm text-gray-600'%>
+            <%= f.email_field :email, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+          </div>
+          <div class="mb-6">
+              <%= f.label :パスワード, class: 'block mb-2 text-sm text-gray-600'%>
+              <%= f.password_field :password, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+          </div>
+          <div class="mb-6">
+              <%= f.label :パスワード再入力, class: 'block mb-2 text-sm text-gray-600'%>
+              <%= f.password_field :password_confirmation, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+          </div>
+          <div class="mb-6">
+              <%= f.submit "登録する", class: "w-full px-2 py-3 text-white bg-blue-900 rounded-md focus:bg-blue-700 focus:outline-none" %>
+          </div>
+          <p class= 'text-sm text-center text-gray-600'>すでにアカウントをお持ちの方は<%= link_to "こちら", login_path, class:'text-blue-900 focus:underline focus:text-blue-600'%></p>
+          <% end %>
+        </div>
+    </div>
   </div>
 </div>
