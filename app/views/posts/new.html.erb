@@ -8,8 +8,11 @@
 
   <%= f.label :本文 %>
   <%= f.text_field :content, placeholder: "Compose new micropost..."%>
+
   <%= f.label :画像 %>
-  <%= f.file_field :image %>
+  <div class='bg-white h-50'>
+  <label><%= f.file_field :image, class: 'hidden' %>post your finiture!</label>
+  </div>
 
   <%= f.submit "投稿", class: "btn btn-primary" %>
 
