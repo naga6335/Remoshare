@@ -1,17 +1,45 @@
-
-<nav class="font-sans text-center flex justify-between my-4 mx-auto container overflow-hidden">
-    <%= link_to "Remoshare", root_url, id: "logo", class: "block text-2xl text-indigo-900 text-left sm:h-10 rounded-full"%>
-  <ul class="text-sm text-indigo-900 list-none p-0 flex items-center font-extrabold">
-    <li><%= link_to "投稿一覧", root_url, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
-    <li><%= link_to "投稿する", new_post_path, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
-    <li><%= link_to "チャット相談", "#", class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
-    <% if logged_in? %>
-    <li><%= link_to "通知", notifications_path, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
-    <li><%= link_to "ユーザー一覧", users_path, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
-    <li><%= link_to "プロフィール", current_user, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
-    <li><%= link_to "ログアウト", logout_path, method: :delete, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
-    <% else %>
-    <li><%= link_to "ログイン", login_path, class: "inline-block py-2 px-3 hover:text-gray-700 no-underline"%></li>
-    <% end %>
-  </ul>
-</nav>
+<div class="container my-16">
+  <nav class="bg-white fixed top-2 left-16 rounded-full font-sans flex justify-between container">
+      <%= link_to "Remoshare", root_url, id: "logo", class: "block text-2xl text-blue-900 my-auto ml-6"%>
+    <ul class="text-sm text-blue-900 list-none py-2 flex items-center font-extrabold">
+      <li>
+        <%= link_to root_url do %>
+          <i class="far fa-newspaper text-2xl px-3 hover:text-gray-700 no-underline"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to users_path do %>
+          <i class="fas fa-users text-2xl px-3 hover:text-gray-700 no-underline"></i>
+        <% end %>
+      </li>
+      <% if logged_in? %>
+      <li>
+        <%= link_to root_url do %>
+          <i class="fas fa-shopping-cart text-2xl px-3 hover:text-gray-700 no-underline"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to notifications_path do %>
+          <i class="far fa-bell text-2xl px-3 hover:text-gray-700 no-underline"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to current_user do %>
+          <i class="fas fa-user text-2xl px-3 hover:text-gray-700 no-underline"></i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to logout_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt text-2xl px-3 hover:text-gray-700 no-underline"></i>
+        <% end %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to login_path do %>
+          <i class="fas fa-sign-in-alt text-2xl px-3 hover:text-gray-700 no-underline"></i>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </nav>
+</div>
