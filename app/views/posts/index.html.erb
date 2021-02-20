@@ -1,31 +1,33 @@
 <%= render 'shared/header' %>
 
-  <section class="font-sans flex flex-col lg:flex-row">
-    <div class="w-full lg:w-1/2"><img src="assets/mainphoto.jpg" alt="椅子の写真" width="700" heigth="300" class="rounded-lg"></div>
-    <div class="w-full lg:w-1/2 flex flex-col items-center justify-center text-center p-8 text-blue-900">
-      <h1 class="my-4 font-normal">暮らすように、働こう</h1>
-      <p class="leading-normal mb-4 w-2/3">リモートワークをもっとわがままに、もっと快適に、もっと効率よく</p>
+  <section class="font-sans flex flex-col lg:flex-row mt-20">
+    <div class="w-full lg:w-1/2"><img src="assets/Manager _Isometric.png" alt="椅子の写真" width="400" heigth="400" class="mx-auto"></div>
+    <div class="w-full lg:w-1/2 flex flex-col items-center justify-center text-center p-8 text-blue-900 bg-white rounded-full">
+      <p class="my-4 text-3xl font-bold tracking-wider">もっと快適に働きながら暮らそう</p>
+      <div class="font-bold mt-6 w-1/2 tracking-wider">
+        <p>リモートワークを</p>
+        <p>もっと快適に</p>
+        <p>もっと効率よくする相棒を見つけよう！</p>
+      </div>
     </div>
   </section>
 
-  <h1 class = 'text-center font-bold text-2xl text-blue-900 mt-7'>---show posts---</h1>
+  <h1 class='text-center text-2xl text-blue-900 mt-7 tracking-widest'>show posts</h1>
   <%= link_to new_post_path do %>
     <i class="far fa-edit text-3xl fixed right-14 bottom-14 text-white rounded-full transition duration-200 ease-in-out bg-blue-900 hover:bg-blue-700 py-6 px-6 "></i>
   <% end %>
 
-    <div class="grid grid-cols-4 gap-x-5 gap-y-5 justify-items-center flex-grow mx-20 my-3 box-border">
+    <div class="grid grid-cols-4 gap-x-5 gap-y-5 justify-items-center flex-grow mx-20 my-3 box-border text-blue-900">
       <% @posts.each do |post| %>
         <div class='my-5'>
-          <%= link_to post do %>
-            <div class=' bg-white py-4 px-5 rounded-lg shadow-xl'>
-              <div class='pb-2 text-gray-600 text-sm'>
-                <span class='text-left'><%= post.user.name%></span><span class='inline-block text-right'><%= post.created_at%></span>
-              </div>
-              <%= image_tag post.image.url(:small), class: 'rounded-lg mx-auto'%>
-              <p class= 'my-2'><%= post.content%></p>
-              <%# <%= link_to '続きを見る', post, class: 'text-right text-gray-700 text-sm' %>
-            </div>
-          <% end %>
+          <div class='bg-white py-4 px-6 rounded shadow-md'>
+            <%= link_to post do %>
+              <span class='flex flex-row-reverse text-sm'><%= time_ago_in_words(post.created_at) %>前</span>
+              <%= image_tag post.image.url(:small), class: 'rounded' %>
+              <span class='inline-block text-lg mt-2'><%= post.content %></span>
+              <%= image_tag post.user.avatar.url(:small), class: 'rounded-full w-7 h-7 shadow-md'%>
+            <% end %>
+          </div>
         </div>
       <% end %>
     </div>

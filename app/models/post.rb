@@ -4,12 +4,12 @@ class Post < ApplicationRecord
   has_many   :likes,    dependent: :destroy
   has_many   :users,      through: :likes
   has_many   :notifications, dependent: :destroy
-
   validates  :user_id,   presence: true
   validates  :content,   presence: true, length: { maximum: 200 }
   validates  :image, presence: true
   default_scope -> { order(created_at: :desc) }
   mount_uploader :image, ImageUploader
+  mount_uploader :avatar, AvatarUploader
 
   def liked?(user)
     likes.where(user_id: user.id).exists?

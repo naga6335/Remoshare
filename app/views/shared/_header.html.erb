@@ -1,45 +1,44 @@
-<div class="container my-16">
-  <nav class="bg-white fixed top-0 left-16 my-2 rounded-full font-sans flex justify-between container">
-      <%= link_to "Remoshare", root_url, id: "logo", class: "block text-2xl text-blue-900 my-auto ml-6"%>
-    <ul class="text-sm text-blue-900 list-none py-2 flex items-center font-extrabold">
+
+  <nav class="fixed top-0 left-16 my-4 rounded-full font-sans flex justify-between container box-border bg-white">
+      <%= link_to "Remoshare", root_url, alt: "logo", class: "block text-2xl font-bold text-blue-900 my-auto ml-6"%>
+    <ul class='text-blue-900 list-none py-2 flex items-center font-extrabold'>
       <li>
         <%= link_to root_url do %>
-          <i class="far fa-newspaper text-2xl px-3 hover:text-gray-700 no-underline"></i>
+          <i class="far fa-newspaper text-xl px-3 hover:text-gray-500 no-underline"></i>
         <% end %>
       </li>
       <li>
         <%= link_to users_path do %>
-          <i class="fas fa-users text-2xl px-3 hover:text-gray-700 no-underline"></i>
+          <i class="fas fa-users text-xl px-3 hover:text-gray-500 no-underline"></i>
         <% end %>
       </li>
       <% if logged_in? %>
       <li>
         <%= link_to root_url do %>
-          <i class="fas fa-shopping-cart text-2xl px-3 hover:text-gray-700 no-underline"></i>
+          <i class="fas fa-shopping-cart text-xl px-3 hover:text-gray-500 no-underline"></i>
         <% end %>
       </li>
       <li>
         <%= link_to notifications_path do %>
-          <i class="far fa-bell text-2xl px-3 hover:text-gray-700 no-underline"></i>
+          <i class="far fa-bell text-xl px-3 hover:text-gray-500 no-underline"></i>
         <% end %>
       </li>
       <li>
         <%= link_to current_user do %>
-          <i class="fas fa-user text-2xl px-3 hover:text-gray-700 no-underline"></i>
+          <i class="fas fa-user text-xl px-3 hover:text-gray-500 no-underline"></i>
         <% end %>
       </li>
       <li>
         <%= link_to logout_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt text-2xl px-3 hover:text-gray-700 no-underline"></i>
+          <i class="fas fa-sign-out-alt text-xl px-3 hover:text-gray-500 no-underline"></i>
         <% end %>
       </li>
       <% else %>
       <li>
         <%= link_to login_path do %>
-          <i class="fas fa-sign-in-alt text-2xl px-3 hover:text-gray-700 no-underline"></i>
+          <i class="fas fa-sign-in-alt text-xl px-3 hover:text-gray-500 no-underline"></i>
         <% end %>
       </li>
       <% end %>
     </ul>
   </nav>
-</div>

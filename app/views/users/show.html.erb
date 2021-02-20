@@ -1,24 +1,38 @@
 <%= render 'shared/header' %>
 
-<div>
-  <aside>
-    <section>
-      <h1>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-  <section class="status">
-    <%= render 'shared/status' %>
-  </section>
-    <%= render 'shared/follow_form' if logged_in? %>
-  <div>
+
+<div class="container flex flex-col mt-20 mx-auto px-5 py-4 items-center text-center text-blue-900 ">
+  <div class='flex flex-wrap grid grid-cols-2 gap-10 max-w-3xl rounded bg-white px-8 py-4 shadow-md'>
+    <div>
+      <% if @user.avatar? %>
+        <%= image_tag @user.avatar.url(:small), class: 'rounded-full mx-auto py-2' %>
+      <% end %>
+      <p class='text-xl'><%= @user.name%></p>
+    </div>
+    <div class='flex items-center max-w-sm'>
+      <div>
+          <%= render 'shared/status' %>
+          <p class='my-2 text-sm break-all'><%= @user.profile %></p>
+          <%= render 'shared/follow_form' %>
+          <% if logged_in? && @user == current_user %>
+            <%= link_to edit_user_path do %>
+            <div class='rounded-full bg-blue-900 text-white my-4 py-2 px-4 transition duration-200 ease-in-out bg-blue-900 hover:bg-blue-700'>プロフィールを編集する</div>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class='text-center w-full my-10'>
+  <p class='my-4 text-xl font-bold'>投稿一覧(<%= @user.posts.count %>)</p>
+  <div class="grid grid-cols-4 gap-x-5 gap-y-5 justify-items-center flex-grow mx-20 box-border">
     <% if @user.posts.any? %>
-      <h3>posts(<%= @user.posts.count %>)</h3>
-      <ol>
-        <%= render @posts %>
-      </ol>
+      <%= render @posts %>
       <%= paginate @posts %>
+      <% else %>
+  </div>
+      <p>投稿はありません</p>
     <% end %>
   </div>
 </div>

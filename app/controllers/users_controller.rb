@@ -51,11 +51,11 @@ class UsersController < ApplicationController
 
   def guest
     user = User.find_or_create_by!(email: 'guest@example.com') do |user|
-      user.name = "guestuser"
+      user.name = "ゲストユーサー"
       user.password = SecureRandom.urlsafe_base64
     end
       log_in user
-      redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+      redirect_to root_url, notice: 'ゲストユーザーとしてログインしました！'
   end
 
   def following
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :profile)
     end
 
     def correct_user
