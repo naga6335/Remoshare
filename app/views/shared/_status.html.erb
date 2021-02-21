@@ -1,14 +1,14 @@
 <% @user ||= current_user %>
-<div class="status">
+<div class='inline-block p-3 bg-white rounded-full'>
   <a href="<%= following_user_path(@user) %>">
-    <strong id="following" class="stat">
+    <strong id="following" class='hover:text-gray-500'>
     フォロー
       <%= @user.following.count %>
     </strong>
   </a>
   <span> | </span>
   <a href="<%= followers_user_path(@user) %>">
-    <strong id="followers" class="stat">
+    <strong id="followers" class='hover:text-gray-500'>
     フォロワー
       <%= @user.followers.count %>
     </strong>

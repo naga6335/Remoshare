@@ -1,22 +1,17 @@
 <%= render 'shared/header'%>
 
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1><%= @user.name %></h1>
-      <span><%= link_to "プロフィールを見る", @user %></span>
-      <span><b>投稿数</b> <%= @user.posts.count %></span>
-    </section>
-    <section class="status">
-      <%= render 'shared/status' %>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <h3><%= @title %></h3>
+<div class="container mx-auto mt-24 text-center text-blue-900">
+  <%= link_to @user do %>
+    <div class='inline-block mb-4 text-2xl hover:text-gray-500'>
+      <%= @user.name %>
+    </div>
+  <% end %>
+  <div>
+    <%= render 'shared/status' %>
+  </div>
+  <div class='flex flex-col mt-10'>
     <% if @users.any? %>
-      <ul class="users follow">
-        <%= render @users %>
-      </ul>
+      <%= render @users %>
     <% end %>
   </div>
 </div>

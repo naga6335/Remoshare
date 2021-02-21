@@ -27,7 +27,6 @@
   <div class="grid grid-cols-4 gap-x-5 gap-y-5 justify-items-center flex-grow mx-20 box-border">
     <% if @user.posts.any? %>
       <%= render @posts %>
-      <%= paginate @posts %>
       <% else %>
   </div>
       <p>投稿はありません</p>

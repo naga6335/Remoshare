@@ -1,4 +1,4 @@
-<div class='container py-2 my-2 border-b-2'>
+<div class='mx-auto py-2 my-2 border-b-2'>
   <div>
     <%= link_to user_path(notification.visitor) do %>
       <%= image_tag notification.visitor.avatar.url(:small), class: 'inline-block mx-2 rounded-full w-7 h-7 shadow-md' %><%= notification_form(notification) %>
