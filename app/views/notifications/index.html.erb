@@ -1,11 +1,13 @@
 <%= render 'shared/header' %>
 
-<h3 class="text-center">通知</h3>
-<%= button_to "通知削除", notification_path(@notifications), method: :delete ,class: "fas fa-trash" %>
-<% if @notifications.present? %>
-    <div class="users-index">
-        <%= render @notifications %>
-    </div>
-<% else %>
-    <p>通知はありません</p>
-<% end %>
+<div class='container mx-auto mt-24 text-center text-blue-900'>
+  <div class='flex flex-col'>
+    <h1 class='text-2xl font-semibold'>通知一覧</h1>
+    <span><%= link_to "すべて削除", notification_path(@notifications), method: :delete, class: 'fas fa-trash float-right rounded-3xl px-2 py-2 bg-blue-900 text-white text-xs'%></span>
+    <% if @notifications.present? %>
+      <%= render @notifications %>
+    <% else %>
+      <p class='text-gray-500'>通知はありません</p>
+    <% end %>
+  </div>
+</div>

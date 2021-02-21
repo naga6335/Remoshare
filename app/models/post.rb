@@ -9,7 +9,6 @@ class Post < ApplicationRecord
   validates  :image, presence: true
   default_scope -> { order(created_at: :desc) }
   mount_uploader :image, ImageUploader
-  mount_uploader :avatar, AvatarUploader
 
   def liked?(user)
     likes.where(user_id: user.id).exists?

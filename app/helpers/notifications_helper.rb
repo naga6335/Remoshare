@@ -5,13 +5,12 @@ module NotificationsHelper
     @visitor_comment = notification.comment_id
     case notification.action
     when 'follow'
-      tag.a(notification.visitor.name, href: user_path(@visitor)) + 'さんがあなたをフォローしました'
+      tag.a(notification.visitor.name, href: user_path(@visitor), class: 'font-bold hover:text-gray-500') + 'さんがあなたをフォローしました'
     when 'like'
-      tag.a(notification.visitor.name, href: user_path(@visitor)) + 'さんが' + tag.a('あなたの投稿', href: post_path(notification.post_id)) + 'さんにいいねしました'
+      tag.a(notification.visitor.name, href: user_path(@visitor), class: 'font-bold hover:text-gray-500') + 'さんが' + tag.a('あなたの投稿', href: post_path(notification.post_id), class: 'font-bold hover:text-gray-500') + 'さんにいいねしました'
     when 'comment' then
-      @comment = Comment.find_by(id: @visitor_comment)
-      @comment_content =@comment
-      tag.a(@visitor.name, href: user_path(@visitor)) + 'さんが' + tag.a(notification.visited.name, href: post_path(notification.post_id)) + 'さんにコメントしました'
+      @comment = Comment.find_by(id: @visitor_comment)&.comment
+      tag.a(@visitor.name, href: user_path(@visitor), class: 'font-bold hover:text-gray-500') + 'さんが' + tag.a('あなたの投稿', href: post_path(notification.post_id), class: 'font-bold hover:text-gray-500') + 'にコメントしました'
     end
   end
 

@@ -3,9 +3,9 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.new(comment_params)
-    @comment_post = @comment.post
+    @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
+    @comment_post = @comment.post
     if @comment.save
       flash[:succes] = '投稿しました'
       @comment_post.create_notification_comment(current_user, @comment.id)
@@ -24,6 +24,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:comment, :notification)
   end
 end

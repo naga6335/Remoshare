@@ -1,7 +1,11 @@
-<div class="notification-view">
-  <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span>
-  <br>
-  <% if !@comment.nil? %>
-    <p class="notification-comment"><%= @comment %></p>
-  <% end %>
+<div class='container py-2 my-2 border-b-2'>
+  <div>
+    <%= link_to user_path(notification.visitor) do %>
+      <%= image_tag notification.visitor.avatar.url(:small), class: 'inline-block mx-2 rounded-full w-7 h-7 shadow-md' %><%= notification_form(notification) %>
+    <% end %>
+    <span class='text-xs'><%= "(#{time_ago_in_words(notification.created_at)}前)" %>
+  </div>
+    <% if !@comment.nil? %>
+      <p class='text-xs text-gray-500'><%= @comment %></p>
+    <% end %>
 </div>
