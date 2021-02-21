@@ -3,7 +3,7 @@
   <div class='flex flex-wrap grid grid-cols-2 gap-10 max-w-3xl rounded bg-white px-8 py-4 shadow-md'>
     <div>
       <% if @user.avatar? %>
-        <%= image_tag @user.avatar.url(:small), class: 'rounded-full mx-auto py-2' %>
+        <%= image_tag @user.avatar.url(:small), class: 'rounded-full mx-auto p-2' %>
       <% end %>
       <p class='text-xl'><%= @user.name%></p>
     </div>
@@ -14,7 +14,7 @@
           <%= render 'shared/follow_form' %>
           <% if logged_in? && @user == current_user %>
             <%= link_to edit_user_path do %>
-            <div class='rounded-full bg-blue-900 text-white my-4 py-2 px-4 transition duration-200 ease-in-out bg-blue-900 hover:bg-blue-700'>プロフィールを編集する</div>
+            <div class='rounded-full bg-blue-900 text-white my-4 py-2 px-4 transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500'>プロフィールを編集する</div>
             <% end %>
           <% end %>
       </div>

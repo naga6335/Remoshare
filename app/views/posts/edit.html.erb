@@ -12,10 +12,10 @@
     <%= f.text_field :content, autofocus: true, :placeholder =>"#{@post.content}" %>
   </div>
 
-  <div>
-    <%= f.label :画像 %>
-    <%= f.file_field :image, :placeholder =>"#{@post.image}" %>
-  </div>
+  <%# <label class= 'inline-block'> ここでブロック指定になっているので修正 %>
+      <%= f.file_field :image, class: 'hidden', onchange: 'previewImage(preview)', alt: '投稿画像' %>
+      <div><%= image_tag @post.image.url, id: 'preview', class: 'w-1/4 h-auto rounded shadow-xl transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %></div>
+  </label>
 
   <div><%= f.submit "更新する" %></div>
 <% end %>

@@ -9,16 +9,20 @@
             <%= render 'shared/error_messages', object: f.object %>
 
           <div class="text-center my-6">
-            <label class='inline-block bg-gray-300 rounded-full py-10 px-12 relative shadow-md'>
-              <i class='far fa-user text-6xl text-white'></i>
-              <%= f.file_field :avatar, class: 'hidden' %>
-              <i class='fas fa-plus text-sm bg-blue-900 text-white rounded-full px-2 py-1 absolute bottom-2 right-2'></i>
+            <label class= 'inline-block'>
+              <% if @user.avatar? %>
+                <%= f.file_field :avatar, class: 'hidden', onchange: 'previewAvatar(preview)', alt: 'ユーザーアイコン' %>
+                <div><%= image_tag @user.avatar.url, id: 'preview', class: 'h-32 w-32 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
+              <% else %>
+                <%= f.file_field :avatar, class: 'hidden', onchange: 'previewAvatar(preview)' %>
+                <div><%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'h-32 w-32 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
+              <% end %>
             </label>
           </div>
 
           <div class="mb-4">
             <%= f.label :プロフィール, class: 'block mb-2 text-sm text-gray-600' %>
-            <%= f.text_area :profile, size: "54x3", class: 'resize-none border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300', placeholder: "例）26歳の会社員です！よろしくお願いします。" %>
+            <%= f.text_area :profile, size: "54x3", class: 'resize-none border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300', placeholder: "　例）26歳の会社員です！よろしくお願いします。" %>
           </div>
 
           <div class="mb-4">
@@ -31,7 +35,6 @@
             <%= f.email_field :email, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300' %>
           </div>
 
-
           <div class="mb-4">
             <%= f.label :パスワード, class: 'block mb-2 text-sm text-gray-600' %>
             <%= f.password_field :password, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
@@ -41,9 +44,25 @@
             <%= f.password_field :password_confirmation, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
           </div>
           <div class="mb-4 text-center">
-            <%= f.submit "更新する", class: "inline-block px-4 py-2 text-white bg-blue-900 rounded-3xl focus:bg-blue-700 focus:outline-none" %>
+            <%= f.submit "更新する", class: "inline-block px-4 py-2 text-white bg-blue-900 rounded-3xl cursor-pointer transition duration-200 ease-in-out hover:bg-gray-500 focus:outline-none" %>
           </div>
         <% end %>
     </div>
   </div>
 </div>
+
+<script>
+function previewAvatar(id) {
+  const target = this.event.target;
+  const file = target.files[0];
+  const reader = new FileReader();
+  reader.onloadend = function() {
+    preview.src = reader.result;
+  };
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }
+}
+</script>

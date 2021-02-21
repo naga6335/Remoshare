@@ -9,11 +9,29 @@
   <%= f.label :本文 %>
   <%= f.text_field :content, placeholder: "Compose new micropost..."%>
 
-  <%= f.label :画像 %>
-  <div class='bg-white h-50'>
-  <label><%= f.file_field :image, class: 'hidden' %>post your finiture!</label>
-  </div>
+  <%= f.label :画像, class: 'hidden' %>
+
+  <label class= 'block'>
+      <%= f.file_field :image, class: 'hidden', onchange: 'previewImage(preview)', alt: '投稿画像' %>
+      <div><%= image_tag @post.image.url, id: 'preview', class: 'w-1/4 h-auto rounded shadow-xl transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %></div>
+  </label>
 
   <%= f.submit "投稿", class: "btn btn-primary" %>
-
 <% end %>
+
+
+<script>
+function previewImage(id) {
+  const target = this.event.target;
+  const file = target.files[0];
+  const reader = new FileReader();
+  reader.onloadend = function() {
+    preview.src = reader.result;
+  };
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.src = "";
+  }
+}
+</script>
