@@ -1,7 +1,23 @@
-<li>
-  <%= link_to user.name, user %>
+<ul>
+  <li>
+    <% if user.avatar? %>
+      <%= image_tag user.avatar.url(:small), class: 'inline-block mx-2 rounded-full w-7 h-7 shadow-md' %>
+    <% end %>
+    <%= link_to user.name, user %>
+  </li>
+<ul>
+
+
+
+
+
+
+
+
+
+
+
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= button_to "delete", user, method: :delete,
+    | <%= link_to "delete", user, method: :delete,
                                     data: { confirm: "本当に削除しますか？" } %>
   <% end %>
-</li>
