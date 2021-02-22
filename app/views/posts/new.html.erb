@@ -6,31 +6,47 @@
 
   <%= render 'shared/error_messages', object: f.object %>
 
+  <%= f.label :タイトル %>
+  <%= f.text_field :title, placeholder: "Compose new micropost..."%>
+
   <%= f.label :本文 %>
   <%= f.text_field :content, placeholder: "Compose new micropost..."%>
 
   <%= f.label :画像, class: 'hidden' %>
-
   <label>
       <%= f.file_field :image, class: 'hidden', onchange: 'previewImage(preview)', alt: '投稿画像' %>
       <a><%= image_tag @post.image.url, id: 'preview', class: 'inline-block w-1/4 h-64 object-contain rounded transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %></a>
   </label>
 
+  <div class='flex' id="review">
+    <%= f.label :review,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :review, id: :review_star %>
+  </div>
+    <script>
+      $('#review').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        scoreName: 'post[review]',
+        half: false,
+      });
+    </script>
+
   <%= f.submit "投稿", class: "btn btn-primary" %>
 <% end %>
 
 <script>
-function previewImage(id) {
-  const target = this.event.target;
-  const file = target.files[0];
-  const reader = new FileReader();
-  reader.onloadend = function() {
-    preview.src = reader.result;
-  };
-  if (file) {
-    reader.readAsDataURL(file);
-  } else {
-    reader.readAsDataURL(file);
+  function previewImage(id) {
+    const target = this.event.target;
+    const file = target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = function() {
+      preview.src = reader.result;
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      reader.readAsDataURL(file);
+    }
   }
-}
 </script>

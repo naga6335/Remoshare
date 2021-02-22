@@ -7,7 +7,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.2.1",
     "autoprefixer": "^9.8.6",
-    "jquery": "3.4.1",
+    "jquery": "^3.5.1",
     "postcss": "^7.0.35",
     "rails-ujs": "^5.2.4-5",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",

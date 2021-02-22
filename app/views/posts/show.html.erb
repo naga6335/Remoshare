@@ -11,6 +11,19 @@
 
 <%= render 'likes/like', post: @post %>
 
+ <p>快適ポイント:<%= @post.review %>点</p>
+    <div class='flex text-sm' id="star-rate<%= @post.id %>"></div>
+    <script>
+      $('#star-rate<%= @post.id %>').raty({
+        size      : 34,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        half      : false,
+        readOnly  : true,
+        score: <%= @post.review %>,
+      });
+    </script>
+
 <% if current_user %>
   <%= form_with(model: [@post, @comment], local: true) do |f| %>
     <%= f.text_area :comment, size: "60x5", placeholder: "コメントする" %>
