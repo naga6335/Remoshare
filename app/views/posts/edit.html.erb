@@ -12,10 +12,26 @@
     <%= f.text_field :content, autofocus: true, :placeholder =>"#{@post.content}" %>
   </div>
 
-  <%# <label class= 'inline-block'> ここでブロック指定になっているので修正 %>
+  <label>
       <%= f.file_field :image, class: 'hidden', onchange: 'previewImage(preview)', alt: '投稿画像' %>
-      <div><%= image_tag @post.image.url, id: 'preview', class: 'w-1/4 h-auto rounded shadow-xl transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %></div>
+      <a><%= image_tag @post.image.url, id: 'preview', class: 'inline-block w-1/4 h-64 object-contain rounded transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %></a>
   </label>
 
   <div><%= f.submit "更新する" %></div>
 <% end %>
+
+<script>
+function previewImage(id) {
+  const target = this.event.target;
+  const file = target.files[0];
+  const reader = new FileReader();
+  reader.onloadend = function() {
+    preview.src = reader.result;
+  };
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    reader.readAsDataURL(file);
+  }
+}
+</script>

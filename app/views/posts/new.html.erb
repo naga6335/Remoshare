@@ -11,14 +11,13 @@
 
   <%= f.label :画像, class: 'hidden' %>
 
-  <label class= 'block'>
+  <label>
       <%= f.file_field :image, class: 'hidden', onchange: 'previewImage(preview)', alt: '投稿画像' %>
-      <div><%= image_tag @post.image.url, id: 'preview', class: 'w-1/4 h-auto rounded shadow-xl transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %></div>
+      <a><%= image_tag @post.image.url, id: 'preview', class: 'inline-block w-1/4 h-64 object-contain rounded transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %></a>
   </label>
 
   <%= f.submit "投稿", class: "btn btn-primary" %>
 <% end %>
-
 
 <script>
 function previewImage(id) {
@@ -31,7 +30,7 @@ function previewImage(id) {
   if (file) {
     reader.readAsDataURL(file);
   } else {
-    preview.src = "";
+    reader.readAsDataURL(file);
   }
 }
 </script>
