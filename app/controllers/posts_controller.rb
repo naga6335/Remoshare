@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :destroy]
 
   def index
-    @posts = Post.all.includes(:user).order('created_at DESC')
+    @posts = Post.all.includes(:user).order('created_at DESC').search(params[:search])
     @user = User.find_by(params[:id])
     @tag_list = Tag.all
   end

@@ -8,7 +8,15 @@
         <p>リモートワークを</p>
         <p>もっと快適に</p>
         <p>もっと効率よくする相棒を見つけよう！</p>
+
       </div>
+        <div class='flex items-center rounded-full shadow-xl py-2 px-4 text-gray-500 leading-tight focus:outline-none bg-gray-100'>
+          <%= form_tag(posts_path, :method => 'get') do %>
+          <%= text_field :search, "", class: 'text-left w-64 py-2 focus:outline-none bg-gray-100' %>
+          <%= submit_tag 'fas fa-search', :name => nil, class: "bg-blue-900 text-sm text-white rounded-full p-2 hover:bg-blue-900 focus:outline-none w-8 h-8" %>
+          <% end %>
+        </div>
+
     </div>
   </section>
 
