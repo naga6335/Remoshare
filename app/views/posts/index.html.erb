@@ -17,6 +17,11 @@
     <i class="far fa-edit text-3xl fixed right-14 bottom-14 text-white rounded-full transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500 py-6 px-6 "></i>
   <% end %>
 
+  <% @tag_list.each do |list| %>
+    <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: 'tag_list' %>
+    <%= "(#{list.posts.count})" %>
+  <% end %>
+
     <div class="grid grid-cols-4 gap-x-5 gap-y-5 justify-items-center flex-grow mx-20 my-3 box-border text-blue-900">
       <% @posts.each do |post| %>
         <div class='my-5'>
@@ -25,7 +30,14 @@
               <span class='flex flex-row-reverse text-sm'><%= time_ago_in_words(post.created_at) %>前</span>
               <%= image_tag post.image.url(:small), class: 'rounded' %>
               <span class='inline-block text-lg mt-2'><%= post.content %></span>
-              <%= image_tag post.user.avatar.url(:small), class: 'rounded-full w-7 h-7 shadow-md'%>
+              <% if @user.avatar? %>
+                <div><%= image_tag @user.avatar.url, id: 'preview', class: 'h-32 w-32 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
+              <% else %>
+                <div><%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'h-32 w-32 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
+              <% end %>
+              <% post.tags.each do |tag|%>
+                <%= link_to "##{tag.tag_name}", posts_path(tag), class: 'smaller tag_list' %>
+              <% end %>
             <% end %>
           </div>
         </div>

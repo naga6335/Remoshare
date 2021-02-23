@@ -14,8 +14,8 @@
 
   <%= f.label :画像, class: 'hidden' %>
   <label>
-      <%= f.file_field :image, class: 'hidden', onchange: 'previewImage(preview)', alt: '投稿画像' %>
-      <a><%= image_tag @post.image.url, id: 'preview', class: 'inline-block w-1/4 h-64 object-contain rounded transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %></a>
+    <%= f.file_field :image, class: 'hidden', onchange: 'previewImage(preview)', alt: '投稿画像' %>
+    <a><%= image_tag @post.image.url, id: 'preview', class: 'inline-block w-1/4 h-64 object-contain rounded transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %></a>
   </label>
 
   <div class='flex' id="review">
@@ -32,6 +32,7 @@
       });
     </script>
 
+  <%= f.text_field :tag_name, placeholder: "プログラミング技術や募集要項に関するタグをスペース区切りで5つまで入力(例 Ruby Rails )" %>
   <%= f.submit "投稿", class: "btn btn-primary" %>
 <% end %>
 

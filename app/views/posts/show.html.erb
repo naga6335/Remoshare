@@ -24,6 +24,10 @@
       });
     </script>
 
+    <% @post_tags.each do |tag| %>
+      <%= link_to "##{tag.tag_name}", tag_posts_path(tag_id: tag.id) %>
+    <% end %>
+
 <% if current_user %>
   <%= form_with(model: [@post, @comment], local: true) do |f| %>
     <%= f.text_area :comment, size: "60x5", placeholder: "コメントする" %>

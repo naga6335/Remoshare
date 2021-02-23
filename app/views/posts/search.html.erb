@@ -1,0 +1,7 @@
+
+
+<%= "#{@tag.tag_name}" %>
+
+<% @posts.each do |post| %>
+  <%= link_to post.content, post %>
+<% end %>

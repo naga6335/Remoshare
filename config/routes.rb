@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resource :likes,     only: [:create, :destroy]
   end
 
+  resources :tags do
+    get 'posts', to: 'posts#search'
+  end
+
   resources :relationships, only: [:create, :destroy]
   resources :notifications, only: [:index, :destroy]
 end

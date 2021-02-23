@@ -1,12 +1,15 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many   :comments, dependent: :destroy
-  has_many   :likes,    dependent: :destroy
-  has_many   :users,      through: :likes
+  has_many   :comments,      dependent: :destroy
+  has_many   :likes,         dependent: :destroy
+  has_many   :users,           through: :likes
   has_many   :notifications, dependent: :destroy
-  validates  :user_id,   presence: true
-  validates  :content,   presence: true, length: { maximum: 200 }
-  validates  :image, presence: true
+  validates  :user_id,        presence: true
+  validates  :title,          presence: true, length: { maximum: 30}
+  validates  :content,        presence: true, length: { maximum: 200 }
+  has_many   :tagmaps,       dependent: :destroy
+  has_many   :tags,            through: :tagmaps
+  validates  :image,          presence: true
   default_scope -> { order(created_at: :desc) }
   mount_uploader :image, ImageUploader
 
@@ -49,4 +52,18 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+
+  def save_tag(sent_tags)
+    current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
+    old_tags = current_tags - sent_tags
+    new_tags = sent_tags - current_tags
+    old_tags.each do |old|
+      self.tags.delete Tag.find_by(tag_name: old)
+    end
+    new_tags.each do |new|
+      new_post_tag = Tag.find_or_create_by(tag_name: new)
+      self.tags << new_post_tag
+    end
+  end
+
 end
