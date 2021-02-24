@@ -11,7 +11,7 @@
       <div>
           <%= render 'shared/status' %>
           <p class='my-2 text-sm break-all'><%= @user.profile %></p>
-          <%= render 'shared/follow_form' %>
+          <%= render 'relationships/follow' %>
           <% if logged_in? && @user == current_user %>
             <%= link_to edit_user_path do %>
             <div class='rounded-full bg-blue-900 text-white my-4 py-2 px-4 transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500'>プロフィールを編集する</div>

@@ -60,17 +60,15 @@ class UsersController < ApplicationController
   end
 
   def following
-    # @title = "Following"
     @user  = User.find(params[:id])
     @users = @user.following.page(params[:page])
     render 'show_follow'
   end
 
   def followers
-    # @title = "Followers"
     @user  = User.find(params[:id])
     @users = @user.followers.page(params[:page])
-    render 'show_follow'
+    render 'show_follower'
   end
 
   private
