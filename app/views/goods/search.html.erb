@@ -1,0 +1,38 @@
+<%= render 'shared/header' %>
+
+<div class='mt-20'>
+    <div class="search-box">
+      <%= form_with url: search_path, method: :get do |f| %>
+        <%= f.text_field :keyword %>
+        <%= f.submit '検索' %>
+      <% end %>
+        </div>
+    </div>
+
+　　　　<!-- 表示する部分 -->
+    <div class="goods-search-main">
+      <div class="goods-search-box">
+        <ul>
+          <% if @goods.present? %>　　<!-- （１０）は商品を出力する個数 -->
+            <% @goods.first(10).each do |item| %>
+              <div class="goods-list">
+                <div class="goods-img">
+                  <li><img src="<%= item['mediumImageUrls'][0] %>"></li>
+                </div>
+                <div class="goods-list-right">
+                  <div class="goods-name">
+                    <li><a href="<%= item['itemUrl'] %>" target="_blank"><%= item['itemName'] %></a></li>
+                  </div>
+                  <div class="goods-price">
+                    <li><%= item['itemPrice'] %>円</li>
+                    <li><%= item['reviewAverage'] %>点</li>
+                    <%= item['page'] %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
