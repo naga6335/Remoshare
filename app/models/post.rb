@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many   :comments,      dependent: :destroy
   has_many   :likes,         dependent: :destroy
-  has_many   :users,           through: :likes
+  # has_many   :users,           through: :likes
   has_many   :notifications, dependent: :destroy
   validates  :user_id,        presence: true
   validates  :title,          presence: true, length: { maximum: 30}
@@ -13,9 +13,9 @@ class Post < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   mount_uploader :image, ImageUploader
 
-  def liked?(user)
-    likes.where(user_id: user.id).exists?
-  end
+  # def liked?(user)
+  #   likes.where(user_id: user.id).exists?
+  # end
 
   def create_notification_like(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])

@@ -14,8 +14,8 @@ class PostsController < ApplicationController
   def show
     @posts = Post.all
     @post = Post.find(params[:id])
-    @comments = @post.comments.includes(:user).order(created_at: :desc)
     @comment = Comment.new
+    @comments = @post.comments.includes(:user).order(created_at: :desc)
     @post_tags = @post.tags
   end
 

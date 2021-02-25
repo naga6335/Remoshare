@@ -7,14 +7,11 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   mount_uploader :avatar, AvatarUploader
-
   has_many :posts,        dependent: :destroy
   has_many :comments,     dependent: :destroy
   has_many :likes,        dependent: :destroy
-  has_many :like_posts,     through: :likes, source: :post
   has_many :active_notifications,  class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
-
   has_many :active_relation,  class_name:  "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relation, class_name:  "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relation,  source: :followed
@@ -43,37 +40,22 @@ class User < ApplicationRecord
     end
   end
 
+  def liked_by(post_id)
+    likes.where(post_id: post_id).exists?
+  end
+
   def forget
     update_attribute(:remember_digest, nil)
   end
 
-  def own?(object)
-    id == object.user_id
-  end
-
-  def like(post)
-    likes.find_or_create_by(post: post)
-  end
-
-  def like?(post)
-    like_posts.include?(post)
-  end
-
-  def unlike(post)
-    like_posts.delete(post)
-  end
-
-   # ユーザーをフォローする
   def follow(other_user)
     following << other_user
   end
 
-  # ユーザーのフォローを外す
   def unfollow(other_user)
     active_relation.find_by(followed_id: other_user.id).destroy
   end
 
-  # フォローしていればtrueを返す
   def following?(other_user)
     following.include?(other_user)
   end

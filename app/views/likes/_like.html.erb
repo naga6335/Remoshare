@@ -1,13 +1,17 @@
+
+
+<div class="likes_buttons">
 <% if current_user %>
-  <% if @post.liked?(current_user) %>
-    <%= button_to(post_path(@post), method: :delete, remote: true, id: :"like-button-#{@post.id}") do %>
-        <i class="fa-lg fas fa-heart icon-btn liked"><%= @post.likes.count %></i>
+  <% if current_user.liked_by(@post.id) %>
+    <%= link_to destroy_like_path(@post.id, current_user.likes.find_by(post_id: @post.id).id), method: :delete, remote: true do %>
+      <p class="like-button"><i class="fas fa-heart fa-2x" style="color: #e82a2a;"></i><span style="color: #e82a2a"><%= @post.likes.count %></span></p>
     <% end %>
   <% else %>
-    <%= link_to(post_path(@post), method: :post, remote: true, id: :"like-button-#{@post.id}") do %>
-        <i class="fa-lg fas fa-heart icon-btn not-like"><%= @post.likes.count %></i>
+    <%= link_to create_like_path(@post.id), method: :post, remote: true do %>
+      <p class="like-button"><i class="far fa-heart fa-2x" style="color: #e82a2a;"></i><span style="color: #e82a2a"><%= @post.likes.count %></span></p>
     <% end %>
   <% end %>
-<% else %>
+  <% else %>
   <p>いいねには新規登録/ログインが必要です</p>
 <% end %>
+</div>
