@@ -16,7 +16,6 @@
           <%= submit_tag 'fas fa-search', :name => nil, class: "bg-blue-900 text-sm text-white rounded-full p-2 hover:bg-blue-900 focus:outline-none w-8 h-8" %>
           <% end %>
         </div>
-
     </div>
   </section>
 
@@ -51,3 +50,6 @@
         </div>
       <% end %>
     </div>
+
+    <%= pie_chart User.group(:job).order('count_all DESC').count %>
+    <%= pie_chart @posts.group(:issue).order('count_all ASC').count %>

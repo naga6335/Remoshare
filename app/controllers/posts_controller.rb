@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :destroy]
 
   def index
-    @posts = Post.all.includes(:user).order('created_at DESC').search(params[:search])
+    @posts = Post.all.includes(:user).order(created_at: :desc).search(params[:search])
     @user = User.find_by(params[:id])
     @tag_list = Tag.all
   end
@@ -55,14 +55,14 @@ class PostsController < ApplicationController
   end
 
   def search
-    @tag_list = Tag.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
-    @tag = Tag.find(params[:tag_id])  #クリックしたタグを取得
-    @posts = @tag.posts.all           #クリックしたタグに紐付けられた投稿を全て表示
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts.all
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :image, :content, :review)
+    params.require(:post).permit(:title, :image, :content, :price, :review, :issue)
   end
 end

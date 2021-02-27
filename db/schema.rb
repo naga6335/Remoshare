@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_135127) do
+ActiveRecord::Schema.define(version: 2021_02_26_043545) do
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2021_02_22_135127) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
-    t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -55,6 +54,8 @@ ActiveRecord::Schema.define(version: 2021_02_22_135127) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title", null: false
     t.integer "review", null: false
+    t.integer "price"
+    t.string "issue", null: false
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -79,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_135127) do
   end
 
   create_table "tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "tag_name"
+    t.string "tag_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tag_name"], name: "index_tags_on_tag_name", unique: true
@@ -88,13 +89,14 @@ ActiveRecord::Schema.define(version: 2021_02_22_135127) do
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "password_digest"
+    t.string "password_digest", null: false
     t.string "remember_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false
     t.string "avatar"
     t.text "profile"
+    t.string "job"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

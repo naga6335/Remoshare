@@ -31,6 +31,7 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'rakuten_web_service'
+gem "chartkick"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
