@@ -10,5 +10,7 @@ require("channels")
 
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
+require("chartkick")
+require("chart.js")
 
 import '../css/tailwind.css';
