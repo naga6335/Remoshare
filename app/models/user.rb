@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :posts,        dependent: :destroy
   has_many :comments,     dependent: :destroy
   has_many :likes,        dependent: :destroy
+  has_many :like_posts,     through: :likes, source: :post
   has_many :messages,     dependent: :destroy
   has_many :entries,      dependent: :destroy
   has_many :active_notifications,  class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
@@ -40,10 +41,6 @@ class User < ApplicationRecord
     else
       BCrypt::Password.new(remember_digest).is_password?(remember_token)
     end
-  end
-
-  def liked_by(post_id)
-    likes.where(post_id: post_id).exists?
   end
 
   def forget
