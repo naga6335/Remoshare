@@ -1,10 +1,14 @@
 <ul class='mx-auto text-left'>
   <li class='py-2 mx-2 text-xl border-b-2'>
     <% if user.avatar? %>
-    <%= link_to user do %>
+      <%= link_to user do %>
       <%= image_tag user.avatar.url(:small), class: 'inline-block mx-2 rounded-full w-14 h-14 shadow-md' %>
       <% end %>
-    <% end %>
+    <% else %>
+      <%= link_to user do %>
+      <%= image_tag '/assets/default.png', class: 'inline-block mx-2 rounded-full w-14 h-14 shadow-md' %>
+      <% end %>
+      <% end %>
     <%= link_to user.name, user %><span class='text-sm text-gray-500 ml-14'><%= user.profile %></span>
     <% if current_user.admin? && !current_user?(user) %>
       | <%= link_to "delete", user, method: :delete, data: { confirm: "本当に削除しますか？" } %>

@@ -1,17 +1,17 @@
 class LikesController < ApplicationController
-  before_action :post_params
 
   def create
-    Like.create(user_id: current_user.id, post_id: params[:id])
-    # post.create_notification_like!(current_user)
+    @post = Post.find(params[:post_id])
+    @like = current_user.likes.build(post_id: params[:post_id])
+    @like.save
+    post = Post.find(params[:post_id])
+    post.create_notification_like(current_user)
   end
 
   def destroy
-    Like.find_by(user_id: current_user.id, post_id: params[:id]).destroy
-  end
-
-  def post_params
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @like = Like.find_by(post_id: params[:post_id], user_id: current_user.id)
+    @like.destroy
   end
 
 end

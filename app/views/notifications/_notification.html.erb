@@ -1,7 +1,14 @@
 <div class='mx-auto py-2 my-2 border-b-2'>
   <div>
+    <% if notification.visitor.avatar? %>
     <%= link_to user_path(notification.visitor) do %>
       <%= image_tag notification.visitor.avatar.url(:small), class: 'inline-block mx-2 rounded-full w-7 h-7 shadow-md' %><%= notification_form(notification) %>
+    <% end %>
+    <% else %>
+    <%= link_to user_path(notification.visitor) do %>
+    <%= image_tag '/assets/default.png', class: 'inline-block mx-2 rounded-full w-7 h-7 shadow-md' %>
+    <%= notification_form(notification) %>
+    <% end %>
     <% end %>
     <span class='text-xs'><%= "(#{time_ago_in_words(notification.created_at)}前)" %>
   </div>
