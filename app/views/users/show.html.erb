@@ -17,9 +17,25 @@
             <div class='rounded-full bg-blue-900 text-white my-4 py-2 px-4 transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500'>プロフィールを編集する</div>
             <% end %>
           <% end %>
+          <% if @user.id == current_user.id %>
+            <%= @msg %>
+          <% else %>
+            <% if @isRoom == true %>
+              <p><%= link_to 'DMへ', room_path(@roomId) %></p>
+            <% else %>
+              <%= form_with(model: @room, local: true) do |f| %>
+                <%= fields_for @entry do |e|%>
+                  <% e.hidden_field :user_id, value: @user.id %>
+                <% end %>
+                <%= f.submit "DMを開始する"%>
+              <% end %>
+            <% end %>
+          <% end %>
       </div>
     </div>
   </div>
+
+</div>
 
 
   <div class='text-center w-full my-10'>

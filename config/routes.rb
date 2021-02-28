@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources   :posts do
-    resources :comments,  only: [:create, :destroy]
+    resources :comments,   only: [:create, :destroy]
   end
 
   post   'like/:id', to: 'likes#create',  as: 'create_like'
@@ -27,4 +27,6 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
   resources :notifications, only: [:index, :destroy]
+  resources :messages
+  resources :rooms
 end

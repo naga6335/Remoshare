@@ -1,15 +1,16 @@
 <%= render 'shared/header' %>
 <div>
   <div>
-    <%= @post.user.name %> posted at <%= @post.created_at %>
+    <div>
+      <%= @post.user.name %> posted at <%= @post.created_at %>
+    </div>
+    <div>
+      <p><%= @post.content %></p>
+      <%= image_tag @post.image.url(:small) %>
+    </div>
   </div>
-  <div>
-    <p><%= @post.content %></p>
-    <%= image_tag @post.image.url(:small) %>
-  </div>
-</div>
 
-<%= render partial: "likes/like", locals: { post:@post } %>
+  <%= render partial: "likes/like", locals: { post:@post } %>
 
  <p>快適ポイント:<%= @post.review %>点</p>
     <div class='flex text-sm' id="star-rate<%= @post.id %>"></div>
@@ -39,6 +40,7 @@
     <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://social-plugins.line.me/ja/how_to_install#lineitbutton" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
     <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
   </div>
+</div>
 
 <div id='comment_form'>
   <%= render 'comments/form'%>

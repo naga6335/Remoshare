@@ -1,8 +1,10 @@
-<% if current_user %>
-  <%= form_with(model: [@post, @comment], local: false ) do |f| %>
-    <%= f.text_area :comment, size: "60x5", placeholder: "コメントする" %>
-    <%= f.submit '送信', class: "btn-sm btn-primary" %>
+<div id='comment_form'>
+  <% if current_user %>
+    <%= form_with(model: [@post, @comment], local: false ) do |f| %>
+      <%= f.text_area :comment, size: "60x5", placeholder: "コメントする" %>
+      <%= f.submit '送信', class: "btn-sm btn-primary" %>
+    <% end %>
+  <% else %>
+    <p>コメントの投稿には新規登録/ログインが必要です</p>
   <% end %>
-<% else %>
-  <p>コメントの投稿には新規登録/ログインが必要です</p>
-<% end %>
+</div>
