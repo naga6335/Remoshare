@@ -1,0 +1,42 @@
+<%= render 'shared/header'%>
+
+<div class="mt-20 text-center">
+  <% @entries.each do |e| %>
+  <strong><a href="/users/<%= e.user.id %>">
+  <% if e.user.name == current_user.name %>
+    <%= "あなた:" + e.user.name %>
+    <% else %>
+    <%= "相手:" + e.user.name + "さん" %>
+  <% end %>
+  </a></strong>
+  <% end %>
+</div>
+
+<div class="dmMain">
+  <% @messages.each do |m| %>
+    <% if m.user_id == current_user.id %>
+      <div class="text-right">
+        <strong><%= m.message %></strong>
+        <small class='block'><%= m.created_at.strftime('%Y/%m/%d %H:%M:%S') %></small>
+        <p><%= link_to "削除", message_path(m), method: :delete, data: { confirm: "削除しますか？" }, remote: true, class:'text-xs' %></p>
+      </div>
+    <% else %>
+      <div class="text-left">
+        <% if @user.avatar? %>
+          <div><%= image_tag @user.avatar.url, id: 'preview', class: 'h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
+        <% else %>
+          <div><%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
+        <% end %>
+        <small><%= m.user.name %>さん</small>
+        <strong class='block'><%= m.message %></strong>
+        <small><%= m.created_at.strftime('%Y/%m/%d %H:%M:%S') %></small>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+  <%= form_with(model: @message, local: true) do |f| %>
+    <%= f.text_field :message, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
+    <%= f.hidden_field :room_id, :value => @room.id %>
+    <%= f.submit "送信する", class: 'bg-gray-500' %>
+  <% end %>
