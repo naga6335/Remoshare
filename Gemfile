@@ -26,8 +26,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem "tailwindcss-rails", "~> 0.3.3"
 #error.messageの日本語化
 gem 'rails-i18n'
-gem 'faker'
 gem 'kaminari'
+gem 'faker'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'rakuten_web_service'
@@ -40,6 +40,9 @@ gem "chartkick"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0.2'
+  gem 'spring-commands-rspec'
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -50,6 +53,9 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'rubocop'
+  gem 'pre-commit'
+  gem 'rubocop-rails'
 end
 
 group :test do
