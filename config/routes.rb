@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'likes/create'
-  get 'likes/destroy'
   root   'posts#index'
   get    '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
@@ -18,7 +16,7 @@ Rails.application.routes.draw do
 
   resources   :posts do
     resources :comments,   only: [:create, :destroy]
-    resource :likes,      only: [:create, :destroy]
+    resource  :likes,      only: [:create, :destroy]
   end
 
   resources :tags do
