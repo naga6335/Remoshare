@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  describe '#create' do
+  describe 'create' do
     context 'userを登録できる場合' do
       let(:user) {build(:user)}
 
@@ -93,6 +93,26 @@ RSpec.describe User, type: :model do
       it 'パスワードとパスワード確認が違うと保存できないこと' do
         user.password_confirmation = 'a' * 6
         expect(user).to be_invalid
+      end
+    end
+  end
+
+  describe "follow と unfollow" do
+    let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
+
+    before { user.follow(other_user) }
+
+    context "他のユーザーをフォローする場合" do
+      it "フォローが保存できること" do
+        expect(user.following?(other_user)).to be_truthy
+      end
+    end
+
+    context "他のユーザーのフォローを解除する場合" do
+      it "フォロー解除が保存できること" do
+        user.unfollow(other_user)
+        expect(user.following?(other_user)).to be_falsy
       end
     end
   end
