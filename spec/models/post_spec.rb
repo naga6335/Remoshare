@@ -49,6 +49,29 @@ RSpec.describe Post, type: :model do
     end
   end
 
+  describe '#liked_by' do
+    before do
+      @post = FactoryBot.create(:post)
+      @user = FactoryBot.create(:user)
+    end
+
+    context 'ユーザが投稿にいいね済みの場合' do
+      it 'trueを返すこと' do
+        like = FactoryBot.build(:like, post: @post, user: @user)
+        like.save!
+        expect(@post.liked_by(@user)).to eq true
+      end
+    end
+
+    context 'ユーザが投稿にいいねしてない場合' do
+      it 'falseを返すこと' do
+        like = FactoryBot.build(:like, post: @post)
+        like.save!
+        expect(@post.liked_by(@user)).to eq false
+      end
+    end
+  end
+
    describe '#create_notification_like' do
     before do
       @post = FactoryBot.create(:post)
