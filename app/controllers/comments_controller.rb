@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :edit, :destroy]
+  before_action :logged_in_user, only: [:create, :destroy]
 
   def create
     @post = Post.find(params[:post_id])
@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       @comment_post.create_notification_comment(current_user, @comment.id)
       redirect_to request.referer
     else
-      flash[:alert] = "入力に誤りがあります"
+      flash[:alert] = "コメントが空欄だと投稿できません"
       redirect_to request.referer
     end
   end
