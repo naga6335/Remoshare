@@ -1,5 +1,5 @@
 <div class="like-button">
-  <% if post.liked_by?(current_user) %>
+  <% if post.liked_by(current_user) %>
    <%=link_to "#{post.likes.count}",post_likes_path(post.id), method: :delete, class: 'fas fa-heart text-red-500', remote: true %>　
     <% else %>
    <%= link_to "#{post.likes.count}", post_likes_path(post.id), method: :post, class: 'far fa-heart text-gray-500', remote: true %>

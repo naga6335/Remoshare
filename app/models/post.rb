@@ -1,20 +1,21 @@
 class Post < ApplicationRecord
   belongs_to :user
+  validates  :title,          presence: true, length: { maximum: 30}
+  validates  :issue,          presence: true
+  validates  :content,        presence: true, length: { maximum: 200 }
+  validates  :image,          presence: true
   has_many   :comments,      dependent: :destroy
-  has_many   :users, through: :likes
-  has_many   :likes
+  has_many   :users,           through: :likes
+  has_many   :likes,         dependent: :destroy
   has_many   :notifications, dependent: :destroy
   validates  :user_id,        presence: true
-  validates  :title,          presence: true, length: { maximum: 30}
-  validates  :content,        presence: true, length: { maximum: 200 }
   has_many   :tagmaps,       dependent: :destroy
   has_many   :tags,            through: :tagmaps
-  validates  :image,          presence: true
   default_scope -> { order(created_at: :desc) }
   mount_uploader :image, ImageUploader
 
-  def liked_by?(user)
-    likes.where(user_id: user.id).exists?
+  def liked_by(user_id)
+    likes.where(user_id: user_id).exists?
   end
 
   def create_notification_like(current_user)
