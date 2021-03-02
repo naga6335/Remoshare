@@ -38,5 +38,24 @@ RSpec.describe Relationship, type: :model do
         expect(relationship).to be_invalid
       end
     end
+
+    context '一意性の確認' do
+      let(:relationship) {
+        create(
+          :relationship,
+          follower_id: user.id,
+          followed_id: other_user.id
+        )
+      }
+
+      it 'followed_idとfollower_idの組み合わせは一意であること' do
+        uniquness_relationship = build(
+          :relationship,
+          follower_id: relationship.follower_id,
+          followed_id: relationship.followed_id
+        )
+        expect(uniquness_relationship).to be_invalid
+      end
+    end
   end
 end
