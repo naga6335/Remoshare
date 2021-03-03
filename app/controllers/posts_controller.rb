@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   def show
     @posts = Post.all
     @post = Post.find(params[:id])
+    @user = User.find_by(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
     @post_tags = @post.tags
@@ -63,6 +64,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :image, :content, :price, :review, :issue)
+    params.require(:post).permit(:title, :image, :content, :price, :issue)
   end
 end

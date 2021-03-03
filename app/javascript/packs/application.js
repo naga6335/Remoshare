@@ -8,8 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-window.$ = window.jQuery = require('jquery');
-require('packs/raty')
 require("chartkick")
 require("chart.js")
 

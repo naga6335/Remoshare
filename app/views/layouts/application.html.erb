@@ -14,10 +14,8 @@
   <body>
 
     <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <div class= "<%= message_type %>" ><%= message %></div>
     <% end %>
-
-     <script src="assets/jquery.raty.js"></script>
 
     <%= yield %>
   </body>
