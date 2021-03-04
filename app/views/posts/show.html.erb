@@ -1,54 +1,38 @@
 <%= render 'shared/header' %>
-<div>
-  <div>
-    <div>
-      <%= @post.user.name %> posted at <%= @post.created_at %>
-    </div>
-    <div>
-      <p><%= @post.content %></p>
-      <%= image_tag @post.image.url(:small) %>
-    </div>
-  </div>
 
+<div class="mt-20">
+  <div>
+    <%= @post.user.name %> 投稿日時 <%= @post.created_at %>
+    <%= @user.job %><%= @post.issue %>
+  </div>
+  <div>
+    <p><%= @post.content %></p>
+    <%= image_tag @post.image.url(:small) %>
+  </div>
 
   <div id="likes_buttons_<%= @post.id %>">
     <%= render partial: 'likes/like', locals: { post: @post } %>
   </div>
 
- <p>快適ポイント:<%= @post.review %>点</p>
-    <div class='flex text-sm' id="star-rate<%= @post.id %>"></div>
-    <script>
-      $('#star-rate<%= @post.id %>').raty({
-        size      : 34,
-        starOff   : '<%= asset_path('star-off.png') %>',
-        starOn    : '<%= asset_path('star-on.png') %>',
-        half      : false,
-        readOnly  : true,
-        score: <%= @post.review %>,
-      });
-    </script>
-
-    <% @post_tags.each do |tag| %>
-      <%= link_to "##{tag.tag_name}", tag_posts_path(tag_id: tag.id) %>
-    <% end %>
+  <% @post_tags.each do |tag| %>
+    <%= link_to "##{tag.tag_name}", tag_posts_path(tag_id: tag.id) %>
+  <% end %>
 
   <div class='flex items-end space-x-1'>
     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"  data-text="Remoshareをよろしくおねがいします！"  data-show-count="false">Tweet</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facepost.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="pAaJ5Vl6"></script>
-    <div class="fb-share-button" data-href="https://developers.facepost.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facepost.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facepost.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"></a></div>
-
-    <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://social-plugins.line.me/ja/how_to_install#lineitbutton" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
-    <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
   </div>
-</div>
 
-<div id='comment_form'>
-  <%= render 'comments/form'%>
-</div>
+  <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://social-plugins.line.me/ja/how_to_install#lineitbutton" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
+  <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+  </div>
 
-<div id='comment_area'>
-  <%= render 'comments/comment'%>
+  <div id='comment_form'>
+    <%= render 'comments/form'%>
+  </div>
+
+  <div id='comment_area'>
+    <%= render 'comments/comment'%>
+  </div>
+
 </div>
