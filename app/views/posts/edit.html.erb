@@ -1,24 +1,50 @@
 <%= render 'shared/header' %>
 
-<div>プロフィール編集</div>
-  <p>現在ログイン中のユーザー：<%= current_user.name %></p>
+<div class='container mt-20 mx-auto'>
+  <div class='flex flex-col p-8 mx-auto w-4/6 bg-white rounded text-xs sm:text-base text-gray-600'>
+  <p class='text-2xl text-center mb-5'>投稿の編集</p>
+    <%= form_with(model: @post, local: true) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+      <div>
+        <%= f.label :おすすめポイント, class:'text-sm'%>
+        <%= f.text_field :title, placeholder: "例）1日座っていても疲れにくい", class: "block w-full p-2 mt-2 mb-5 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200"%>
+      </div>
 
-<%= form_with(model: @post, local: true) do |f| %>
+      <div class='text-center'>
+        <%= f.label :画像, class: 'hidden' %>
+        <label>
+        <%= f.file_field :image, class: 'hidden', onchange: 'previewImage(preview)', alt: '投稿画像' %>
+        <%= image_tag @post.image.url, id: 'preview', class: 'inline-block w-full h-full sm:w-4/6 sm:h-4/6 mt-2 mb-5 object-contain rounded transition duration-200 ease-inut cursor-pointer hover:opacity-70' %>
+        </label>
+      </div>
 
-<%= render 'shared/error_messages', object: f.object %>
+      <div>
+        <%= f.label :一番の役立ちポイント, class: 'text-sm' %>
+        <%= f.select :issue, [['コミュニケーション','コミュニケーション'],['作業効率','作業効率'],['モチベーション','モチベーション'],['働き方','働き方'],['健康面','健康面'],['私生活','私生活'],['その他','その他']], {}, class: 'w-full p-2 mt-2 mb-5 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+      </div>
 
-  <div>
-    <%= f.label :中身 %><br>
-    <%= f.text_field :content, autofocus: true, :placeholder =>"#{@post.content}" %>
+      <div>
+        <%= f.label :詳細, class: 'text-sm' %>
+        <%= f.text_area :content, placeholder: "例）職場にリモートワークが導入され週3で在宅勤務することになったので購入してみました！首の支えや座面も柔らかくずっと座っていても疲れないです。仕事に集中させてくれるアイテムです！", size: "60x8", class: 'resize-none block w-full p-2 mt-2 mb-5 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+      </div>
+
+      <div class='text-sm'>
+        <p>購入時価格（任意）</p>
+        <%= f.number_field :price, class: "w-full text-right p-2 mt-2 mb-5 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200", max: 200000, min: 1000, placeholder: '¥0' %>
+      </div>
+
+      <div>
+        <p class= 'text-sm'>#タグ（任意）</p>
+        <p class='text-xs'>※半角スペース区切りでタグ付けできます</p>
+        <%= f.text_field :tag_name, placeholder: "例）リモートワーク 椅子", class: 'w-full p-2 mt-2 mb-5 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+      </div>
+
+      <div class="text-center">
+        <%= f.submit "更新する", class: "py-4 px-8 mt-4 text-white bg-blue-900 rounded-full ransition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500 cursor-pointer" %>
+      </div>
+    <% end %>
   </div>
-
-  <label>
-      <%= f.file_field :image, class: 'hidden', onchange: 'previewImage(preview)', alt: '投稿画像' %>
-      <a><%= image_tag @post.image.url, id: 'preview', class: 'inline-block w-1/4 h-64 object-contain rounded transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %></a>
-  </label>
-
-  <div><%= f.submit "更新する" %></div>
-<% end %>
+</div>
 
 <script>
 function previewImage(id) {

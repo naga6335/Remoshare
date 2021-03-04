@@ -1,7 +1,7 @@
 <%= render 'shared/header' %>
 
-<div class='container mt-20 mx-auto bg-white rounded'>
-  <div class='flex flex-col mx-auto p-8'>
+<div class='container mt-20 mx-auto'>
+  <div class='flex flex-col p-8 mx-auto w-4/6 bg-white rounded text-xs sm:text-base text-gray-600'>
     <%= form_with(model: @post, local: true) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
       <div>
@@ -27,18 +27,19 @@
         <%= f.text_area :content, placeholder: "例）職場にリモートワークが導入され週3で在宅勤務することになったので購入してみました！首の支えや座面も柔らかくずっと座っていても疲れないです。仕事に集中させてくれるアイテムです！", size: "60x8", class: 'resize-none block w-full p-2 mt-2 mb-5 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
       </div>
 
-      <div class="small-unit">
-        <p>購入時価格</p>
+      <div>
+        <p>購入時価格（任意）</p>
         <%= f.number_field :price, class: "w-full text-right p-2 mt-2 mb-5 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200", max: 200000, min: 1000, placeholder: '¥0' %>
       </div>
 
       <div>
-        <p>#タグ（任意）※半角スペース区切りでタグ付けできます</p>
+        <p>#タグ（任意）</p>
+        <p>※半角スペース区切りでタグ付けできます</p>
         <%= f.text_field :tag_name, placeholder: "例）リモートワーク 椅子", class: 'w-full p-2 mt-2 mb-5 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
       </div>
 
       <div class="text-center">
-        <%= f.submit "投稿する", class: "py-4 px-8 mt-4 text-white bg-blue-900 rounded-full ransition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500 cursor-pointer" %>
+        <%= f.submit "投稿する", class: "p-2 sm:p-3 text-white bg-blue-900 rounded-full ransition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500 cursor-pointer" %>
       </div>
     <% end %>
   </div>
