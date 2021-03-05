@@ -4,5 +4,4 @@
     <% else %>
    <%= link_to "#{post.likes.count}", post_likes_path(post.id), method: :post, class: 'far fa-heart text-gray-500', remote: true %>
    <% end %>
-    <button><span>お気に入り数:</span><%= post.likes.count %>
 </div>

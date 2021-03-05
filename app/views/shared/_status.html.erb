@@ -1,5 +1,5 @@
 <% @user ||= current_user %>
-<div class='inline-block p-3 bg-white rounded-full'>
+<div class='mx-auto text-xs p-2 bg-blue-900 text-white rounded-full mb-5'>
   <a href="<%= following_user_path(@user) %>">
     <strong id="following" class='hover:text-gray-500'>
       <%= @user.following.count %>

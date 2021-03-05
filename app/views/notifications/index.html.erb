@@ -1,9 +1,9 @@
 <%= render 'shared/header' %>
 
-<div class='container mx-auto mt-24 text-center text-blue-900'>
-  <div class='flex flex-col'>
-    <h1 class='text-2xl font-semibold'>通知一覧</h1>
-    <span><%= link_to "すべて削除", notification_path(@notifications), method: :delete, class: 'fas fa-trash float-right rounded-3xl px-2 py-2 bg-blue-900 text-white text-xs'%></span>
+<div class='container mt-20 mx-auto'>
+  <div class="flex flex-col mx-auto w-5/6 bg-white p-6 text-xs sm:text-base text-gray-600 rounded shadow-2xl">
+    <div class='text-center text-xl font-bold my-8'>通知一覧</div>
+    <div><%= link_to "すべて削除", notification_path(@notifications), method: :delete, class: 'fas fa-trash float-right rounded-3xl p-1 bg-blue-900 text-white text-xs mx-3'%></div>
     <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>
       <%= render @notifications %>

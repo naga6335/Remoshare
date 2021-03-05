@@ -5,12 +5,11 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
     @comment.user_id = current_user.id
-    @comment_post = @comment.post
     if @comment.save
-      @comment_post.create_notification_comment(current_user, @comment.id)
+      @post.create_notification_comment(current_user, @comment.id)
       redirect_to request.referer
     else
-      flash[:alert] = "コメントが空欄だと投稿できません"
+      flash[:alert] = "送信に失敗しました"
       redirect_to request.referer
     end
   end
@@ -23,6 +22,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment, :notification)
+    params.require(:comment).permit(:comment)
   end
 end
