@@ -8,7 +8,6 @@
         <p>リモートワークを</p>
         <p>もっと快適に</p>
         <p>もっと効率よくする相棒を見つけよう！</p>
-
       </div>
         <div class='flex items-center rounded-full shadow-xl py-2 px-4 text-gray-500 leading-tight focus:outline-none bg-gray-100'>
           <%= form_tag(posts_path, :method => 'get') do %>
@@ -24,18 +23,20 @@
     <i class="far fa-edit text-3xl fixed right-14 bottom-14 text-white rounded-full transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500 py-6 px-6 "></i>
   <% end %>
 
-  <% @tag_list.each do |list| %>
-    <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: 'inline-block bg-blue-900 text-white rounded-full p-1 mb-3' %>
-    <%= "(#{list.posts.count})" %>
-  <% end %>
-
-    <div class="grid grid-cols-4 gap-x-5 gap-y-5 justify-items-center flex-grow mx-20 my-3 box-border text-blue-900">
+  <div class="my-auto bg-white">
+    <% @tag_list.each do |list| %>
+      <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: 'inline-block my-auto bg-gray-400 text-white rounded-full p-1 mb-3' %>
+      <%= "(#{list.posts.count})" %>
+    <% end %>
+  </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 mx-20 my-3 text-gray-600">
       <% @posts.each do |post| %>
         <div class='my-5'>
-          <div class='bg-white py-4 px-6 rounded shadow-md'>
+          <div class='bg-white p-4 rounded shadow-md'>
             <%= link_to post do %>
               <span class='flex flex-row-reverse text-sm'><%= time_ago_in_words(post.created_at) %>前</span>
-              <%= image_tag post.image.url(:small), class: 'rounded' %>
+              <%= image_tag post.image.url(:small), class: 'rounded mx-auto' %>
               <span class='inline-block text-lg mt-2'><%= post.title %></span>
               <div id="likes_buttons_<%= post.id %>">
               <%= render partial: 'likes/like', locals: { post: post } %>
@@ -46,7 +47,7 @@
                 <div><%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
               <% end %>
               <% post.tags.each do |tag|%>
-                <%= link_to "##{tag.tag_name}", posts_path(tag), class: 'smaller tag_list' %>
+                <%= link_to "##{tag.tag_name}", posts_path(tag), class: "text-xs inline-block bg-gray-400 text-white rounded-full p-1 mb-3" %>
               <% end %>
             <% end %>
           </div>
@@ -54,5 +55,7 @@
       <% end %>
     </div>
 
-    <%= pie_chart User.group(:job).order('count_all DESC').count %>
-    <%= pie_chart @posts.group(:issue).order('count_all ASC').count %>
+<div>
+  <%= pie_chart User.group(:job).order('count_all DESC').count %>
+  <%= pie_chart @posts.group(:issue).order('count_all ASC').count, class: "float"%>
+</div>

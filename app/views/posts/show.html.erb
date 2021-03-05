@@ -24,7 +24,7 @@
       </div>
       <p></p>
       <% @post_tags.each do |tag| %>
-        <%= link_to "##{tag.tag_name}", tag_posts_path(tag_id: tag.id), class: "inline-block bg-blue-900 text-white rounded-full p-1 mb-3" %>
+        <%= link_to "##{tag.tag_name}", tag_posts_path(tag_id: tag.id), class: "inline-block bg-gray-400 text-white rounded-full p-1 mb-3" %>
       <% end %>
     </div>
     <div class="flex py-5 mb-5 text-center border-b border-gray-200">
