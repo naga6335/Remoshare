@@ -1,15 +1,13 @@
 <%= render 'shared/header'%>
 
-<div class="container mx-auto mt-24 text-center text-blue-900">
-  <%= link_to @user do %>
-    <div class='inline-block mb-4 text-2xl hover:text-gray-500'>
-      <%= @user.name %>
+<div class='container mt-20'>
+  <div class='flex flex-col mx-auto w-5/6 bg-white py-4 text-gray-600 rounded shadow-2xl'>
+    <div class='text-center text-xl font-bold my-8'>
+      <%= link_to @user do %>
+        <%= @user.name %>
+      <% end %>
     </div>
-  <% end %>
-  <div>
     <%= render 'shared/status' %>
-  </div>
-  <div class='flex flex-col mt-10'>
     <% if @users.any? %>
       <%= render @users %>
     <% end %>

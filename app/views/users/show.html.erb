@@ -1,41 +1,41 @@
 <%= render 'shared/header' %>
-<div class="container flex flex-col mt-20 mx-auto px-5 py-4 items-center text-center text-blue-900 ">
-  <div class='flex flex-wrap grid grid-cols-2 gap-10 max-w-3xl rounded bg-white px-8 py-4 shadow-md'>
-    <div>
-      <% if @user.avatar? %>
-        <%= image_tag @user.avatar.url(:small), class: 'rounded-full mx-auto p-2' %>
-      <% end %>
-      <p class='text-xl'><%= @user.name%></p>
-    </div>
-    <div class='flex items-center max-w-sm'>
-      <div>
-          <%= render 'shared/status' %>
-          <p class='my-2 text-sm break-all'><%= @user.profile %></p>
-          <%= render 'relationships/follow' %>
+<div class="container flex flex-col mt-20 mx-auto px-5 py-4 items-center text-center text-gray-600 ">
+  <div class="rounded bg-white text-xs p-2 shadow-md">
+    <div class='flex flex-wrap grid grid-cols-2 gap-5 p-4'>
+      <div class="my-auto">
+        <% if @user.avatar? %>
+          <%= image_tag @user.avatar.url(:small), class: 'inline-block rounded-full shadow-md w-32 h-32' %>
+        <% end %>
+        <p class="text-xl my-2"><%= @user.name%></p>
+      </div>
+      <div class='flex my-auto mx-auto'>
+        <div>
+            <%= render 'shared/status' %>
+            <p class='my-2 text-sm break-all'><%= @user.profile %></p>
+            <%= render 'relationships/follow' %>
           <% if logged_in? && @user == current_user %>
             <%= link_to edit_user_path do %>
-            <div class='rounded-full bg-blue-900 text-white my-4 py-2 px-4 transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500'>プロフィールを編集する</div>
+            <p class='inline-block rounded-full bg-blue-900 text-white p-1 sm:p-2 my-2 transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500'>編集する</p>
             <% end %>
           <% end %>
-          <% if @user.id == current_user.id %>
-            <%= @msg %>
-          <% else %>
-            <% if @isRoom == true %>
-              <p><%= link_to 'DMへ', room_path(@roomId) %></p>
+            <% if @user.id == current_user.id %>
+              <%= @msg %>
             <% else %>
-              <%= form_with(model: @room, local: true) do |f| %>
-                <%= fields_for @entry do |e|%>
-                  <% e.hidden_field :user_id, value: @user.id %>
+              <% if @isRoom == true %>
+                <%= link_to 'DMへ', room_path(@roomId), class:"inline-block my-2 p-2 bg-blue-900 rounded-full text-white text-xs" %>
+              <% else %>
+                <%= form_with(model: @room, local: true) do |f| %>
+                  <%= fields_for @entry do |e|%>
+                    <% e.hidden_field :user_id, value: @user.id %>
+                  <% end %>
+                  <%= f.submit "DMを開始する",  class:"inline-block my-2 p-2 bg-blue-900 rounded-full text-white text-xs" %>
                 <% end %>
-                <%= f.submit "DMを開始する"%>
               <% end %>
             <% end %>
-          <% end %>
+        </div>
       </div>
     </div>
   </div>
-
-</div>
 
 
   <div class='text-center w-full my-10'>

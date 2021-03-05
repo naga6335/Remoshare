@@ -1,4 +1,4 @@
-<div class='mx-auto py-2 my-2 border-b-2'>
+<div class='mx-auto py-2 my-2 border-b'>
   <div>
     <% if notification.visitor.avatar? %>
     <%= link_to user_path(notification.visitor) do %>
@@ -13,6 +13,6 @@
     <span class='text-xs'><%= "(#{time_ago_in_words(notification.created_at)}前)" %>
   </div>
     <% if !@comment.nil? %>
-      <p class='text-xs text-gray-500'><%= @comment %></p>
+      <p class='text-xs text-center text-gray-500'><%= @comment %></p>
     <% end %>
 </div>

@@ -1,42 +1,50 @@
 <%= render 'shared/header'%>
 
-<div class="mt-20 text-center">
-  <% @entries.each do |e| %>
-  <strong><a href="/users/<%= e.user.id %>">
-  <% if e.user.name == current_user.name %>
-    <%= "あなた:" + e.user.name %>
-    <% else %>
-    <%= "相手:" + e.user.name + "さん" %>
-  <% end %>
-  </a></strong>
-  <% end %>
-</div>
-
-<div class="dmMain">
-  <% @messages.each do |m| %>
-    <% if m.user_id == current_user.id %>
-      <div class="text-right">
-        <strong><%= m.message %></strong>
-        <small class='block'><%= m.created_at.strftime('%Y/%m/%d %H:%M:%S') %></small>
-        <p><%= link_to "削除", message_path(m), method: :delete, data: { confirm: "削除しますか？" }, remote: true, class:'text-xs' %></p>
-      </div>
-    <% else %>
-      <div class="text-left">
-        <% if @user.avatar? %>
-          <div><%= image_tag @user.avatar.url, id: 'preview', class: 'h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
-        <% else %>
-          <div><%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
+<div class='container mt-20 mx-auto'>
+  <div class="flex flex-col mx-auto w-5/6 bg-white p-6 text-xs sm:text-base text-gray-600 rounded shadow-2xl">
+    <div class='text-center font-bold my-8 text-white bg-blue-900 mx-auto p-4 rounded'>
+      <% @entries.each do |e| %>
+        <a href="/users/<%= e.user.id %>">
+          <% if e.user.name == current_user.name %>
+            <p><%= "あなた:" + e.user.name %></p>
+          <% else %>
+            <p><%= "相手:" + e.user.name + "さん" %></p>
+          <% end %>
+        </a>
+      <% end %>
+    </div>
+      <div class="dmMain">
+        <% @messages.each do |m| %>
+          <% if m.user_id == current_user.id %>
+            <div class="text-right">
+              <div class="inline-block bg-gray-200 p-2 rounded-full">
+                <p><%= m.message %></p>
+                <small class='block'><%= m.created_at.strftime('%Y/%m/%d %H:%M:%S') %></small>
+              </div>
+              <p><%= link_to "削除", message_path(m), method: :delete, data: { confirm: "削除しますか？" }, remote: true, class:'text-xs' %></p>
+            </div>
+          <% else %>
+            <div class="text-left">
+            <div>
+              <% if @user.avatar? %>
+                <%= image_tag @user.avatar.url, id: 'preview', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
+              <% else %>
+                <div><%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
+              <% end %>
+              <small><%= m.user.name %>さん</small>
+              </div>
+              <div class="inline-block bg-gray-200 p-2 rounded-full mb-2">
+                <p class='block'><%= m.message %></p>
+                <small><%= m.created_at.strftime('%Y/%m/%d %H:%M:%S') %></small>
+              </div>
+            </div>
+          <% end %>
         <% end %>
-        <small><%= m.user.name %>さん</small>
-        <strong class='block'><%= m.message %></strong>
-        <small><%= m.created_at.strftime('%Y/%m/%d %H:%M:%S') %></small>
       </div>
-    <% end %>
-  <% end %>
+      <%= form_with(model: @message, local: true) do |f| %>
+        <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , size: "60×2", class: "w-full p-1 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200" %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+        <div class="text-right"><%= f.submit "送信", class: "py-1 px-2 mt-1 text-white text-right bg-blue-900 rounded-full ransition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500 cursor-pointer" %></div>
+      <% end %>
+  </div>
 </div>
-
-  <%= form_with(model: @message, local: true) do |f| %>
-    <%= f.text_field :message, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
-    <%= f.hidden_field :room_id, :value => @room.id %>
-    <%= f.submit "送信する", class: 'bg-gray-500' %>
-  <% end %>

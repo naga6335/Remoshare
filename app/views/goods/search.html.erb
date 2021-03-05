@@ -1,37 +1,27 @@
 <%= render 'shared/header' %>
 
-<div class='mt-20'>
-    <div class="search-box">
-      <%= form_with url: search_path, method: :get do |f| %>
-        <%= f.text_field :keyword %>
-        <%= f.submit '検索' %>
-      <% end %>
-        </div>
-    </div>
-
-　　　　<!-- 表示する部分 -->
+<div class='container mt-20 mx-auto'>
+  <div class='flex flex-col p-8 mx-auto w-5/6 bg-white rounded text-xs sm:text-base text-gray-600'>
+    <%= form_with url: search_path, method: :get do |f| %>
+      <div class='text-center mb-5'>
+        <%= f.text_field :keyword, class: "w-full p-2 mb-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200" %>
+        <%= f.submit '検索', class: "inline-block px-3 text-base text-white bg-blue-900 rounded-full ransition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500 cursor-pointer" %>
+      </div>
+    <% end %>
     <div class="goods-search-main">
-      <div class="goods-search-box">
         <ul>
           <% if @goods.present? %>　　<!-- （１０）は商品を出力する個数 -->
-            <% @goods.first(10).each do |item| %>
+            <% @goods.first(20).each do |item| %>
               <div class="goods-list">
                 <div class="goods-img">
                   <li><img src="<%= item['mediumImageUrls'][0] %>"></li>
-                </div>
-                <div class="goods-list-right">
-                  <div class="goods-name">
-                    <li><a href="<%= item['itemUrl'] %>" target="_blank"><%= item['itemName'] %></a></li>
-                  </div>
-                  <div class="goods-price">
-                    <li><%= item['itemPrice'] %>円</li>
-                    <li><%= item['reviewAverage'] %>点</li>
-                  </div>
+                  <li><a href="<%= item['itemUrl'] %>" target="_blank"><%= item['itemName'] %></a></li>
+                  <li><%= item['itemPrice'] %>円</li>
                 </div>
               </div>
             <% end %>
           <% end %>
         </ul>
       </div>
-    </div>
   </div>
+</div>

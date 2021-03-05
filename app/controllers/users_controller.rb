@@ -68,7 +68,7 @@ class UsersController < ApplicationController
 
   def guest
     user = User.find_or_create_by!(email: 'guest@example.com') do |user|
-      user.name = "ゲストユーサー"
+      user.name = "ゲストユーザー"
       user.password = SecureRandom.urlsafe_base64
     end
       log_in user

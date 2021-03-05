@@ -1,38 +1,48 @@
 <%= render 'shared/header' %>
 
-<div class="mt-20">
-  <div>
-    <%= @post.user.name %> 投稿日時 <%= @post.created_at %>
-    <%= @user.job %><%= @post.issue %>
+<div class='container my-20 mx-auto'>
+  <div class='flex flex-col p-8 mx-auto w-5/6 bg-white rounded text-xs sm:text-base text-gray-600 shadow-2xl'>
+    <div class="text-right mb-8 text-xs"><%= @post.created_at %></div>
+    <h1 class='text-sm sm:text-2xl mb-2'><%= @post.title %></h1>
+    <div class="w-full h-ful border-b border-gray-200">
+      <%= image_tag @post.image.url, class: 'w-full inline-block mt-2 mb-5 rounded'%>
+      <div class="text-right text-sm my-4">
+        <p>改善ポイント：<%= @post.issue %></p>
+        <p>購入時価格：¥<%= @post.price %></p>
+      </div>
+      <p class="text-center text-xl mb-8"><%= @post.content %></p>
+      <div class="flex justify-between">
+        <div id="likes_buttons_<%= @post.id %>">
+          <%= render 'likes/like', post: @post %>
+        </div>
+        <div class="flex mb-3">
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"  data-text="Remoshareをよろしくおねがいします！"  data-show-count="false">Tweet</a>
+          <span class="ml-2"><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://social-plugins.line.me/ja/how_to_install#lineitbutton" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
+          <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script></span>
+        </div>
+      </div>
+      <p></p>
+      <% @post_tags.each do |tag| %>
+        <%= link_to "##{tag.tag_name}", tag_posts_path(tag_id: tag.id), class: "inline-block bg-gray-400 text-white rounded-full p-1 mb-3" %>
+      <% end %>
+    </div>
+    <div class="flex py-5 mb-5 text-center border-b border-gray-200">
+      <div class="mx-auto">
+        <p class="mb-3">* 投稿者 *</p>
+        <%= link_to @user do %>
+          <%= image_tag @post.user.avatar.url(:small), id: 'preview', class: 'inline-block h-10 w-10 shadow-xl rounded-full'%>
+          <%= @post.user.name %>
+        <% end %>
+        <p class="py-3">職種:<%= @user.job %></p>
+        <%= render 'relationships/follow' %>
+      </div>
+    </div>
+    <div id='comment_area'>
+      <%= render 'comments/comment' %>
+    </div>
+    <div id='comment_form'>
+      <%= render 'comments/form' %>
+    </div>
   </div>
-  <div>
-    <p><%= @post.content %></p>
-    <%= image_tag @post.image.url(:small) %>
-  </div>
-
-  <div id="likes_buttons_<%= @post.id %>">
-    <%= render partial: 'likes/like', locals: { post: @post } %>
-  </div>
-
-  <% @post_tags.each do |tag| %>
-    <%= link_to "##{tag.tag_name}", tag_posts_path(tag_id: tag.id) %>
-  <% end %>
-
-  <div class='flex items-end space-x-1'>
-    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"  data-text="Remoshareをよろしくおねがいします！"  data-show-count="false">Tweet</a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </div>
-
-  <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://social-plugins.line.me/ja/how_to_install#lineitbutton" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
-  <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-  </div>
-
-  <div id='comment_form'>
-    <%= render 'comments/form'%>
-  </div>
-
-  <div id='comment_area'>
-    <%= render 'comments/comment'%>
-  </div>
-
 </div>
