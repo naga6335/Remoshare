@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.includes(:user).order(created_at: :desc).search(params[:search])
+    @posts = Post.page(params[:page]).per(8)
     @user = User.find_by(params[:id])
     @tag_list = Tag.all
   end

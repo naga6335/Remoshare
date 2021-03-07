@@ -8,7 +8,7 @@ module NotificationsHelper
     when 'follow'
       tag.a(notification.visitor.name, href: user_path(@visitor), class: 'font-bold hover:text-gray-500') + 'さんがあなたをフォローしました'
     when 'like'
-      tag.a(notification.visitor.name, href: user_path(@visitor), class: 'font-bold hover:text-gray-500') + 'さんが' + tag.a('あなたの投稿', href: post_path(notification.post_id), class: 'font-bold hover:text-gray-500') + 'さんにいいねしました'
+      tag.a(notification.visitor.name, href: user_path(@visitor), class: 'font-bold hover:text-gray-500') + 'さんが' + tag.a('あなたの投稿', href: post_path(notification.post_id), class: 'font-bold hover:text-gray-500') + 'にいいねしました'
     when 'comment' then
       @comment = Comment.find_by(id: @visitor_comment)&.comment
       tag.a(@visitor.name, href: user_path(@visitor), class: 'font-bold hover:text-gray-500') + 'さんが' + tag.a('あなたの投稿', href: post_path(notification.post_id), class: 'font-bold hover:text-gray-500') + 'にコメントしました'
