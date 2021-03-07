@@ -2,13 +2,15 @@
 
 <div class='container mt-20 mx-auto'>
   <div class='flex flex-col p-8 mx-auto w-5/6 bg-white rounded text-xs sm:text-base text-gray-600 shadow-2xl'>
-    <%= form_with url: search_path, method: :get do |f| %>
-      <h1 class="text-2xl mb-3 font-bold text-center">Let's search!</h1>
-      <div class='text-center sm:flex mb-3'>
-        <%= f.text_field :keyword, placeholder: "何をお探しですか？？", class: "w-full p-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200" %>
-        <%= f.submit '検索', class: "inline-block py-1 px-3 text-sm text-white bg-blue-900 rounded-full ransition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500 cursor-pointer" %>
-      </div>
-    <% end %>
+    <h1 class="text-2xl mb-3 font-bold text-center">Let's search!</h1>
+    <div class='text-center mb-3'>
+      <%= form_with url: search_path, method: :get do |f| %>
+        <div class="flex mx-3 border border-gray-300 rounded-full p-1 focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200">
+        <%= f.text_field :keyword, placeholder: "何をお探しですか？？", class: "w-full inline-block mx-2 focus:outline-none" %>
+        <%= f.submit '検索', class: "inline-block my-auto mr-2 text-sm text-white bg-blue-900 rounded-full p-1 cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
+        </div>
+      <% end %>
+    </div>
     <% if @goods.present? %>
       <% @goods.first(20).each do |item| %>
           <div class="w-full mx-auto border-2 border-gray-300 p-5 rounded-md shadow-lg my-3 sm:flex">
@@ -20,6 +22,8 @@
             </div>
           </div>
       <% end %>
+    <% else %>
+      <p class="text-center">該当商品はありません</p>
     <% end %>
   </div>
 </div>
