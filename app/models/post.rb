@@ -11,11 +11,15 @@ class Post < ApplicationRecord
   validates  :user_id,        presence: true
   has_many   :tagmaps,       dependent: :destroy
   has_many   :tags,            through: :tagmaps
-  default_scope -> { order(created_at: :desc) }
   mount_uploader :image, ImageUploader
 
   def liked_by(user_id)
     likes.where(user_id: user_id).exists?
+  end
+
+  #いいねランキング表示メソッド
+  def self.create_all_ranks
+    Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
   end
 
   def create_notification_like(current_user)

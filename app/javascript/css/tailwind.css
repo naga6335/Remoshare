@@ -6,3 +6,12 @@ body {
   background-color: #efeeea;
   margin: 0 20px;
 }
+
+.pagecurrent {
+  display: inline-block;
+  color: #ffffff;
+  background-color: #1E3A8A;
+  border-radius: 9999px;
+  height: 30px;
+  width: 30px;
+}
