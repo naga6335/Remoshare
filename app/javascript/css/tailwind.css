@@ -15,3 +15,35 @@ body {
   height: 30px;
   width: 30px;
 }
+
+.tab-group{
+  display: flex;
+  justify-content: center;
+}
+
+.tab{
+  flex-grow: 1;
+  padding:5px;
+  list-style:none;
+  text-align:center;
+  cursor:pointer;
+}
+
+.panel-group{
+  height:100px;
+  border-top:none;
+}
+
+.panel{
+  display:none;
+}
+
+.tab.is-active{
+  background: #1E3A8A;
+  color: #ffffff;
+  transition: all 0.2s ease-out;
+}
+
+.panel.is-show{
+  display:block;
+}
