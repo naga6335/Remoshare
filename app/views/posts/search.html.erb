@@ -6,7 +6,7 @@
       <%= "##{@tag.tag_name}" %> のタグの投稿
       <%= "#{@posts.count}件" %>
     </div>
-      <div class="grid grid-cols-1 sm:grid-cols-4 mx-auto gap-7 text-gray-600">
+    <div class="grid grid-cols-1 sm:grid-cols-4 mx-auto gap-7 text-gray-600">
     <% @posts.each do |post| %>
       <div class='overflow-hidden rounded-lg shadow-lg bg-white'>
         <%= link_to post do %>
@@ -33,7 +33,7 @@
               <% end %>
             </div>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

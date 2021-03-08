@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page])
+    likes = Like.where(user_id: current_user.id).pluck(:post_id)
+    @like_list = Post.find(likes)
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
     if @user.id == current_user.id

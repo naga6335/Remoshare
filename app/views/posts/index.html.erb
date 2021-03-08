@@ -24,44 +24,81 @@
         </div>
       </div>
     </section>
-    <section class="mx-auto my-5 bg-white rounded">
-      <div class="flex grid grid-cols-1 sm:grid-cols-2 text-center p-4 gap-3">
-        <div>職種一覧<%= pie_chart User.group(:job).order('count_all DESC').count %></div>
-        <div>改善されたこと<%= pie_chart Post.group(:issue).order('count_all DESC').count %></div>
-      </div>
-    </section>
+
+    <div class="flex grid grid-col-1 lg:grid-cols-2 gap-x-7 my-5 p-4">
+      <section class="w-full bg-white rounded p-4">
+      <p class="text-center mb-5">ユーザーデータ</p>
+        <div class="flex grid grid-cols-1 sm:grid-cols-2 text-center gap-3">
+          <div class="mx-auto">職種一覧<%= pie_chart User.group(:job).order('count_all DESC').count %></div>
+          <div class="mx-auto">改善されたこと<%= pie_chart Post.group(:issue).order('count_all DESC').count %></div>
+        </div>
+      </section>
+      <section class="bg-white rounded p-4 ">
+        <p class="text-base text-center">いいねが多い記事</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 mx-auto gap-5 text-gray-600 w-2/3 md:w-full">
+          <% @ranks.each.with_index(1) do |post, i| %>
+          <div>
+            <span class="block text-center mb-2"><i class="fas fa-crown"></i>第<%= i %>位</span>
+            <div class='overflow-hidden rounded-lg shadow-lg '>
+              <%= link_to post do %>
+                <%= image_tag post.image.url(:small), class: 'block h-auto w-full' %>
+                <div class="flex justify-between items-center p-2 leading-tight">
+                  <p class='inline-block text-sm'><%= post.title.truncate(10) %></p>
+                  <p class='text-xs'><%= time_ago_in_words(post.created_at) %>前</p>
+                </div>
+                <div class="flex justify-between items-center p-2 leading-tight text-xs">
+                  <% if post.user.avatar? %>
+                    <%= image_tag post.user.avatar.url, id: 'preview', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
+                  <% else %>
+                    <%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
+                  <% end %>
+                  <p><%= post.user.name %></p>
+                  <p>職種:<%= post.user.job %></p>
+                  <div>
+                    <%= render partial: 'likes/like', locals: { post: post } %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </section>
+    </div>
+
     <%= link_to new_post_path do %>
       <i class="far fa-edit text-3xl fixed right-14 bottom-14 text-white rounded-full transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500 p-4 sm:p-6 "></i>
     <% end %>
-    <div class="grid grid-cols-1 sm:grid-cols-4 mx-auto gap-7 text-gray-600">
-    <% @posts.each do |post| %>
-      <div class='overflow-hidden rounded-lg shadow-lg bg-white'>
-        <%= link_to post do %>
-          <%= image_tag post.image.url(:small), class: 'block h-auto w-full' %>
-          <div class="flex justify-between items-center p-2 leading-tight">
-            <p class='inline-block text-base'><%= post.title.truncate(10) %></p>
-            <p class='text-xs'><%= time_ago_in_words(post.created_at) %>前</p>
-          </div>
-          <div class="flex justify-between items-center p-2 leading-tight text-xs">
-            <% if post.user.avatar? %>
-              <%= image_tag post.user.avatar.url, id: 'preview', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
-            <% else %>
-              <%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
-            <% end %>
-            <p><%= post.user.name %></p>
-            <p>職種:<%= post.user.job %></p>
-            <div id="likes_buttons_<%= post.id %>">
-              <%= render partial: 'likes/like', locals: { post: post } %>
+
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-7 text-gray-600 bg-white p-6 rounded">
+      <% @posts.each do |post| %>
+        <div class='overflow-hidden rounded-lg shadow-lg bg-white'>
+          <%= link_to post do %>
+            <%= image_tag post.image.url(:small), class: 'block h-auto w-full' %>
+            <div class="flex justify-between items-center p-2 leading-tight">
+              <p class='inline-block text-base'><%= post.title.truncate(10) %></p>
+              <p class='text-xs'><%= time_ago_in_words(post.created_at) %>前</p>
             </div>
-          </div>
-            <div class="p-2">
-              <% post.tags.each do |tag|%>
-                <%= link_to "##{tag.tag_name}", tag_posts_path(tag), class: "text-xs inline-block bg-gray-400 text-white rounded-full p-1" %>
+            <div class="flex justify-between items-center p-2 leading-tight text-xs">
+              <% if post.user.avatar? %>
+                <%= image_tag post.user.avatar.url, id: 'preview', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
+              <% else %>
+                <%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
               <% end %>
+              <p><%= post.user.name %></p>
+              <p>職種:<%= post.user.job %></p>
+              <div id="likes_buttons_<%= post.id %>">
+                <%= render partial: 'likes/like', locals: { post: post } %>
+              </div>
             </div>
-        <% end %>
-      </div>
-    <% end %>
+              <div class="p-2">
+                <% post.tags.each do |tag|%>
+                  <%= link_to "##{tag.tag_name}", tag_posts_path(tag), class: "text-xs inline-block bg-gray-400 text-white rounded-full p-1" %>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+      <% end %>
   </div>
   <div class="mt-10 mx-auto text-center text-xl">
     <%= paginate @posts %>
