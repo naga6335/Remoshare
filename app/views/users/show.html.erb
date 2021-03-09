@@ -15,7 +15,7 @@
             <%= render 'relationships/follow' %>
           <% if logged_in? && @user == current_user %>
             <%= link_to edit_user_path do %>
-            <p class='inline-block rounded-full bg-blue-900 text-white p-1 sm:p-2 my-2 transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500'>編集する</p>
+              <p class='inline-block rounded-full bg-blue-900 text-white p-1 sm:p-2 my-2 transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500'>編集する</p>
             <% end %>
           <% end %>
             <% if @user.id == current_user.id %>

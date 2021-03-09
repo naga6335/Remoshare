@@ -1,42 +1,42 @@
 
   <nav class="fixed top-0 left-0 w-full flex justify-between bg-white p-2 shadow-md">
       <%= link_to "Remoshare", root_url, alt: "logo", class: "block text-2xl font-bold text-blue-900 my-auto ml-6"%>
-    <ul class='text-blue-900 list-none py-2 flex items-center text-sm'>
+    <ul class='text-blue-900 list-none py-2 flex items-center text-xs'>
       <li>
         <%= link_to root_url do %>
-          <i class="far fa-newspaper text-sm font-bold px-3 hover:text-gray-500 no-underline">記事一覧</i>
+          <i class="far fa-newspaper text-xs font-bold px-3 hover:text-gray-500 no-underline">記事一覧</i>
         <% end %>
       </li>
       <li>
         <%= link_to users_path do %>
-          <i class="fas fa-users text-sm font-bold px-3 hover:text-gray-500 no-underline">ユーザー一覧</i>
+          <i class="fas fa-users text-xs font-bold px-3 hover:text-gray-500 no-underline">ユーザー一覧</i>
         <% end %>
       </li>
       <% if logged_in? %>
       <li>
         <%= link_to search_path do %>
-          <i class="fas fa-shopping-cart text-sm font-bold px-3 hover:text-gray-500 no-underline">商品検索</i>
+          <i class="fas fa-shopping-cart text-xs font-bold px-3 hover:text-gray-500 no-underline">商品検索</i>
         <% end %>
       </li>
       <li>
         <%= link_to notifications_path do %>
-          <i class="far fa-bell text-sm font-bold px-3 hover:text-gray-500 no-underline">通知</i>
+          <i class="far fa-bell text-xs font-bold px-3 hover:text-gray-500 no-underline">通知</i>
         <% end %>
       </li>
       <li>
         <%= link_to current_user do %>
-          <i class="fas fa-user text-sm font-bold px-3 hover:text-gray-500 no-underline">プロフィール</i>
+          <i class="fas fa-user text-xs font-bold px-3 hover:text-gray-500 no-underline">プロフィール</i>
         <% end %>
       </li>
       <li>
         <%= link_to logout_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt text-sm font-bold px-3 hover:text-gray-500 no-underline">ログアウト</i>
+          <i class="fas fa-sign-out-alt text-xs font-bold px-3 hover:text-gray-500 no-underline">ログアウト</i>
         <% end %>
       </li>
       <% else %>
       <li>
         <%= link_to login_path do %>
-          <i class="fas fa-sign-in-alt text-sm font-bold px-3 hover:text-gray-500 no-underline">ログイン</i>
+          <i class="fas fa-sign-in-alt text-xs font-bold px-3 hover:text-gray-500 no-underline">ログイン</i>
         <% end %>
       </li>
       <% end %>
