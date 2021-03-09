@@ -4,9 +4,13 @@ ja:
       user:　ユーザー
     attributes:
       user:
-        name: お名前
+        name: 名前
         email: メールアドレス
         password: パスワード
+      post:
+        title: おすすめポイント
+        content: 詳細
+        image: 画像
   views:
     pagination:
         first: <i class="fas fa-angle-double-left"></i>

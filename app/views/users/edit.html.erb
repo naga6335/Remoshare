@@ -4,49 +4,49 @@
   <div class="container mx-auto">
     <div class="max-w-md mx-auto">
       <h1 class="mt-8 text-2xl text-center font-semibold text-gray-700">プロフィール編集</h1>
-          <div class="mb-4">
-            <%= form_with(model: @user, local: true) do |f| %>
-            <%= render 'shared/error_messages', object: f.object %>
+        <div class="mb-4">
+        <%= form_with(model: @user, local: true) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
 
-          <div class="text-center my-6">
-            <label class= 'inline-block'>
-              <% if @user.avatar? %>
-                <%= f.file_field :avatar, class: 'hidden', onchange: 'previewAvatar(preview)', alt: 'ユーザーアイコン' %>
-                <div><%= image_tag @user.avatar.url, id: 'preview', class: 'h-36 w-36 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
-              <% else %>
-                <%= f.file_field :avatar, class: 'hidden', onchange: 'previewAvatar(preview)' %>
-                <div><%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'h-32 w-32 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
-              <% end %>
-            </label>
-          </div>
-          <div class="mb-6">
-            <%= f.label :プロフィール, class: 'block mb-2 text-sm text-gray-600' %>
-            <%= f.text_area :profile, size: "54x3", class: 'resize-none border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300', placeholder: "　例）26歳の会社員です！よろしくお願いします。" %>
-          </div>
-          <div class="mb-6">
-            <%= f.label :名前, class: 'block mb-2 text-sm text-gray-600' %>
-            <%= f.text_field :name, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300' %>
-          </div>
-          <div class="mb-6">
-            <%= f.label :職種, class: 'block mb-2 text-sm text-gray-600'%>
-            <%= f.select :job, [['営業','営業'],['販売、フード、レジャー','販売、フード、レジャー'],['医療、福祉','医療、福祉'],['企画、経営','企画、経営'],['ITエンジニア','ITエンジニア'],['研究職','研究職'],['金融、不動産専門','金融、不動産専門'],['クリエイティブ','クリエイティブ'],['公務員','公務員'],['管理、事務','管理、事務'],['美容、ブライダル','美容、ブライダル'],['交通','交通'],['保育、教育','保育、教育'],['その他','その他']], {}, class: 'w-full px-3 py-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
-          </div>
-          <div class="mb-6">
-            <%= f.label :メールアドレス, class: 'block mb-2 text-sm text-gray-600' %>
-            <%= f.email_field :email, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300' %>
-          </div>
-          <div class="mb-6">
-            <%= f.label :パスワード, class: 'block mb-2 text-sm text-gray-600' %>
-            <%= f.password_field :password, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
-          </div>
-          <div class="mb-6">
-            <%= f.label :パスワード再入力, class: 'block mb-2 text-sm text-gray-600' %>
-            <%= f.password_field :password_confirmation, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
-          </div>
-          <div class="text-center">
-            <%= f.submit "更新する", class: "inline-block px-4 py-2 text-white bg-blue-900 rounded-3xl cursor-pointer transition duration-200 ease-in-out hover:bg-gray-500 focus:outline-none" %>
-          </div>
-        <% end %>
+        <div class="text-center my-6">
+          <label class= 'inline-block'>
+            <% if @user.avatar? %>
+              <%= f.file_field :avatar, class: 'hidden', onchange: 'previewAvatar(preview)', alt: 'ユーザーアイコン' %>
+              <div><%= image_tag @user.avatar.url, id: 'preview', class: 'h-36 w-36 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
+            <% else %>
+              <%= f.file_field :avatar, class: 'hidden', onchange: 'previewAvatar(preview)' %>
+              <div><%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'h-32 w-32 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
+            <% end %>
+          </label>
+        </div>
+        <div class="mb-6">
+          <%= f.label :プロフィール, class: 'block mb-2 text-sm text-gray-600' %>
+          <%= f.text_area :profile, size: "54x3", class: 'resize-none border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300', placeholder: "　例）26歳の会社員です！よろしくお願いします。" %>
+        </div>
+        <div class="mb-6">
+          <%= f.label :名前, class: 'block mb-2 text-sm text-gray-600' %>
+          <%= f.text_field :name, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300' %>
+        </div>
+        <div class="mb-6">
+          <%= f.label :職種, class: 'block mb-2 text-sm text-gray-600'%>
+          <%= f.select :job, [['営業','営業'],['販売、フード、レジャー','販売、フード、レジャー'],['医療、福祉','医療、福祉'],['企画、経営','企画、経営'],['ITエンジニア','ITエンジニア'],['研究職','研究職'],['金融、不動産専門','金融、不動産専門'],['クリエイティブ','クリエイティブ'],['公務員','公務員'],['管理、事務','管理、事務'],['美容、ブライダル','美容、ブライダル'],['交通','交通'],['保育、教育','保育、教育'],['その他','その他']], {}, class: 'w-full px-3 py-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+        </div>
+        <div class="mb-6">
+          <%= f.label :メールアドレス, class: 'block mb-2 text-sm text-gray-600' %>
+          <%= f.email_field :email, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300' %>
+        </div>
+        <div class="mb-6">
+          <%= f.label :パスワード, class: 'block mb-2 text-sm text-gray-600' %>
+          <%= f.password_field :password, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+        </div>
+        <div class="mb-6">
+          <%= f.label :パスワード再入力, class: 'block mb-2 text-sm text-gray-600' %>
+          <%= f.password_field :password_confirmation, class: 'w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+        </div>
+        <div class="text-center">
+          <%= f.submit "更新する", class: "inline-block px-4 py-2 text-white bg-blue-900 rounded-3xl cursor-pointer transition duration-200 ease-in-out hover:bg-gray-500 focus:outline-none" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

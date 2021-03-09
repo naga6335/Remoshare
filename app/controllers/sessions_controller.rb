@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       flash[:success] = "ログインしました"
       redirect_to root_url
     else
-      flash.now[:alert] = '入力に誤りがあります'
+      flash.now[:alert] = 'メールアドレスとパスワードが一致しません'
       render 'new'
     end
   end
