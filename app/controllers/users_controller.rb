@@ -44,7 +44,8 @@ class UsersController < ApplicationController
       flash[:success] = "登録に成功しました！"
       redirect_to root_path
     else
-      render 'new'
+      flash.now[:alert] = "入力に誤りがあります"
+      render "new"
     end
   end
 
@@ -58,7 +59,8 @@ class UsersController < ApplicationController
       flash[:success] = "プロフィールを更新しました"
       redirect_to @user
     else
-      render 'edit'
+      flash.now[:alert] = "入力に誤りがあります"
+      render "edit"
     end
   end
 
@@ -74,7 +76,8 @@ class UsersController < ApplicationController
       user.password = SecureRandom.urlsafe_base64
     end
       log_in user
-      redirect_to root_url, notice: 'ゲストユーザーとしてログインしました！'
+      flash[:success] = "ゲストユーザーとしてログインしました！"
+      redirect_to root_url
   end
 
   def following

@@ -1,6 +1,6 @@
 <%= render 'shared/header' %>
 
-<div class='container my-20 mx-auto'>
+<div class='container mx-auto'>
   <div class='flex flex-col p-8 mx-auto w-5/6 bg-white rounded text-xs sm:text-base text-gray-600 shadow-2xl'>
     <div class="text-right mb-8 text-xs"><%= @post.created_at %></div>
     <h1 class='text-sm sm:text-2xl mb-2'><%= @post.title %></h1>
@@ -9,6 +9,9 @@
       <div class="text-right text-sm my-4">
         <p>改善ポイント：<%= @post.issue %></p>
         <p>購入時価格：¥<%= @post.price %></p>
+        <%= link_to search_path do %>
+        <p class= "inline-block bg-blue-900 text-white p-1 text-xs rounded-xl">探してみる</p>
+        <% end %>
       </div>
       <p class="text-center text-xl mb-8"><%= @post.content %></p>
       <div class="flex justify-between">
@@ -30,12 +33,15 @@
     <div class="flex py-5 mb-5 text-center border-b border-gray-200">
       <div class="mx-auto">
         <p class="mb-3">* 投稿者 *</p>
-        <%= link_to @user do %>
-          <%= image_tag @post.user.avatar.url(:small), id: 'preview', class: 'inline-block h-10 w-10 shadow-xl rounded-full'%>
+        <%= link_to @post.user do %>
+          <% if @post.user.avatar? %>
+            <%= image_tag @post.user.avatar.url(:small), id: 'preview', class: 'inline-block h-10 w-10 shadow-xl rounded-full'%>
+          <% else %>
+           <%= image_tag '/assets/default.png', class: 'inline-block w-10 h-10 rounded-full shadow-md' %>
+          <% end %>
           <%= @post.user.name %>
         <% end %>
         <p class="py-3">職種:<%= @user.job %></p>
-        <%= render 'relationships/follow' %>
       </div>
     </div>
     <div id='comment_area'>

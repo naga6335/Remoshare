@@ -6,8 +6,8 @@ class GoodsController < ApplicationController
       if goods.valid?
         @goods = RakutenWebService::Ichiba::Item.search(keyword: goods.keyword)
       else
-        flash[:alert] = "入力に誤りがあります"
-        redirect_to search_path
+        flash.now[:alert] = "入力に誤りがあります"
+        render 'search'
       end
     end
   end

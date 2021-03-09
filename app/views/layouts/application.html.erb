@@ -14,9 +14,31 @@
   <body>
 
     <% flash.each do |message_type, message| %>
-      <div class= "<%= message_type %>" ><%= message %></div>
+      <div class= "<%= message_type %> fixed right-10 p-2 rounded text-white text-sm"><%= message %></div>
     <% end %>
 
     <%= yield %>
   </body>
 </html>
+
+<script>
+  document.addEventListener('turbolinks:load', () => {
+    const flashMessage = document.querySelector('.alert, .success');
+    const fadeOutFlashMessage = () => {
+      // setIntervalを特定するために返り値を変数timer_idに格納
+      const timer_id = setInterval(() => {
+        const opacity = flashMessage.style.opacity;
+        if (opacity > 0) {
+          flashMessage.style.opacity = opacity - 0.05;
+        } else {
+          flashMessage.style.display = 'none';
+          clearInterval(timer_id);
+        };
+      }, 20);
+    }
+    if (flashMessage !== null) {
+      flashMessage.style.opacity = 1;
+      setTimeout(fadeOutFlashMessage, 2000);
+    };
+  });
+</script>
