@@ -8,16 +8,16 @@ class SessionsController < ApplicationController
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       flash[:success] = "ログインしました"
-      redirect_back_or root_url
+      redirect_to root_url
     else
-      flash.now[:danger] = 'メールアドレスとパスワードが一致しません'
+      flash.now[:alert] = '入力に誤りがあります'
       render 'new'
     end
   end
 
   def destroy
     log_out
+    flash[:success] = "ログアウトしました"
     redirect_to login_path
   end
-
 end

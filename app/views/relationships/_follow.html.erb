@@ -1,14 +1,17 @@
-<% unless current_user?(@user) %>
-  <div id= "follow_form">
-    <% if current_user.following?(@user) %>
-      <%= form_with(model: current_user.active_relation.find_by(followed_id: @user.id),  method: :delete, local: false) do |f| %>
-        <%= f.submit "フォロー解除", class: 'py-2 px-2 bg-gray-500 rounded-3xl text-white text-xs' %>
+
+<% if current_user %>
+  <% unless current_user?(@user) %>
+    <div id= "follow_form">
+      <% if current_user.following?(@user) %>
+        <%= form_with(model: current_user.active_relation.find_by(followed_id: @user.id),  method: :delete, local: false) do |f| %>
+          <%= f.submit "フォロー解除", class: 'py-2 px-2 bg-gray-500 rounded-3xl text-white text-xs' %>
+        <% end %>
+      <% else %>
+        <%= form_with(model: current_user.active_relation.build, method: :post, local: false) do |f| %>
+          <%= hidden_field_tag :followed_id, @user.id %>
+          <%= f.submit "フォローする", class: 'py-2 px-2 bg-blue-900 rounded-3xl text-white text-xs' %>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= form_with(model: current_user.active_relation.build, method: :post, local: false) do |f| %>
-        <%= hidden_field_tag :followed_id, @user.id %>
-        <%= f.submit "フォローする", class: 'py-2 px-2 bg-blue-900 rounded-3xl text-white text-xs' %>
-      <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 <% end %>

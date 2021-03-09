@@ -5,6 +5,7 @@
 body {
   background-color: #efeeea;
   margin: 0 20px;
+  padding: 80px 0px;
 }
 
 .pagecurrent {
@@ -46,4 +47,12 @@ body {
 
 .panel.is-show{
   display:block;
+}
+
+.success{
+  background-color: #34d399;
+}
+
+.alert{
+  background-color: #ef4444;
 }

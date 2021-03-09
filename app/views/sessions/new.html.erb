@@ -1,8 +1,8 @@
-<div class="flex items-center min-h-screen">
+<div class="flex items-center mt-80">
   <div class="container mx-auto">
-    <div class="max-w-md mx-auto my-10">
-      <h1 class="my-3 text-3xl text-center font-semibold text-gray-700">ログイン</h1>
-        <div class="m-7">
+    <div class="max-w-md mx-auto">
+      <h1 class="text-3xl text-center font-semibold text-gray-700">ログイン</h1>
+        <div>
           <div class="mb-6">
             <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
             <%= f.label :メールアドレス, class: 'block mb-2 text-sm text-gray-600' %>

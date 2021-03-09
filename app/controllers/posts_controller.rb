@@ -29,7 +29,7 @@ class PostsController < ApplicationController
       flash[:success] = "投稿しました！"
       redirect_to root_url
     else
-      flash[:alert] = "入力に誤りがあります"
+      flash.now[:alert] = "入力に誤りがあります"
       render 'new'
     end
   end
@@ -41,10 +41,10 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      flash[:success] = "更新しました！"
+      flash[:success] = "投稿を更新しました"
       redirect_to root_url
     else
-      flash[:alert] = "入力に誤りがあります"
+      flash.now[:alert] = "入力に誤りがあります"
       render 'edit'
     end
   end

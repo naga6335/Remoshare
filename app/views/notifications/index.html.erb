@@ -1,6 +1,6 @@
 <%= render 'shared/header' %>
 
-<div class='container mt-20 mx-auto'>
+<div class='container mx-auto'>
   <div class="flex flex-col mx-auto w-5/6 bg-white p-6 text-xs sm:text-base text-gray-600 rounded shadow-2xl">
     <div class='text-center text-xl font-bold my-8'>通知一覧</div>
     <div><%= link_to "すべて削除", notification_path(@notifications), method: :delete, class: 'fas fa-trash float-right rounded-3xl py-1 px-3 bg-blue-900 text-white text-xs mx-3'%></div>

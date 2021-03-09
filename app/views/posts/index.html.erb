@@ -1,6 +1,6 @@
 <%= render 'shared/header' %>
 
-<div class='container my-24 mx-auto'>
+<div class='container mx-auto'>
   <div class='flex flex-col mx-auto text-xs sm:text-base text-gray-600'>
     <section class="text-center bg-white rounded">
       <h1 class="text-base sm:text-3xl text-blue-900 font-bold pt-5">Let's Comfortable Remote Work！</h1>
@@ -46,16 +46,15 @@
                   <p class='inline-block text-sm'><%= post.title.truncate(10) %></p>
                   <p class='text-xs'><%= time_ago_in_words(post.created_at) %>前</p>
                 </div>
-                <div class="flex justify-between items-center p-2 leading-tight text-xs">
+                <div class="flex items-center p-2 leading-tight text-xs">
                   <% if post.user.avatar? %>
                     <%= image_tag post.user.avatar.url, id: 'preview', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
                   <% else %>
                     <%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
                   <% end %>
-                  <p><%= post.user.name %></p>
-                  <p>職種:<%= post.user.job %></p>
-                  <div>
-                    <%= render partial: 'likes/like', locals: { post: post } %>
+                  <div class="ml-1">
+                    <p><%= post.user.name %></p>
+                    <p>職種:<%= post.user.job %></p>
                   </div>
                 </div>
               <% end %>
