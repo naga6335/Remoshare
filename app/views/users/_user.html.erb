@@ -8,7 +8,9 @@
       <% end %>
     <% else %>
       <%= link_to user do %>
-        <%= image_tag '/assets/default.png', class: 'inline-block w-20 h-20 rounded-full shadow-md' %>
+      <div class="p-2">
+        <%= image_tag '/assets/default.png', class: 'inline-block w-16 h-16 rounded-full shadow-md' %>
+      </div>
       <% end %>
     <% end %>
     <div class="my-auto mx-4 text-base"><%= link_to user.name, user %><p><%= user.profile %></p></div>

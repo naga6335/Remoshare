@@ -26,8 +26,8 @@
           <% else %>
             <div class="text-left">
             <div>
-              <% if @user.avatar? %>
-                <%= image_tag @user.avatar.url, id: 'preview', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
+              <% if m.user.avatar? %>
+                <%= image_tag m.user.avatar.url, id: 'preview', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
               <% else %>
                 <div><%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %></div>
               <% end %>
