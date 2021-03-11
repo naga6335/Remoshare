@@ -2,12 +2,28 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-.small-icon {
-  @apply inline-block h-8 w-8 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70;
-}
-
-.medium-icon {
-  @apply inline-block w-16 h-16 rounded-full shadow-md;
+@layer components {
+  .small-icon {
+    @apply inline-block h-8 w-8  rounded-full shadow-xl;
+  }
+  .medium-icon {
+    @apply inline-block w-12 h-12 rounded-full shadow-xl;
+  }
+  .large-icon {
+    @apply inline-block w-32 h-32 rounded-full shadow-xl;
+  }
+  .form {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md;
+  }
+  .up-btn {
+    @apply inline-block px-4 py-2 text-white bg-blue-800 rounded-3xl;
+  }
+  .small-tag {
+    @apply inline-block text-xs p-1 text-white bg-gray-500 rounded-full;
+  }
+  .medium-tag {
+    @apply inline-block align-middle p-1 m-1 text-white bg-gray-500 rounded-full;
+  }
 }
 
 body {

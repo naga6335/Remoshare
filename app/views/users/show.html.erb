@@ -4,7 +4,7 @@
     <div class='flex flex-wrap grid grid-cols-2 gap-5 p-4 text-center'>
       <div class="my-auto">
         <% if @user.avatar? %>
-          <%= image_tag @user.avatar.url(:small), class: 'inline-block rounded-full shadow-md w-32 h-32' %>
+          <%= image_tag @user.avatar.url(:small), class: 'large-icon' %>
         <% end %>
         <p class="text-xl my-2"><%= @user.name%></p>
       </div>
@@ -68,9 +68,9 @@
                 </div>
                 <div class="flex justify-between items-center p-2 leading-tight text-xs">
                   <% if post.user.avatar? %>
-                    <%= image_tag post.user.avatar.url, id: 'preview', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
+                    <%= image_tag post.user.avatar.url, id: 'preview', class: 'small-icon' %>
                   <% else %>
-                    <%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
+                    <%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %>
                   <% end %>
                   <p><%= post.user.name %></p>
                   <p>職種:<%= post.user.job %></p>

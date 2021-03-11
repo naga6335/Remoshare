@@ -17,7 +17,7 @@
           <div class="p-4 rounded w-full">
           <p class="font-bold mb-3">人気のタグ一覧</p>
             <% @tag_list.each do |list| %>
-              <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: 'inline-block align-middle bg-gray-400 text-white rounded-full p-1 m-1' %>
+              <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: 'medium-tag' %>
               <%= "(#{list.posts.count})" %>
             <% end %>
           </div>
@@ -95,7 +95,7 @@
             </div>
               <div class="p-2">
                 <% post.tags.each do |tag|%>
-                  <%= link_to "##{tag.tag_name}", tag_posts_path(tag), class: "text-xs inline-block bg-gray-400 text-white rounded-full p-1" %>
+                  <%= link_to "##{tag.tag_name}", tag_posts_path(tag), class: "small-tag" %>
                 <% end %>
               </div>
           <% end %>

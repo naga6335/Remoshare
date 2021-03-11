@@ -3,13 +3,13 @@
     <% if user.avatar? %>
       <%= link_to user do %>
       <div class="p-2">
-        <%= image_tag user.avatar.url(:small), class: 'inline-block w-16 h-16 rounded-full shadow-md' %>
+        <%= image_tag user.avatar.url(:small), class: 'medium-icon' %>
       </div>
       <% end %>
     <% else %>
       <%= link_to user do %>
       <div class="p-2">
-        <%= image_tag '/assets/default.png', class: 'inline-block w-16 h-16 rounded-full shadow-md' %>
+        <%= image_tag '/assets/default.png', class: 'medium-icon' %>
       </div>
       <% end %>
     <% end %>

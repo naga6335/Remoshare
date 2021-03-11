@@ -27,7 +27,7 @@
       </div>
       <p></p>
       <% @post_tags.each do |tag| %>
-        <%= link_to "##{tag.tag_name}", tag_posts_path(tag_id: tag.id), class: "inline-block bg-gray-400 text-white rounded-full p-1 mb-3" %>
+        <%= link_to "##{tag.tag_name}", tag_posts_path(tag_id: tag.id), class: "medium-tag" %>
       <% end %>
     </div>
     <div class="flex py-5 mb-5 text-center border-b border-gray-200">
@@ -35,9 +35,9 @@
         <p class="mb-3">* 投稿者 *</p>
         <%= link_to @post.user do %>
           <% if @post.user.avatar? %>
-            <%= image_tag @post.user.avatar.url(:small), id: 'preview', class: 'inline-block h-10 w-10 shadow-xl rounded-full'%>
+            <%= image_tag @post.user.avatar.url(:small), id: 'preview', class: 'small-icon'%>
           <% else %>
-           <%= image_tag '/assets/default.png', class: 'inline-block w-10 h-10 rounded-full shadow-md' %>
+           <%= image_tag '/assets/default.png', class: 'small-icon' %>
           <% end %>
           <%= @post.user.name %>
         <% end %>
