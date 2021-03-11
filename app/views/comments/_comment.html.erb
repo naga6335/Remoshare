@@ -5,7 +5,7 @@
   <div class="flex justify-between mb-5">
     <div>
       <%= link_to comment.user do %>
-        <%= image_tag comment.user.avatar.url(:small), id: 'preview', class: 'h-10 w-10 shadow-xl rounded-full'%>
+        <%= image_tag comment.user.avatar.url(:small), id: 'preview', class: 'small-icon'%>
         <%= comment.user.name %>
       <% end %>
     </div>
