@@ -2,6 +2,14 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+.small-icon {
+  @apply inline-block h-8 w-8 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70;
+}
+
+.medium-icon {
+  @apply inline-block w-16 h-16 rounded-full shadow-md;
+}
+
 body {
   background-color: #efeeea;
   margin: 0 20px;

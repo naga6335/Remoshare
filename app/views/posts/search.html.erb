@@ -6,7 +6,7 @@
       <%= "##{@tag.tag_name}" %> のタグの投稿
       <%= "#{@posts.count}件" %>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-4 mx-auto gap-7 text-gray-600">
+    <div class="grid grid-cols-1 sm:grid-cols-4 mx-auto gap-6 text-gray-600">
     <% @posts.each do |post| %>
       <div class='overflow-hidden rounded-lg shadow-lg bg-white'>
         <%= link_to post do %>
@@ -17,9 +17,9 @@
           </div>
           <div class="flex justify-between items-center p-2 leading-tight text-xs">
             <% if post.user.avatar? %>
-              <%= image_tag post.user.avatar.url, id: 'preview', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
+              <%= image_tag post.user.avatar.url, id: 'preview', class: 'inline-block h-8 w-8 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
             <% else %>
-              <%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'inline-block h-7 w-7 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
+              <%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'inline-block h-8 w-8 shadow-xl transition duration-200 ease-in-out rounded-full cursor-pointer hover:opacity-70' %>
             <% end %>
             <p><%= post.user.name %></p>
             <p>職種:<%= post.user.job %></p>
