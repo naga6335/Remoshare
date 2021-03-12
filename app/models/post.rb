@@ -17,7 +17,6 @@ class Post < ApplicationRecord
     likes.where(user_id: user_id).exists?
   end
 
-  #いいねランキング表示メソッド
   def self.create_all_ranks
     Post.find(Like.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
   end

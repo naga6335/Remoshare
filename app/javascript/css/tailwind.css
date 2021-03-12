@@ -4,7 +4,7 @@
 
 @layer components {
   .small-icon {
-    @apply inline-block h-8 w-8  rounded-full shadow-xl;
+    @apply inline-block h-8 w-8 rounded-full shadow-xl;
   }
   .medium-icon {
     @apply inline-block w-12 h-12 rounded-full shadow-xl;
@@ -23,6 +23,12 @@
   }
   .medium-tag {
     @apply inline-block align-middle p-1 m-1 text-white bg-gray-500 rounded-full;
+  }
+  .error {
+    @apply fixed mr-10 p-2 rounded text-white text-sm;
+  }
+  .header {
+    @apply font-bold px-3;
   }
 }
 
