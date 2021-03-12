@@ -14,7 +14,7 @@
   <body>
 
     <% flash.each do |message_type, message| %>
-      <div class= "<%= message_type %> fixed top-10 right-0 mr-10 p-2 rounded text-white text-sm"><%= message %></div>
+      <div class= "<%= message_type %> error top-10 right-0"><%= message %></div>
     <% end %>
 
     <%= yield %>
