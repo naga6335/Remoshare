@@ -119,6 +119,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
+    kgio (2.11.3)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -185,6 +186,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 1.0)
     rainbow (3.0.0)
+    raindrops (0.19.1)
     rake (13.0.3)
     rakuten_web_service (1.13.0)
       json (~> 2.3)
@@ -262,6 +264,9 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.0.0)
+    unicorn (5.4.1)
+      kgio (~> 2.6)
+      raindrops (~> 0.7)
     web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -297,7 +302,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.3)
-  mysql2 (~> 0.5)
+  mysql2 (~> 0.5.3)
   pre-commit
   puma (~> 5.0)
   rails (~> 6.1.1)
@@ -312,6 +317,7 @@ DEPENDENCIES
   tailwindcss-rails (~> 0.3.3)
   turbolinks (~> 5)
   tzinfo-data
+  unicorn (= 5.4.1)
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
