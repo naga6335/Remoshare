@@ -50,7 +50,8 @@ test:
 #
 production:
   <<: *default
-  database: <%= Rails.application.credentials.db[:database] %>
-  username: <%= Rails.application.credentials.db[:username] %>
-  password: <%= Rails.application.credentials.db[:password] %>
-  socket: <%= Rails.application.credentials.db[:socket] %>
+  database: Remoshare_production
+  username: <%= ENV.fetch("MYSQL_USERNAME", "root") %>
+  password: <%= ENV.fetch("MYSQL_PASSWORD", "password") %>
+  host: <%= ENV.fetch("MYSQL_HOST", "db") %>
+  socket: /var/lib/mysql/mysql.sock
