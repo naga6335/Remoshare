@@ -8,7 +8,7 @@ gem 'rails', '~> 6.1.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5.3'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 4.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -30,7 +30,6 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'rakuten_web_service'
 gem "chartkick"
-gem 'unicorn', '5.4.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -51,6 +50,11 @@ group :development do
   gem 'rubocop'
   gem 'pre-commit'
   gem 'rubocop-rails'
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
+  gem 'capistrano-rbenv', '~> 2.2'
+  gem 'capistrano-rbenv-vars', '~> 0.1'
+  gem "capistrano3-puma", "4.0.0"
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   # gem 'spring'
