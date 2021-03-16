@@ -6,4 +6,5 @@ CarrierWave.configure do |config|
       region: "ap-northeast-1"
     }
     config.fog_directory = "remoshare"
+    config.asset_host = "https://static.remoshare.com"
   end
