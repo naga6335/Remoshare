@@ -5,5 +5,5 @@ CarrierWave.configure do |config|
       aws_secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
       region: "ap-northeast-1"
     }
-    config.fog_directory = "S3のバケット名"
+    config.fog_directory = "remoshare"
   end
