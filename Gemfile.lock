@@ -278,8 +278,6 @@ GEM
     ruby-vips (2.1.0)
       ffi (~> 1.12)
     rubyzip (2.3.0)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -364,7 +362,7 @@ DEPENDENCIES
   rspec-rails (~> 4.0.2)
   rubocop
   rubocop-rails
-  sass-rails (>= 6)
+  sassc-rails
   selenium-webdriver
   tailwindcss-rails (~> 0.3.3)
   turbolinks (~> 5)
