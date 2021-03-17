@@ -10,7 +10,7 @@ gem 'mysql2', '~> 0.5.3'
 # Use Puma as the app server
 gem 'puma', '~> 4.0'
 # Use SCSS for stylesheets
-gem "sassc-rails"
+gem 'sassc-rails'
 # gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
@@ -23,15 +23,16 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem "tailwindcss-rails", "~> 0.3.3"
+gem 'tailwindcss-rails', '~> 0.3.3'
 gem 'rails-i18n'
 gem 'kaminari'
 gem 'faker'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'rakuten_web_service'
-gem "chartkick"
-gem "fog-aws"
+gem 'chartkick'
+gem 'fog-aws'
+gem 'nokogiri'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -41,7 +42,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.2'
-  gem "factory_bot_rails"
+  gem 'factory_bot_rails'
   # gem 'spring-commands-rspec'
 end
 
@@ -52,11 +53,11 @@ group :development do
   gem 'rubocop'
   gem 'pre-commit'
   gem 'rubocop-rails'
-  gem "capistrano", "~> 3.10", require: false
-  gem "capistrano-rails", "~> 1.6", require: false
+  gem 'capistrano', '~> 3.10', require: false
+  gem 'capistrano-rails', '~> 1.6', require: false
   gem 'capistrano-rbenv', '~> 2.2'
   gem 'capistrano-rbenv-vars', '~> 0.1'
-  gem "capistrano3-puma", "4.0.0"
+  gem 'capistrano3-puma', '4.0.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   # gem 'spring'
