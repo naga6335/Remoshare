@@ -2,24 +2,22 @@
   "name": "remoshare",
   "private": true,
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^4.0.2",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.2.1",
-    "autoprefixer": "^9.8.6",
     "chart.js": "^2.9.4",
     "chartkick": "^3.2.1",
     "jquery": "^3.5.1",
-    "postcss": "^7.0.35",
     "rails-ujs": "^5.2.4-5",
-    "tailwindcss": "1.9.0",
+    "tailwindcss": "1.9.6",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
+    "@fullhuman/postcss-purgecss": "^3.0.0",
     "webpack-dev-server": "^3.11.2"
   }
 }
