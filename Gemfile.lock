@@ -353,6 +353,7 @@ DEPENDENCIES
   kaminari
   listen (~> 3.3)
   mysql2 (~> 0.5.3)
+  nokogiri
   pre-commit
   puma (~> 4.0)
   rails (~> 6.1.1)
