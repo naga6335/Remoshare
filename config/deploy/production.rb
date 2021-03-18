@@ -1,4 +1,4 @@
-server "54.168.50.41", user: "nagami", roles: %w{app db web}
+server "54.168.50.41", user: "nagami", roles: %w[app db web]
 
 set :ssh_options, {
   keys:[ENV.fetch('PRODUCTION_SSH_KEY').to_s],
