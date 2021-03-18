@@ -7,18 +7,15 @@ jobs:
     docker:
       - image: circleci/ruby:2.7.2-node-browsers
         environment:
-          - BUNDLER_VERSION: 2.1.4
           - RAILS_ENV: 'test'
-          - DB_HOST: 127.0.0.1
-          - DB_USERNAME: 'root'
-          - DB_PASSWORD: ''
       - image: circleci/mysql:8.0.23
         environment:
-          - MYSQL_ROOT_HOST: '%'
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          - MYSQL_ROOT_HOST: '%'
         command: --default-authentication-plugin=mysql_native_password
 
     working_directory: ~/Remoshare
+
     steps:
       - checkout
 
@@ -51,15 +48,9 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      - run:
-          name: Use specific database.yml
-          command: mv config/database.yml.ci config/database.yml
-
-      - run:
-          name: Database setup
-          command: |
-            bin/rails db:create
-            bin/rails db:schema:load --trace
+      - run: mv config/database.yml.ci config/database.yml
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:schema:load
 
       - run:
           name: Rubocop
