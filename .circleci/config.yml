@@ -6,19 +6,15 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.7.2-node-browsers
-        environment:
-          - BUNDLER_VERSION: 2.1.4
-          - RAILS_ENV: 'test'
-          - DB_HOST: 127.0.0.1
-
-      - image: circleci/mysql:8.0.23
-        command: --default-authentication-plugin=mysql_native_password
+      - image: circleci/mysql:8.0
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
+          - RAILS_ENV: 'test'
+          - BUNDLER_VERSION: 2.1.4
+        command: --default-authentication-plugin=mysql_native_password
 
     working_directory: ~/Remoshare
-
     steps:
       - checkout
 
@@ -51,7 +47,6 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      - run: mv config/database.yml.ci config/database.yml
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
@@ -87,4 +82,8 @@ jobs:
 
       - deploy:
           name: Capistrano deploy
-          command: bundle exec cap production deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy
