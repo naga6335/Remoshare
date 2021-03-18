@@ -27,7 +27,7 @@ Style/HashTransformValues:
 
 # 日本語のコメントを許可する
 Style/AsciiComments:
-  Enabled: false
+  Enabled: true
 
 # ドキュメントの無いpublic classを許可する
 Style/Documentation:
@@ -51,7 +51,7 @@ Style/RedundantSelf:
 
 # 変数の代入(A)、メソッドの呼び出し等(B)、条件分岐(C)から算出される複雑度
 Metrics/AbcSize:
-  Max: 30
+  Max: 20
 
 # 循環的複雑度 ≒ 分岐の数
 Metrics/CyclomaticComplexity:

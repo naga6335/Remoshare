@@ -7,20 +7,20 @@ jobs:
     docker:
       - image: circleci/ruby:2.7.2-node-browsers
         environment:
-          - RAILS_ENV: 'test'
           - BUNDLER_VERSION: 2.1.4
-
+          - RAILS_ENV: 'test'
+          - DB_HOST: 127.0.0.1
+          - DB_USERNAME: 'root'
+          - DB_PASSWORD: ''
       - image: circleci/mysql:8.0.23
-        command: --default-authentication-plugin=mysql_native_password
         environment:
-          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
+          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+        command: --default-authentication-plugin=mysql_native_password
 
     working_directory: ~/Remoshare
-
     steps:
       - checkout
-
 
       - restore_cache:
           keys:
@@ -51,13 +51,20 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
-      - run: mv config/database.yml.ci config/database.yml
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run:
+          name: Use specific database.yml
+          command: mv config/database.yml.ci config/database.yml
+
+      - run:
+          name: Database setup
+          command: |
+            bin/rails db:create
+            bin/rails db:schema:load --trace
 
       - run:
           name: Rubocop
           command: bundle exec rubocop
+
       - run:
           name: run tests
           command: |
@@ -73,22 +80,21 @@ jobs:
                 --out /tmp/test-results/rspec.xml \
                 --format progress \
                 $TEST_FILES
+
       - store_test_results:
           path: /tmp/test-results
+
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
 
-  deploy:
-    docker:
-      - image: circleci/ruby:2.7.2-node-browsers
-        environment:
-          BUNDLER_VERSION: 2.1.4
-    steps:
-      - checkout
-      - ruby/install-deps
       - add_ssh_keys:
           fingerprints: "d7:ea:aa:96:a7:d7:02:70:b1:f0:89:09:c7:0e:c0:22"
+
       - deploy:
           name: Capistrano deploy
-          command: bundle exec cap production deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy
