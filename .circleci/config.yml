@@ -91,8 +91,4 @@ deploy:
           fingerprints: "d7:ea:aa:96:a7:d7:02:70:b1:f0:89:09:c7:0e:c0:22"
       - deploy:
           name: Capistrano deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" != "master" ]; then
-              exit 0
-            fi
-            bundle exec cap production deploy
+          command: bundle exec cap production deploy
