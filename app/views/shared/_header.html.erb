@@ -1,8 +1,17 @@
+<header class="flex">
+  <div class="logo">
+    <h1>Remoshare</h1>
+  </div>
 
-  <nav class="fixed top-0 left-0 w-full flex justify-between bg-white p-2 shadow-md">
-      <%= link_to "Remoshare", root_url, alt: "logo", class: "block text-2xl font-bold text-blue-800 my-auto ml-6"%>
-    <ul class='text-blue-800 list-none py-2 flex items-center text-xs'>
-      <li>
+  <div class="sp-menu ml-auto">
+    <i class="fas fa-bars cursor-pointer" id="open"></i>
+</header>
+
+  <div class="overlay text-right p-20">
+    <i class="fas fa-times absolute p-5 top-0 right-0 cursor-pointer" id="close"></i>
+    <nav>
+      <ul class='text-blue-800 list-none py-2 items-center text-xs'>
+        <li>
         <%= link_to root_url do %>
           <i class="far fa-newspaper header hover:text-gray-500">記事一覧</i>
         <% end %>
@@ -40,5 +49,22 @@
         <% end %>
       </li>
       <% end %>
-    </ul>
-  </nav>
+      </ul>
+    </nav>
+  </div>
+
+<script>
+  const open = document.getElementById('open');
+  const overlay = document.querySelector('.overlay');
+  const close = document.getElementById('close');
+
+  open.addEventListener('click', () => {
+    overlay.classList.add('show');
+    open.classList.add('hide');
+  });
+
+  close.addEventListener('click', () => {
+    overlay.classList.remove('show');
+    open.classList.remove('hide');
+  });
+</script>

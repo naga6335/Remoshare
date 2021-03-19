@@ -1,13 +1,13 @@
 <%= render 'shared/header' %>
 
 <div class='container mx-auto'>
-  <div class='flex flex-col p-8 mx-auto w-5/6 bg-white rounded text-xs sm:text-base text-gray-600 shadow-2xl'>
+  <div class='base flex flex-col w-5/6 sm:text-base'>
     <h1 class="text-2xl mb-3 font-bold text-center">Let's search!</h1>
     <div class='text-center mb-3'>
       <%= form_with url: search_path, method: :get do |f| %>
         <div class="flex mx-3 border border-gray-300 rounded-full p-1 focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200">
         <%= f.text_field :keyword, placeholder: "何をお探しですか？？", class: "w-full inline-block mx-2 focus:outline-none" %>
-        <%= f.submit '検索', class: "inline-block my-auto mr-2 text-sm text-white bg-blue-900 rounded-full p-1 cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
+        <%= f.submit '検索', class: "small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
         </div>
       <% end %>
     </div>

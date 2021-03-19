@@ -3,6 +3,9 @@
 @import "tailwindcss/utilities";
 
 @layer components {
+  .base {
+    @apply mx-auto bg-white p-6 text-xs text-gray-600 rounded shadow-2xl;
+  }
   .small-icon {
     @apply inline-block h-8 w-8 rounded-full shadow-xl;
   }
@@ -15,6 +18,9 @@
   .form {
     @apply w-full px-3 py-2 border border-gray-300 rounded-md;
   }
+  .small-btn {
+    @apply inline-block my-auto text-sm text-white bg-blue-800 rounded-full px-2 py-1;
+  }
   .up-btn {
     @apply inline-block px-4 py-2 text-white bg-blue-800 rounded-3xl;
   }
@@ -24,11 +30,17 @@
   .medium-tag {
     @apply inline-block align-middle p-1 m-1 text-white bg-gray-500 rounded-full;
   }
+  .chat {
+    @apply inline-block bg-gray-200 p-2 rounded-full;
+  }
   .error {
     @apply fixed mr-10 p-2 rounded text-white text-sm;
   }
   .header {
     @apply font-bold px-3;
+  }
+  .chat-title {
+    @apply text-center font-bold text-blue-800 my-8 mx-auto p-4 rounded;
   }
 }
 
@@ -85,4 +97,24 @@ body {
 
 .alert{
   background-color: #ef4444;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.95);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.sp-menu #open.hide {
+  display: none;
 }
