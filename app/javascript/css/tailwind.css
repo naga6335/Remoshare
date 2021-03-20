@@ -22,7 +22,7 @@
     @apply inline-block my-auto text-sm text-white bg-blue-800 rounded-full px-2 py-1;
   }
   .up-btn {
-    @apply inline-block px-4 py-2 text-white bg-blue-800 rounded-3xl;
+    @apply inline-block px-4 py-2 mt-8 text-white bg-blue-800 rounded-3xl;
   }
   .small-tag {
     @apply inline-block text-xs p-1 text-white bg-gray-500 rounded-full;
@@ -99,22 +99,36 @@ body {
   background-color: #ef4444;
 }
 
+.sp-menu {
+  margin-left: auto;
+}
+
+.sp-menu #open {
+  font-size: 32px;
+  line-height: 64px;
+  cursor: pointer;
+}
+
 .overlay {
   position: fixed;
   top: 0;
-  bottom: 0;
   right: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 255);
+  text-align: center;
+  padding: 38px;
   opacity: 0;
   pointer-events: none;
+  transition: opacity .5s;
+}
+
+.overlay #close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
 }
 
 .overlay.show {
   opacity: 1;
-  pointer-events: none;
-}
-
-.sp-menu #open.hide {
-  display: none;
+  pointer-events: auto;
 }

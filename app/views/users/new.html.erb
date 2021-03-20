@@ -1,9 +1,8 @@
-<div class="flex items-center mt-56">
+<div class="flex items-center mt-40">
   <div class="container mx-auto">
     <div class="max-w-md mx-auto">
       <h1 class="my-3 text-3xl text-center font-semibold text-gray-700">新規登録</h1>
         <div class="m-7">
-            <%# エラーメッセージの修正必要！ %>
             <%= form_with(model: @user, local: true) do |f| %>
             <%= render 'shared/error_messages', object: f.object %>
           <div class="mb-6">
@@ -26,10 +25,10 @@
               <%= f.label :パスワード再入力, class: 'block mb-2 text-sm text-gray-600'%>
               <%= f.password_field :password_confirmation, class: 'form focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
           </div>
-          <div class="mb-6">
+          <div class="mb-6 text-center">
               <%= f.submit "登録する", class: "up-btn focus:bg-blue-400 focus:outline-none" %>
           </div>
-          <p class= 'text-sm text-center text-gray-600'>すでにアカウントをお持ちの方は<%= link_to "こちら", login_path, class:'text-blue-900 focus:underline focus:text-blue-600'%></p>
+          <p class= 'text-sm text-center text-gray-600'>すでにアカウントをお持ちの方は<%= link_to "こちら", login_path, class:'text-blue-800 focus:underline focus:text-blue-600'%></p>
           <% end %>
         </div>
     </div>

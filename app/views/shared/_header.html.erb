@@ -1,16 +1,7 @@
-<header class="flex">
-  <div class="logo">
-    <h1>Remoshare</h1>
-  </div>
-
-  <div class="sp-menu ml-auto">
-    <i class="fas fa-bars cursor-pointer" id="open"></i>
-</header>
-
-  <div class="overlay text-right p-20">
-    <i class="fas fa-times absolute p-5 top-0 right-0 cursor-pointer" id="close"></i>
-    <nav>
-      <ul class='text-blue-800 list-none py-2 items-center text-xs'>
+<header class="fixed top-0 left-0 bg-white w-full flex justify-between shadow-md md:p-2">
+  <%= link_to "Remoshare", root_url, alt: "logo", class: "block text-2xl font-bold text-blue-800 my-auto ml-6"%>
+  <div class="pc-menu hidden md:block">
+      <ul class='text-blue-800 list-none py-2 items-center text-xs flex'>
         <li>
         <%= link_to root_url do %>
           <i class="far fa-newspaper header hover:text-gray-500">記事一覧</i>
@@ -50,10 +41,59 @@
       </li>
       <% end %>
       </ul>
-    </nav>
+  </div>
+
+  <div class="sp-menu md:hidden">
+    <span class="fas fa-bars text-blue-800 mr-6" id="open"></span>
+  </div>
+</header>
+
+  <div class="overlay rounded-md">
+    <span class="fas fa-times text-blue-800" id="close"></span>
+      <ul class='text-blue-800 list-none py-2 items-center text-sm'>
+        <li>
+        <%= link_to root_url do %>
+          <i class="far fa-newspaper header mb-4 hover:text-gray-500">記事一覧</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to users_path do %>
+          <i class="fas fa-users header mb-4 hover:text-gray-500">ユーザー一覧</i>
+        <% end %>
+      </li>
+      <% if logged_in? %>
+      <li>
+        <%= link_to search_path do %>
+          <i class="fas fa-shopping-cart header mb-4 hover:text-gray-500">商品検索</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to notifications_path do %>
+          <i class="far fa-bell header mb-4 hover:text-gray-500">通知</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to current_user do %>
+          <i class="fas fa-user header mb-4 hover:text-gray-500">プロフィール</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to logout_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt header hover:text-gray-500">ログアウト</i>
+        <% end %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to login_path do %>
+          <i class="fas fa-sign-in-alt header hover:text-gray-500">ログイン</i>
+        <% end %>
+      </li>
+      <% end %>
+      </ul>
   </div>
 
 <script>
+document.addEventListener('turbolinks:load', () => {
   const open = document.getElementById('open');
   const overlay = document.querySelector('.overlay');
   const close = document.getElementById('close');
@@ -67,4 +107,5 @@
     overlay.classList.remove('show');
     open.classList.remove('hide');
   });
+});
 </script>
