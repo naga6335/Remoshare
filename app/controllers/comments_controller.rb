@@ -5,23 +5,21 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
     @comment.user_id = current_user.id
-    if @comment.save
-      @post.create_notification_comment(current_user, @comment.id)
-      redirect_to request.referer
-    else
-      flash[:alert] = "送信に失敗しました"
-      redirect_to request.referer
-    end
+    @comments = @post.comments.all.includes(:user).order(created_at: :desc)
+    @post.create_notification_comment(current_user, @comment.id)
+    @comment.save
+    render :create
   end
 
   def destroy
-    Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    redirect_to request.referer
+    @comment = Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
+    @comment.destroy
+    render :destroy
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:comment, :post_id)
   end
 end

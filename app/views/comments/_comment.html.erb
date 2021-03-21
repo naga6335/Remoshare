@@ -1,19 +1,21 @@
 <div class="text-center">
   <p class="far fa-comment mb-5">コメント一覧</p>
 </div>
-<% @comments.each do |comment| %>
-  <div class="flex justify-between mb-5">
-    <div>
-      <%= link_to comment.user do %>
-        <%= image_tag comment.user.avatar.url(:small), id: 'preview', class: 'small-icon'%>
-        <%= comment.user.name %>
-      <% end %>
+<div class="mb-5">
+  <% @comments.each do |comment| %>
+    <div class="flex justify-between" id="comment-<%= comment.id %>">
+      <div>
+        <%= link_to comment.user do %>
+          <%= image_tag comment.user.avatar.url(:small), id: 'preview', class: 'small-icon'%>
+          <%= comment.user.name %>
+        <% end %>
+      </div>
+      <div class="inline-block text-right">
+        <%= comment.comment %>
+        <% if logged_in? && comment.user == current_user %>
+          <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' }, class: "block text-xs"%>
+        <% end %>
+      </div>
     </div>
-    <div class="my-auto w-5/6 sm:w-1/2 text-right">
-      <%= comment.comment %>
-      <% if logged_in? && comment.user == current_user %>
-        <%= link_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' }, class: "block text-right"%>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
