@@ -1,18 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Relationship, type: :model do
- describe '#create' do
-   let(:user) { create(:user) }
-   let(:other_user) { create(:user) }
+  describe '#create' do
+    let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
 
-   context '正常に保存できる場合' do
-     let(:relationship) {
-       create(
-       :relationship,
-       follower_id: user.id,
-       followed_id: other_user.id
-       )
-     }
+    context '正常に保存できる場合' do
+      let(:relationship) do
+        create(
+          :relationship,
+          follower_id: user.id,
+          followed_id: other_user.id
+        )
+      end
 
       it 'relationshipを登録できること' do
         expect(relationship).to be_valid
@@ -20,13 +20,13 @@ RSpec.describe Relationship, type: :model do
     end
 
     context '保存できない場合' do
-      let(:relationship) {
+      let(:relationship) do
         create(
           :relationship,
           follower_id: user.id,
           followed_id: other_user.id
         )
-      }
+      end
 
       it 'follower_idが存在しないと保存できないこと' do
         relationship.follower_id = nil
@@ -40,13 +40,13 @@ RSpec.describe Relationship, type: :model do
     end
 
     context '一意性の確認' do
-      let(:relationship) {
+      let(:relationship) do
         create(
           :relationship,
           follower_id: user.id,
           followed_id: other_user.id
         )
-      }
+      end
 
       it 'followed_idとfollower_idの組み合わせは一意であること' do
         uniquness_relationship = build(

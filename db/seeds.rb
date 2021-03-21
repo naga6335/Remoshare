@@ -1,4 +1,3 @@
-# # ユーザー作成
 # 1.upto(39) do |i|
 #   name  = Faker::Name.name
 #   email = "sample-#{i}@example.com"

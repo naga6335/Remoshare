@@ -72,7 +72,7 @@ RSpec.describe Post, type: :model do
     end
   end
 
-   describe '#create_notification_like' do
+  describe '#create_notification_like' do
     before do
       @post = FactoryBot.create(:post)
       @current_user = FactoryBot.create(:user)

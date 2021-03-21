@@ -1,5 +1,4 @@
 module NotificationsHelper
-
   def notification_form(notification)
     @visitor = notification.visitor
     @comment = nil

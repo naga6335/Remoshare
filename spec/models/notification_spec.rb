@@ -4,13 +4,13 @@ RSpec.describe Notification, type: :model do
   describe '#create' do
     let(:user1) { create(:user) }
     let(:user2) { create(:user) }
-    let(:notification) {
+    let(:notification)  do
       build(
         :notification,
         visitor_id: user1.id,
         visited_id: user2.id
       )
-    }
+    end
 
     describe '正常に保存できる場合' do
       describe 'likeに関するテスト' do
