@@ -62,7 +62,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-  # Easy installation and use of web drivers to run system tests with browsers
+# Easy installation and use of web drivers to run system tests with browsers
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

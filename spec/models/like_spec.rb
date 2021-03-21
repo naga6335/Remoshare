@@ -18,7 +18,7 @@ RSpec.describe Like, type: :model do
       end
     end
 
-  context 'likeを保存できない場合' do
+    context 'likeを保存できない場合' do
       let(:like) { build(:like) }
 
       it 'user_idが存在しないと保存できないこと' do

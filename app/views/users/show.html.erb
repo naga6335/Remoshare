@@ -1,6 +1,6 @@
 <%= render 'shared/header' %>
 <div class="container flex flex-col mx-auto px-5 py-4 items-center text-gray-600 ">
-  <div class="rounded bg-white text-xs p-2 shadow-md">
+  <div class="rounded bg-white text-xs p-2 shadow-md mb-10">
     <div class='flex flex-wrap grid grid-cols-2 gap-5 p-4 text-center'>
       <div class="my-auto">
         <% if @user.avatar? %>
@@ -15,20 +15,20 @@
             <%= render 'relationships/follow' %>
           <% if logged_in? && @user == current_user %>
             <%= link_to edit_user_path do %>
-              <p class='inline-block rounded-full bg-blue-900 text-white p-1 sm:p-2 my-2 transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500'>編集する</p>
+              <p class='inline-block rounded-md bg-blue-800 text-white p-1 sm:p-2 my-2 transition duration-200 ease-in-out  hover:bg-gray-500'>編集する</p>
             <% end %>
           <% end %>
             <% if @user.id == current_user.id %>
               <%= @msg %>
             <% else %>
               <% if @isRoom == true %>
-                <%= link_to 'DMへ', room_path(@roomId), class:"inline-block my-2 p-2 bg-blue-900 rounded-full text-white text-xs" %>
+                <%= link_to 'DMへ', room_path(@roomId), class:"inline-block my-2 py-2 px-1 bg-green-500 rounded-md text-white text-xs" %>
               <% else %>
                 <%= form_with(model: @room, local: true) do |f| %>
                   <%= fields_for @entry do |e|%>
                     <% e.hidden_field :user_id, value: @user.id %>
                   <% end %>
-                  <%= f.submit "DMを開始する",  class:"inline-block my-2 p-2 bg-blue-900 rounded-full text-white text-xs" %>
+                  <%= f.submit "DMを開始する",  class:"inline-block py-2 px-1 bg-blue-800 rounded-md text-white text-xs" %>
                 <% end %>
               <% end %>
             <% end %>

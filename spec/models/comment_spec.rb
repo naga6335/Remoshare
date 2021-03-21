@@ -5,7 +5,6 @@ RSpec.describe Comment, type: :model do
 
   describe '#create' do
     context '保存できる場合' do
-
       it '入力が正しいこと' do
         expect(comment).to be_valid
       end
@@ -22,7 +21,6 @@ RSpec.describe Comment, type: :model do
     end
 
     context '保存できない場合' do
-
       it '入力が空欄だと保存できない' do
         comment.comment = ''
         expect(comment).to be_invalid

@@ -1,28 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   describe 'create' do
     context 'userを登録できる場合' do
-      let(:user) {build(:user)}
-
+      let(:user) { build(:user) }
       it '全ての入力が正常の場合、登録できること' do
         expect(user).to be_valid
       end
 
       it '名前が15文字以内だと保存できること' do
-        user.name = 'a' *15
+        user.name = 'a' * 15
         expect(user).to be_valid
       end
 
       it 'メールアドレスが255文字以内だと保存できること' do
-        user.email = "aaaaa@#{ 'a' * 245}.com"
+        user.email = "aaaaa@#{'a' * 245}.com"
         expect(user).to be_valid
       end
 
       it '有効なメールフォーマットだと保存できること' do
-        valid_addresses = %w(user@example.com USER@foo.COM A_US-ER@foo.bar.org
-                            first.last@foo.jp alice+bob@baz.cn)
+        valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
+                             first.last@foo.jp alice+bob@baz.cn]
         valid_addresses.each do |valid_address|
           user.email = valid_address
           expect(user).to be_valid
@@ -55,7 +53,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'メールアドレスが256文字以上だと保存できないこと' do
-        user.email = "aaaaa@#{ 'a' * 246}.com"
+        user.email = "aaaaa@#{'a' * 246}.com"
         expect(user).to be_invalid
       end
 
@@ -66,8 +64,8 @@ RSpec.describe User, type: :model do
       end
 
       it '無効なメールフォーマットだと保存できないこと' do
-        invalid_addresses = %w(user@example,com user_at_foo.org user.name@example.
-                          foo@bar_baz.com foo@bar+baz.com)
+        invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
+                               foo@bar_baz.com foo@bar+baz.com]
         invalid_addresses.each do |invalid_address|
           user.email = invalid_address
           expect(user).to be_invalid
