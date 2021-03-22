@@ -15,9 +15,9 @@ Rails.application.routes.draw do
     get :likes, on: :collection
   end
 
-  resources   :posts do
-    resources :comments,   only: [:create, :destroy]
-    resource  :likes,      only: [:create, :destroy]
+  resources :posts do
+    resources :comments, only: [:create, :destroy]
+    resource  :likes,    only: [:create, :destroy]
   end
 
   resources :tags do
