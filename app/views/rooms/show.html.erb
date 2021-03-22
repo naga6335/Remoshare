@@ -2,47 +2,11 @@
 
 <div class='container mx-auto'>
   <div class="base flex flex-col w-5/6 sm:text-base">
-    <div class='chat-title'>
-    <% @entries.each do |e| %>
-      <a href="/users/<%= e.user.id %>">
-        <% if e.user.name == current_user.name %>
-          <p><%= "あなた:" + e.user.name %></p>
-        <% else %>
-          <p><%= "相手:" + e.user.name + "さん" %></p>
-        <% end %>
-      </a>
-    <% end %>
+    <div id="chat_area">
+      <%= render "rooms/chat_area" %>
     </div>
-    <% @messages.each do |m| %>
-      <% if m.user_id == current_user.id %>
-        <div class="text-right">
-          <div class="chat">
-            <p><%= m.message %></p>
-            <small class='block'><%= m.created_at.strftime('%Y/%m/%d %H:%M:%S') %></small>
-          </div>
-          <p><%= link_to "削除", message_path(m), method: :delete, data: { confirm: "削除しますか？" }, remote: true, class:'text-xs' %></p>
-        </div>
-      <% else %>
-        <div class="text-left">
-        <div>
-          <% if m.user.avatar? %>
-            <%= image_tag m.user.avatar.url, id: 'preview', class: 'small-icon' %>
-          <% else %>
-            <div><%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %></div>
-          <% end %>
-          <small><%= m.user.name %>さん</small>
-          </div>
-          <div class="chat">
-            <p class="block"><%= m.message %></p>
-            <small><%= m.created_at.strftime('%Y/%m/%d %H:%M:%S') %></small>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-    <%= form_with(model: @message, local: true) do |f| %>
-      <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , size: "60×2", class: "form mt-8 rounded-full focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200" %>
-      <%= f.hidden_field :room_id, :value => @room.id %>
-      <div class="text-right"><%= f.submit "送信", class: "small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %></div>
-    <% end %>
+    <div id="chat_form">
+      <%= render "rooms/chat_form" %>
+    </div>
   </div>
 </div>
