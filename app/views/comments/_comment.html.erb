@@ -6,8 +6,12 @@
     <div class="flex justify-between" id="comment-<%= comment.id %>">
       <div>
         <%= link_to comment.user do %>
-          <%= image_tag comment.user.avatar.url(:small), id: 'preview', class: 'small-icon'%>
-          <%= comment.user.name %>
+          <% if comment.user.avatar? %>
+            <%= image_tag comment.user.avatar.url(:small), id: 'preview', class: 'small-icon'%>
+          <% else %>
+            <%= image_tag asset_path('default.png'), id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %>
+          <% end %>
+        <%= comment.user.name %>
         <% end %>
       </div>
       <div class="inline-block text-right">

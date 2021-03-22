@@ -15,7 +15,7 @@
               <div><%= image_tag @user.avatar.url, id: 'preview', class: 'large-icon' %></div>
             <% else %>
               <%= f.file_field :avatar, class: 'hidden', onchange: 'previewAvatar(preview)' %>
-              <div><%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'large-icon' %></div>
+              <div><%= image_tag asset_path('default.png'), id: 'preview', alt: 'ユーザーアイコン', class: 'large-icon' %></div>
             <% end %>
           </label>
         </div>

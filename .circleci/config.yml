@@ -53,18 +53,21 @@ jobs:
           paths:
             - ~/.cache/yarn
 
+      - run:
+          name: webpack installを実行
+          command: bundle exec bin/webpack
+
       - run: mv config/database.yml.ci config/database.yml
       - run: bundle exec rails db:create
       - run: bundle exec rails db:schema:load
 
       - run:
-          name: Rubocop
+          name: Rubocopの実行
           command: bundle exec rubocop
 
       - run:
           name: run tests
           command: |
-              rm -rf bin/webpack*
               gem install rails
               rails webpacker:install
               RAILS_ENV=test bundle exec rails webpacker:compile

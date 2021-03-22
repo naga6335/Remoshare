@@ -24,7 +24,7 @@
       <% if m.user.avatar? %>
         <%= image_tag m.user.avatar.url, id: 'preview', class: 'small-icon' %>
       <% else %>
-        <div><%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %></div>
+        <div><%= image_tag asset_path('default.png'), id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %></div>
       <% end %>
       <small><%= m.user.name %>さん</small>
     </div>

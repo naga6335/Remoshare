@@ -41,11 +41,6 @@ RSpec.describe Post, type: :model do
         post.image = ''
         expect(post).to be_invalid
       end
-
-      it 'レビューが未入力だと保存できないこと' do
-        post.review = ''
-        expect(post).to be_invalid
-      end
     end
   end
 
