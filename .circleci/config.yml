@@ -24,15 +24,6 @@ jobs:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             - v1-dependencies-
 
-      - restore_cache:
-          keys:
-            - rails-yarn-{{ checksum "yarn.lock" }}
-            - rails-yarn-
-
-      - run:
-          name: yarn install
-          command: yarn install --cache-folder ~/.cache/yarn
-
       - run:
           name: bundler install
           command: gem install bundler -v 2.1.4
@@ -47,6 +38,20 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
+
+      - run:
+          name: Yarn のインストール
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      - save_cache:
+          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
 
       - run: mv config/database.yml.ci config/database.yml
       - run: bundle exec rails db:create

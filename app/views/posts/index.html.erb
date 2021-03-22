@@ -5,7 +5,7 @@
     <section class="text-center bg-white rounded shadow-md">
       <h1 class="text-base sm:text-3xl text-blue-800 font-bold pt-5">Let's Comfortable Remote Work！</h1>
       <div class="flex grid sm:grid-cols-2 grid-cols-1">
-        <%= image_tag '/assets/manager.png', class: "mx-auto" %>
+        <%= image_tag asset_path('manager.png'), class: "mx-auto" %>
         <div class="my-auto w-full">
           <p class="text-base font-bold">リモートワークの悩みを解消しよう！</p>
           <%= form_tag(posts_path, method: :get) do %>
@@ -51,7 +51,7 @@
                   <% if post.user.avatar? %>
                     <%= image_tag post.user.avatar.url, id: 'preview', class: 'small-icon' %>
                   <% else %>
-                    <%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %>
+                    <%= image_tag asset_path('default.png'), id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %>
                   <% end %>
                   <div class="ml-1">
                     <p><%= post.user.name %></p>
@@ -85,7 +85,7 @@
               <% if post.user.avatar? %>
                 <%= image_tag post.user.avatar.url, id: 'preview', class: 'small-icon' %>
               <% else %>
-                <%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %>
+                <%= image_tag asset_path('default.png'), id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %>
               <% end %>
               <p><%= post.user.name %></p>
               <p>職種:<%= post.user.job %></p>
