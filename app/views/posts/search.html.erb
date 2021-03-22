@@ -19,7 +19,7 @@
             <% if post.user.avatar? %>
               <%= image_tag post.user.avatar.url, id: 'preview', class: 'small-icon transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %>
             <% else %>
-              <%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %>
+              <%= image_tag asset_path('default.png'), id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon transition duration-200 ease-in-out cursor-pointer hover:opacity-70' %>
             <% end %>
             <p><%= post.user.name %></p>
             <p>職種:<%= post.user.job %></p>

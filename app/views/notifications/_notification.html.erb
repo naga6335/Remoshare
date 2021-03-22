@@ -6,7 +6,7 @@
     <% end %>
     <% else %>
     <%= link_to user_path(notification.visitor) do %>
-    <%= image_tag '/assets/default.png', class: 'medium-icon' %>
+    <%= image_tag asset_path('default.png'), class: 'medium-icon' %>
     <%= notification_form(notification) %>
     <% end %>
     <% end %>

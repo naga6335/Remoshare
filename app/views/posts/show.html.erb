@@ -37,7 +37,7 @@
           <% if @post.user.avatar? %>
             <%= image_tag @post.user.avatar.url(:small), id: 'preview', class: 'small-icon'%>
           <% else %>
-           <%= image_tag '/assets/default.png', class: 'small-icon' %>
+            <%= image_tag asset_path('default.png'), class: 'small-icon' %>
           <% end %>
           <%= @post.user.name %>
         <% end %>
