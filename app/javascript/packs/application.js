@@ -10,5 +10,7 @@ require("channels")
 
 require("chartkick")
 require("chart.js")
+require("signal.js")
+require("header.js")
 
 import '../css/tailwind.css';
