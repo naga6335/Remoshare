@@ -6,7 +6,7 @@
     <div><%= link_to "すべて削除", notification_path(@notifications), method: :delete, class: 'fas fa-trash float-right rounded-3xl py-1 px-3 bg-blue-900 text-white text-xs mx-3'%></div>
     <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>
-      <%= render @notifications %>
+      <%= render notifications %>
     <% else %>
       <p class='text-gray-500 text-center'>通知はありません</p>
     <% end %>

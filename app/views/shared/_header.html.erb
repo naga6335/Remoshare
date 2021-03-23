@@ -21,6 +21,7 @@
       <li>
         <%= link_to notifications_path do %>
           <i class="far fa-bell header hover:text-gray-500">通知</i>
+          <%= render "notifications/alert" %>
         <% end %>
       </li>
       <li>
@@ -48,64 +49,47 @@
   </div>
 </header>
 
-  <div class="overlay rounded-md">
-    <span class="fas fa-times text-blue-800" id="close"></span>
-      <ul class='text-blue-800 list-none py-2 items-center text-sm'>
-        <li>
-        <%= link_to root_url do %>
-          <i class="far fa-newspaper header mb-4 hover:text-gray-500">記事一覧</i>
-        <% end %>
-      </li>
+<div class="overlay rounded-md">
+  <span class="fas fa-times text-blue-800" id="close"></span>
+    <ul class='text-blue-800 list-none py-2 items-center text-sm'>
       <li>
-        <%= link_to users_path do %>
-          <i class="fas fa-users header mb-4 hover:text-gray-500">ユーザー一覧</i>
-        <% end %>
-      </li>
-      <% if logged_in? %>
-      <li>
-        <%= link_to search_path do %>
-          <i class="fas fa-shopping-cart header mb-4 hover:text-gray-500">商品検索</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to notifications_path do %>
-          <i class="far fa-bell header mb-4 hover:text-gray-500">通知</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to current_user do %>
-          <i class="fas fa-user header mb-4 hover:text-gray-500">プロフィール</i>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to logout_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt header hover:text-gray-500">ログアウト</i>
-        <% end %>
-      </li>
-      <% else %>
-      <li>
-        <%= link_to login_path do %>
-          <i class="fas fa-sign-in-alt header hover:text-gray-500">ログイン</i>
-        <% end %>
-      </li>
+      <%= link_to root_url do %>
+        <i class="far fa-newspaper header mb-4 hover:text-gray-500">記事一覧</i>
       <% end %>
-      </ul>
-  </div>
-
-<script>
-document.addEventListener('turbolinks:load', () => {
-  const open = document.getElementById('open');
-  const overlay = document.querySelector('.overlay');
-  const close = document.getElementById('close');
-
-  open.addEventListener('click', () => {
-    overlay.classList.add('show');
-    open.classList.add('hide');
-  });
-
-  close.addEventListener('click', () => {
-    overlay.classList.remove('show');
-    open.classList.remove('hide');
-  });
-});
-</script>
+    </li>
+    <li>
+      <%= link_to users_path do %>
+        <i class="fas fa-users header mb-4 hover:text-gray-500">ユーザー一覧</i>
+      <% end %>
+    </li>
+    <% if logged_in? %>
+    <li>
+      <%= link_to search_path do %>
+        <i class="fas fa-shopping-cart header mb-4 hover:text-gray-500">商品検索</i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to notifications_path do %>
+        <i class="far fa-bell header mb-4 hover:text-gray-500">通知</i>
+        <%= render "notifications/alert" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to current_user do %>
+        <i class="fas fa-user header mb-4 hover:text-gray-500">プロフィール</i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to logout_path, method: :delete do %>
+        <i class="fas fa-sign-out-alt header hover:text-gray-500">ログアウト</i>
+      <% end %>
+    </li>
+    <% else %>
+    <li>
+      <%= link_to login_path do %>
+        <i class="fas fa-sign-in-alt header hover:text-gray-500">ログイン</i>
+      <% end %>
+    </li>
+    <% end %>
+    </ul>
+</div>

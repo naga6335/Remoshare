@@ -68,9 +68,7 @@ jobs:
       - run:
           name: run tests
           command: |
-              gem install rails
               rails webpacker:install
-              RAILS_ENV=test bundle exec rails webpacker:compile
               mkdir /tmp/test-results
               TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
                 circleci tests split --split-by=timings)"
