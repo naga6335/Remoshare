@@ -12,5 +12,6 @@ require("chartkick")
 require("chart.js")
 require("signal.js")
 require("header.js")
+require("profile.js")
 
 import '../css/tailwind.css';

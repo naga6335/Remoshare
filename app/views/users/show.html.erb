@@ -1,65 +1,66 @@
-<%= render 'shared/header' %>
-<div class="container flex flex-col mx-auto px-5 py-4 items-center text-gray-600 ">
-  <div class="rounded bg-white text-xs p-2 shadow-md mb-10">
-    <div class='flex flex-wrap grid grid-cols-2 gap-5 p-4 text-center'>
+<%= render "shared/header" %>
+<div class="container flex flex-col mx-auto px-5 py-4 items-center text-gray-600">
+  <div class="rounded bg-white text-sm shadow-md">
+    <div class="flex flex-wrap grid grid-cols-2 gap-5 p-4 text-center">
       <div class="my-auto">
         <% if @user.avatar? %>
-          <%= image_tag @user.avatar.url(:small), class: 'large-icon' %>
+          <%= image_tag @user.avatar.url(:small), class: "large-icon" %>
+        <% else %>
+          <%= image_tag asset_path("default.png"), class: "large-icon" %>
         <% end %>
         <p class="text-xl my-2"><%= @user.name%></p>
       </div>
-      <div class='flex my-auto mx-auto'>
+      <div class="flex my-auto mx-auto text-xs">
         <div>
-            <%= render 'shared/status' %>
-            <p class='my-2 text-sm break-all'><%= @user.profile %></p>
-            <%= render 'relationships/follow' %>
+          <%= render "shared/status" %>
+          <p class="my-2"><%= @user.profile %></p>
+          <%= render "relationships/follow" %>
           <% if logged_in? && @user == current_user %>
             <%= link_to edit_user_path do %>
-              <p class='inline-block rounded-md bg-blue-800 text-white p-1 sm:p-2 my-2 transition duration-200 ease-in-out  hover:bg-gray-500'>編集する</p>
+              <p class="small-btn text-xs transition duration-200 ease-in-out hover:bg-gray-500">編集する</p>
             <% end %>
           <% end %>
-            <% if @user.id == current_user.id %>
-              <%= @msg %>
+          <% if @user.id == current_user.id %>
+            <%= @msg %>
+          <% else %>
+            <% if @isRoom == true %>
+              <%= link_to 'DMへ', room_path(@roomId), class: "small-btn bg-green-500" %>
             <% else %>
-              <% if @isRoom == true %>
-                <%= link_to 'DMへ', room_path(@roomId), class:"inline-block my-2 py-2 px-1 bg-green-500 rounded-md text-white text-xs" %>
-              <% else %>
-                <%= form_with(model: @room, local: true) do |f| %>
-                  <%= fields_for @entry do |e|%>
-                    <% e.hidden_field :user_id, value: @user.id %>
-                  <% end %>
-                  <%= f.submit "DMを開始する",  class:"inline-block py-2 px-1 bg-blue-800 rounded-md text-white text-xs" %>
+              <%= form_with(model: @room, local: true) do |f| %>
+                <%= fields_for @entry do |e|%>
+                  <% e.hidden_field :user_id, value: @user.id %>
                 <% end %>
+                <%= f.submit "DMを開始する",  class:"small-btn bg-green-500" %>
               <% end %>
             <% end %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-  <div class="mt-5">
-    <!--タブ-->
+  <div class="my-5 bg-white rounded-md shadow-md text-xs">
     <ul class="tab-group">
-      <li class="tab is-active rounded">投稿一覧</li>
-      <li class="tab rounded">いいねした記事</li>
+      <li class="tab is-active rounded-full">投稿一覧</li>
+      <li class="tab rounded-full">いいねした記事</li>
     </ul>
-    <!--タブを切り替えて表示するコンテンツ-->
-    <div class="panel-group">
-      <div class="panel is-show">
-        <div class='text-center w-full my-10'>
-          <% if @user.posts.any? %>
-            <div class="grid grid-cols-3 gap-5 justify-items-center flex-grow mx-20 box-border">
-              <%= render @posts %>
-            </div>
-          <% else %>
-            <p class="text-center">投稿はありません</p>
-          <% end %>
-        </div>
+  </div>
+  <div class="panel-group w-full">
+    <div class="panel is-show">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 bg-white p-6 rounded shadow-md">
+        <% if @user.posts.any? %>
+            <%= render @posts %>
+        <% else %>
+          <p class="text-center">投稿はありません</p>
+        <% end %>
       </div>
-      <div class="panel">
+    </div>
+  </div>
+  <div class="panel w-full">
+    <div class="panel is-show">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 bg-white p-6 rounded shadow-md">
         <% if @like_list.present? %>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-7 text-gray-600 bg-white p-6 rounded">
           <% @like_list.each do |post| %>
-            <div class='overflow-hidden rounded-lg shadow-lg bg-white'>
+            <div class='overflow-hidden rounded-lg p-2 shadow-lg bg-white sm:w-full'>
               <%= link_to post do %>
                 <%= image_tag post.image.url(:small), class: 'block h-auto w-full' %>
                 <div class="flex justify-between items-center p-2 leading-tight">
@@ -70,7 +71,7 @@
                   <% if post.user.avatar? %>
                     <%= image_tag post.user.avatar.url, id: 'preview', class: 'small-icon' %>
                   <% else %>
-                    <%= image_tag '/assets/default.png', id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %>
+                    <%= image_tag asset_path('default.png'), id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %>
                   <% end %>
                   <p><%= post.user.name %></p>
                   <p>職種:<%= post.user.job %></p>
@@ -84,26 +85,8 @@
               <% end %>
             </div>
           <% end %>
-        </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function(){
-    const tabs = document.getElementsByClassName('tab');
-    for(let i = 0; i < tabs.length; i++) {
-      tabs[i].addEventListener('click', tabSwitch);
-    }
-    function tabSwitch(){
-      document.getElementsByClassName('is-active')[0].classList.remove('is-active');
-      this.classList.add('is-active');
-      document.getElementsByClassName('is-show')[0].classList.remove('is-show');
-      const arrayTabs = Array.prototype.slice.call(tabs);
-      const index = arrayTabs.indexOf(this);
-      document.getElementsByClassName('panel')[index].classList.add('is-show');
-    };
-  });
-</script>

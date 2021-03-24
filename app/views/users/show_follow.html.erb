@@ -1,13 +1,12 @@
-<%= render 'shared/header'%>
-
-<div class='container'>
-  <div class='flex flex-col mx-auto w-5/6 bg-white py-4 text-gray-600 rounded shadow-2xl'>
-    <div class='text-center text-xl font-bold my-8'>
+<%= render "shared/header"%>
+<div class="container mx-auto">
+  <div class="flex flex-col mx-auto w-full bg-white py-4 text-gray-600 rounded shadow-2xl">
+    <div class="title">
       <%= link_to @user do %>
         <%= @user.name %>
       <% end %>
     </div>
-    <%= render 'shared/status' %>
+    <%= render "shared/status" %>
     <% if @users.any? %>
       <%= render @users %>
     <% end %>

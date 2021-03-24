@@ -1,14 +1,13 @@
 <%= render 'shared/header' %>
-
 <div class='container mx-auto'>
-  <div class='flex flex-col p-8 mx-auto w-5/6 bg-white rounded text-xs sm:text-base text-gray-600 shadow-2xl'>
+  <div class='base flex flex-col text-xs sm:text-base'>
     <div class="text-right mb-8 text-xs"><%= @post.created_at %></div>
     <h1 class='text-sm sm:text-2xl mb-2'><%= @post.title %></h1>
     <div class="w-full h-ful border-b border-gray-200">
       <%= image_tag @post.image.url, class: 'w-full inline-block mt-2 mb-5 rounded'%>
       <div class="text-right text-sm my-4">
-        <p>改善ポイント：<%= @post.issue %></p>
-        <p>購入時価格：¥<%= @post.price %></p>
+        <p class="mb-2">改善ポイント：<%= @post.issue %></p>
+        <p class="mb-2">購入時価格：¥<%= @post.price %></p>
         <%= link_to search_path do %>
         <p class= "inline-block bg-blue-900 text-white p-1 text-xs rounded-xl">探してみる</p>
         <% end %>
@@ -20,9 +19,6 @@
         </div>
         <div class="flex mb-3">
           <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"  data-text="Remoshareをよろしくおねがいします！"  data-show-count="false">Tweet</a>
-          <span class="ml-2"><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://social-plugins.line.me/ja/how_to_install#lineitbutton" data-color="default" data-size="small" data-count="false" style="display: none;"></div>
-          <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script></span>
         </div>
       </div>
       <p></p>
