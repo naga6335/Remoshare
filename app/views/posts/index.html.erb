@@ -1,8 +1,8 @@
 <%= render 'shared/header' %>
 
 <div class='container mx-auto'>
-  <div class='flex flex-col mx-auto text-xs sm:text-base text-gray-600'>
-    <section class="text-center bg-white rounded shadow-md">
+  <div class='flex flex-col mx-auto text-sm sm:text-base text-gray-600'>
+    <section class="text-center bg-white rounded shadow-md py-5">
       <h1 class="text-2xl sm:text-3xl text-blue-800 font-bold pt-5">Let's Comfortable Remote Work！</h1>
       <div class="flex grid sm:grid-cols-2 grid-cols-1">
         <%= image_tag asset_path('manager.png'), class: "mx-auto" %>
@@ -14,13 +14,11 @@
               <%= submit_tag "検索", name: :nil, class:"small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
             </div>
           <% end %>
-          <div class="p-4 rounded w-full">
-            <p class="font-bold mb-3">人気のタグ一覧</p>
-            <% @tag_list.each do |list| %>
-              <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: 'medium-tag' %>
-              <%= "(#{list.posts.count})" %>
-            <% end %>
-          </div>
+          <p class="font-bold my-3">人気のタグ一覧</p>
+          <% @tag_list.each do |list| %>
+            <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: 'medium-tag' %>
+            <%= "(#{list.posts.count})" %>
+          <% end %>
         </div>
       </div>
     </section>
@@ -32,10 +30,9 @@
           <div class="mx-auto">職種一覧<%= pie_chart User.group(:job).order('count_all DESC').count %></div>
           <div class="mx-auto">改善されたこと<%= pie_chart Post.group(:issue).order('count_all DESC').count %></div>
         </div>
-        <p class="text-center mt-3">共通の悩みから繋がってみよう</p>
       </section>
       <section class="bg-white rounded p-4 shadow-md">
-        <p class="text-base text-center">いいねが多い記事</p>
+        <p class="text-base text-center mb-3">いいねが多い記事</p>
         <div class="grid grid-cols-1 sm:grid-cols-3 mx-auto sm:w-full gap-5 text-gray-600 w-2/3">
           <% @ranks.each.with_index(1) do |post, i| %>
           <div>
@@ -68,7 +65,7 @@
 
     <div>
       <%= link_to new_post_path do %>
-        <i class="far fa-edit text-3xl fixed right-0 bottom-20 mr-20 text-white rounded-full transition duration-200 ease-in-out bg-blue-800 hover:bg-gray-500 p-6"></i>
+        <i class="far fa-edit text-3xl fixed right-0 bottom-20 mr-12 text-white rounded-full transition duration-200 ease-in-out bg-blue-800 hover:bg-gray-500 p-6"></i>
       <% end %>
     </div>
 
