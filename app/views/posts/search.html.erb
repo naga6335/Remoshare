@@ -1,19 +1,16 @@
-<%= render 'shared/header' %>
+<%= render "shared/header" %>
 
-<div class='container mx-auto'>
+<div class="container mx-auto">
   <div class="flex flex-col mx-auto w-5/6 bg-white p-6 text-xs sm:text-base text-gray-600 rounded shadow-2xl">
-    <div class='text-center text-sm sm:text-base font-bold my-8'>
-      <%= "##{@tag.tag_name}" %> のタグの投稿
-      <%= "#{@posts.count}件" %>
-    </div>
+    <h1 class="title text-sm sm:text-xl"><%= "##{@tag.tag_name}" %> のタグの投稿 <%= "#{@posts.count}件" %></h1>
     <div class="grid grid-cols-1 sm:grid-cols-4 mx-auto gap-6 text-gray-600">
     <% @posts.each do |post| %>
-      <div class='overflow-hidden rounded-lg shadow-lg bg-white'>
+      <div class="overflow-hidden rounded-lg shadow-lg bg-white">
         <%= link_to post do %>
-          <%= image_tag post.image.url(:small), class: 'block h-auto w-full' %>
+          <%= image_tag post.image.url(:small), class: "block h-auto w-full" %>
           <div class="flex justify-between items-center p-2 leading-tight">
-            <p class='inline-block text-base'><%= post.title.truncate(10) %></p>
-            <p class='text-xs'><%= time_ago_in_words(post.created_at) %>前</p>
+            <p class="inline-block text-base"><%= post.title.truncate(10) %></p>
+            <p class="text-xs"><%= time_ago_in_words(post.created_at) %>前</p>
           </div>
           <div class="flex justify-between items-center p-2 leading-tight text-xs">
             <% if post.user.avatar? %>

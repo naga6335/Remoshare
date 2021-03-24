@@ -1,8 +1,7 @@
 <%= render 'shared/header' %>
-
 <div class='container mx-auto'>
-  <div class='flex flex-col mx-auto w-5/6 bg-white py-4 text-gray-600 rounded shadow-2xl'>
-  <div class='text-center text-xl font-bold my-8'>ユーザー一覧</div>
+  <div class='flex flex-col mx-auto w-full bg-white py-4 text-gray-600 rounded shadow-2xl'>
+  <h1 class='title'>ユーザー一覧</h1>
       <%= render @users %>
       <%= paginate @users %>
   </div>
