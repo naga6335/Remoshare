@@ -1,19 +1,17 @@
-<ul class='w-full px-6'>
-  <li class='flex my-auto py-2 text-xs sm:text-base border-b'>
-    <% if user.avatar? %>
-      <%= link_to user do %>
-      <div class="p-2">
-        <%= image_tag user.avatar.url(:small), class: 'medium-icon' %>
-      </div>
-      <% end %>
-    <% else %>
-      <%= link_to user do %>
-      <div class="p-2">
-        <%= image_tag asset_path('default.png'), class: 'medium-icon' %>
-      </div>
+<ul class="w-full px-6">
+  <li class="flex my-auto py-2 border-b">
+    <%= link_to user do %>
+      <% if user.avatar? %>
+        <div class="p-2">
+          <%= image_tag user.avatar.url(:small), class: "medium-icon" %>
+        </div>
+      <% else %>
+        <div class="p-2">
+          <%= image_tag asset_path("default.png"), class: "medium-icon" %>
+        </div>
       <% end %>
     <% end %>
-    <div class="my-auto mx-4 text-base"><%= link_to user.name, user %><p><%= user.profile %></p></div>
+    <div class="my-auto mx-4 text-sm md:text-base"><%= link_to user.name, user %><p><%= user.profile %></p></div>
     <% if current_user.admin? && !current_user?(user) %>
       | <%= link_to "delete", user, method: :delete, data: { confirm: "本当に削除しますか？" } %>
     <% end %>

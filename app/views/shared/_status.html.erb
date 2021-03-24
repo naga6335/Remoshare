@@ -1,5 +1,5 @@
 <% @user ||= current_user %>
-<div class='mx-auto text-xs p-2 bg-blue-800 text-white rounded-md mb-2'>
+<div class="mx-auto">
   <a href="<%= following_user_path(@user) %>">
     <strong id="following">
       <%= @user.following.count %>

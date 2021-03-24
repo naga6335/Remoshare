@@ -1,9 +1,8 @@
-<%= render 'shared/header' %>
-
-<div class='container mx-auto'>
-  <div class="flex flex-col mx-auto w-5/6 bg-white p-6 text-xs sm:text-base text-gray-600 rounded shadow-2xl">
-    <div class='text-center text-xl font-bold my-8'>通知一覧</div>
-    <div><%= link_to "すべて削除", notification_path(@notifications), method: :delete, class: 'fas fa-trash float-right rounded-3xl py-1 px-3 bg-blue-900 text-white text-xs mx-3'%></div>
+<%= render "shared/header" %>
+<div class="container mx-auto">
+  <div class="base flex flex-col sm:text-base">
+    <h1 class="title">通知一覧</h1>
+    <div><%= link_to "すべて削除", notification_path(@notifications), method: :delete, class: "fas fa-trash small-btn text-xs float-right" %></div>
     <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>
       <%= render notifications %>
