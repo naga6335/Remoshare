@@ -58,14 +58,19 @@
       <% end %>
     </li>
     <li>
-      <%= link_to users_path do %>
-        <i class="fas fa-users header mb-4 hover:text-gray-500">ユーザー一覧</i>
+      <%= link_to search_path do %>
+        <i class="fas fa-shopping-cart header mb-4 hover:text-gray-500">商品検索</i>
       <% end %>
     </li>
     <% if logged_in? %>
     <li>
-      <%= link_to search_path do %>
-        <i class="fas fa-shopping-cart header mb-4 hover:text-gray-500">商品検索</i>
+      <%= link_to new_post_path do %>
+        <i class="far fa-edit header mb-4 hover:text-gray-500">記事投稿</i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to users_path do %>
+        <i class="fas fa-users header mb-4 hover:text-gray-500">ユーザー一覧</i>
       <% end %>
     </li>
     <li>

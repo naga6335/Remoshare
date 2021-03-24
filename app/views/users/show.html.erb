@@ -24,13 +24,13 @@
             <%= @msg %>
           <% else %>
             <% if @isRoom == true %>
-              <%= link_to 'DMへ', room_path(@roomId), class: "small-btn bg-green-500" %>
+              <%= link_to 'DMへ', room_path(@roomId), class: "small-btn bg-green-500 focus:outline-none" %>
             <% else %>
               <%= form_with(model: @room, local: true) do |f| %>
                 <%= fields_for @entry do |e|%>
                   <% e.hidden_field :user_id, value: @user.id %>
                 <% end %>
-                <%= f.submit "DMを開始する",  class:"small-btn bg-green-500" %>
+                <%= f.submit "DMを開始する",  class:"small-btn bg-green-500 focus:outline-none" %>
               <% end %>
             <% end %>
           <% end %>
@@ -48,7 +48,7 @@
     <div class="panel is-show">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 bg-white p-6 rounded shadow-md">
         <% if @user.posts.any? %>
-            <%= render @posts %>
+          <%= render @posts %>
         <% else %>
           <p class="text-center">投稿はありません</p>
         <% end %>

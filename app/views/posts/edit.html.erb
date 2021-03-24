@@ -1,15 +1,13 @@
-<%= render 'shared/header' %>
-
-<div class='container mx-auto'>
-  <div class='flex flex-col p-8 mx-auto w-4/6 bg-white rounded text-xs sm:text-base text-gray-600'>
-  <p class='text-2xl text-center mb-5'>投稿の編集</p>
+<%= render "shared/header" %>
+<div class="container mx-auto">
+  <div class="base flex flex-col  text-xs sm:text-base">
+  <h1 class='title'>投稿の編集</h1>
     <%= form_with(model: @post, local: true) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-      <div>
-        <%= f.label :おすすめポイント, class:'text-sm'%>
-        <%= f.text_field :title, placeholder: "例）1日座っていても疲れにくい", class: "form block focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200"%>
+      <div class="mb-6">
+        <%= f.label :おすすめポイント, class: "form-title" %>
+        <%= f.text_field :title, placeholder: "例）1日座っていても疲れにくい", class: "form block focus:outline-none focus:shadow-outline"%>
       </div>
-
       <div class='text-center'>
         <%= f.label :画像, class: 'hidden' %>
         <label>
@@ -17,35 +15,28 @@
         <%= image_tag @post.image.url, id: 'preview', class: 'inline-block w-full h-full sm:w-4/6 sm:h-4/6 mt-2 mb-5 object-contain rounded transition duration-200 ease-inut cursor-pointer hover:opacity-70' %>
         </label>
       </div>
-
-      <div>
-        <%= f.label :一番の役立ちポイント, class: 'text-sm' %>
-        <%= f.select :issue, [['コミュニケーション','コミュニケーション'],['作業効率','作業効率'],['モチベーション','モチベーション'],['働き方','働き方'],['健康面','健康面'],['私生活','私生活'],['その他','その他']], {}, class: 'form focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+      <div class="mb-6">
+        <%= f.label :一番の役立ちポイント, class: "form-title" %>
+        <%= f.select :issue, [['コミュニケーション','コミュニケーション'],['作業効率','作業効率'],['モチベーション','モチベーション'],['働き方','働き方'],['健康面','健康面'],['私生活','私生活'],['その他','その他']], {}, class: 'form focus:outline-none focus:shadow-outline' %>
       </div>
-
-      <div>
-        <%= f.label :詳細, class: 'text-sm' %>
+      <div class="mb-6">
+        <%= f.label :詳細, class: "form-title" %>
         <%= f.text_area :content, placeholder: "例）職場にリモートワークが導入され週3で在宅勤務することになったので購入してみました！首の支えや座面も柔らかくずっと座っていても疲れないです。仕事に集中させてくれるアイテムです！", size: "60x8", class: 'form resize-none block focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
       </div>
-
-      <div class='text-sm'>
-        <p>購入時価格（任意）</p>
-        <%= f.number_field :price, class: "form focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200", max: 200000, min: 1000, placeholder: '¥0' %>
+      <div class="mb-6">
+        <p class="form-title">購入時価格（任意）</p>
+        <%= f.number_field :price, class: "form focus:outline-none focus:shadow-outline", max: 200000, min: 1000, placeholder: '¥0' %>
       </div>
-
-      <div>
-        <p class= 'text-sm'>#タグ（任意）</p>
-        <p class='text-xs'>※半角スペース区切りでタグ付けできます</p>
-        <%= f.text_field :tag_name, placeholder: "例）リモートワーク 椅子", class: 'form focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+      <div class="mb-6">
+        <p class= "form-title">#タグ（任意）※半角スペース区切りでタグ付けできます</p>
+        <%= f.text_field :tag_name, placeholder: "例）リモートワーク 椅子", class: 'form focus:outline-none focus:shadow-outline' %>
       </div>
-
       <div class="text-center">
-        <%= f.submit "更新する", class: "up-btn transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500 cursor-pointer" %>
+        <%= f.submit "更新する", class: "up-btn transition duration-200 ease-in-out hover:bg-gray-500 cursor-pointer" %>
       </div>
     <% end %>
   </div>
 </div>
-
 <script>
 function previewImage(id) {
   const target = this.event.target;

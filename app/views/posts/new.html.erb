@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 <div class="container mx-auto">
-  <div class="flex flex-col p-8 w-5/6 mx-auto bg-white rounded text-xs sm:text-base text-gray-600">
+  <div class="flex flex-col p-8 w-full mx-auto bg-white rounded text-xs sm:text-base text-gray-600">
     <%= form_with(model: @post, local: true) do |f| %>
     <%= render "shared/error_messages", object: f.object %>
       <div>
@@ -31,7 +31,7 @@
         <%= f.text_field :tag_name, placeholder: "例）リモートワーク 椅子", class: "form focus:outline-none focus:shadow-outline" %>
       </div>
       <div class="text-center">
-        <%= f.submit "投稿する", class: "up-btn transition duration-200 ease-in-out hover:bg-gray-500 cursor-pointer" %>
+        <%= f.submit "投稿する", class: "up-btn transition duration-200 ease-in-out focus:outline-none hover:bg-gray-500 cursor-pointer" %>
       </div>
     <% end %>
   </div>

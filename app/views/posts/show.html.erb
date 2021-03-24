@@ -1,7 +1,7 @@
 <%= render 'shared/header' %>
 <div class='container mx-auto'>
   <div class='base flex flex-col text-xs sm:text-base'>
-    <div class="text-right mb-8 text-xs"><%= @post.created_at %></div>
+    <div class="text-right mb-8 text-xs"><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
     <h1 class='text-sm sm:text-2xl mb-2'><%= @post.title %></h1>
     <div class="w-full h-ful border-b border-gray-200">
       <%= image_tag @post.image.url, class: 'w-full inline-block mt-2 mb-5 rounded'%>
@@ -9,7 +9,7 @@
         <p class="mb-2">改善ポイント：<%= @post.issue %></p>
         <p class="mb-2">購入時価格：¥<%= @post.price %></p>
         <%= link_to search_path do %>
-        <p class= "inline-block bg-blue-900 text-white p-1 text-xs rounded-xl">探してみる</p>
+        <p class= "small-btn text-xs transition duration-200 ease-in-out hover:bg-gray-500">探してみる</p>
         <% end %>
       </div>
       <p class="text-center text-xl mb-8"><%= @post.content %></p>
@@ -43,11 +43,11 @@
     <div id="comment-text">
       <%= render 'comments/comment', comments: @comments %>
     </div>
-    <div>
+    <div class="text-center">
       <% if current_user %>
         <%= form_with(model: [@post, @comment], local: false) do |f| %>
           <%= f.text_area :comment, size: "60x5", placeholder: "200文字以内でコメントできます！", class: "resize-none block w-full p-2 mt-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200'" %>
-          <%= f.submit 'コメントする', class: "up-btn transition duration-200 ease-in-out bg-blue-900 hover:bg-gray-500 cursor-pointer" %>
+          <%= f.submit 'コメントする', class: "up-btn transition duration-200 ease-in-out hover:bg-gray-500 cursor-pointer" %>
         <% end %>
       <% else %>
         <p>コメントの投稿には新規登録/ログインが必要です</p>
