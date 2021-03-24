@@ -66,17 +66,8 @@ jobs:
           command: bundle exec rubocop
 
       - run:
-          name: run tests
-          command: |
-              rails webpacker:install
-              mkdir /tmp/test-results
-              TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
-                circleci tests split --split-by=timings)"
-              bundle exec rspec \
-                --format progress \
-                --out /tmp/test-results/rspec.xml \
-                --format progress \
-                $TEST_FILES
+          name: RSpecの実行
+          command: bundle exec rspec -b --format documentation
 
       - store_test_results:
           path: /tmp/test-results
@@ -85,16 +76,9 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
-deploy:
-    docker:
-      - image: circleci/ruby:2.7.2-node-browsers
-        environment:
-          BUNDLER_VERSION: 2.1.4
-    steps:
-      - checkout
-      - ruby/install-deps
       - add_ssh_keys:
           fingerprints: "d7:ea:aa:96:a7:d7:02:70:b1:f0:89:09:c7:0e:c0:22"
+
       - deploy:
           name: Capistrano deploy
           command: bundle exec cap production deploy
