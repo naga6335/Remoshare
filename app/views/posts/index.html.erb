@@ -37,18 +37,18 @@
           <% @ranks.each.with_index(1) do |post, i| %>
           <div>
             <span class="block text-center mb-2"><i class="fas fa-crown"></i>第<%= i %>位</span>
-            <div class='overflow-hidden rounded-lg shadow-lg '>
+            <div class="overflow-hidden rounded-lg shadow-lg">
               <%= link_to post do %>
-                <%= image_tag post.image.url(:small), class: 'block h-auto w-full' %>
+                <%= image_tag post.image.url(:small), class: "block h-auto w-full" %>
                 <div class="flex justify-between items-center p-2 leading-tight">
-                  <p class='inline-block text-sm'><%= post.title.truncate(10) %></p>
-                  <p class='text-xs'><%= time_ago_in_words(post.created_at) %>前</p>
+                  <p class="inline-block text-sm"><%= post.title.truncate(10) %></p>
+                  <p class="text-xs"><%= time_ago_in_words(post.created_at) %>前</p>
                 </div>
                 <div class="flex items-center p-2 leading-tight text-xs">
                   <% if post.user.avatar? %>
-                    <%= image_tag post.user.avatar.url, id: 'preview', class: 'small-icon' %>
+                    <%= image_tag post.user.avatar.url, id: "preview", class: "small-icon" %>
                   <% else %>
-                    <%= image_tag asset_path('default.png'), id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %>
+                    <%= image_tag asset_path('default.png'), id: "preview", alt: "ユーザーアイコン", class: "small-icon" %>
                   <% end %>
                   <div class="ml-1">
                     <p><%= post.user.name %></p>
@@ -63,9 +63,9 @@
       </section>
     </div>
 
-    <div>
+    <div class="fixed right-0 bottom-0 mb-16 mr-16">
       <%= link_to new_post_path do %>
-        <i class="far fa-edit text-3xl fixed right-0 bottom-20 mr-12 text-white rounded-full transition duration-200 ease-in-out bg-blue-800 hover:bg-gray-500 p-6"></i>
+        <i class="far fa-edit text-3xl text-white rounded-full transition duration-200 ease-in-out bg-blue-800 hover:bg-gray-500 p-6"></i>
       <% end %>
     </div>
 

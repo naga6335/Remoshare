@@ -3,7 +3,7 @@
 </div>
 <div class="mb-5">
   <% @comments.each do |comment| %>
-    <div class="flex justify-between" id="comment-<%= comment.id %>">
+    <div class="flex justify-between mb-3" id="comment-<%= comment.id %>">
       <div>
         <%= link_to comment.user do %>
           <% if comment.user.avatar? %>
