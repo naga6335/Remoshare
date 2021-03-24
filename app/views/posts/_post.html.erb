@@ -1,4 +1,4 @@
-<div class="overflow-hidden rounded-lg p-2 shadow-lg bg-white sm:w-full">
+<div class="overflow-hidden rounded-lg shadow-lg bg-white sm:w-full">
   <%= link_to post do %>
     <%= image_tag post.image.url(:small), class: "block h-auto w-full" %>
     <div class="flex justify-between items-center p-2 leading-tight">
@@ -21,8 +21,8 @@
   <% end %>
   <% if logged_in? && post.user == current_user %>
     <div class="grid grid-cols-2 gap-2 text-center mt-2">
-      <div><%= link_to "編集", edit_post_path(post), class: "small-btn w-2/3" %></div>
-      <div><%= link_to "削除", post_path(post), method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "small-btn w-2/3" %></div>
+      <div><%= link_to "編集", edit_post_path(post), class: "small-btn w-2/3 mb-2" %></div>
+      <div><%= link_to "削除", post_path(post), method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "small-btn w-2/3 mb-2" %></div>
     </div>
   <% end %>
 </div>

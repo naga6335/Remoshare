@@ -1,6 +1,6 @@
-<%= render 'shared/header' %>
-<div class='container mx-auto'>
-  <div class='base flex flex-col text-xs sm:text-base'>
+<%= render "shared/header" %>
+<div class="container mx-auto md:w-2/3">
+  <div class="base flex flex-col text-xs sm:text-base">
     <div class="text-right mb-8 text-xs"><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
     <h1 class='text-sm sm:text-2xl mb-2'><%= @post.title %></h1>
     <div class="w-full h-ful border-b border-gray-200">
@@ -18,7 +18,7 @@
           <%= render 'likes/like', post: @post %>
         </div>
         <div class="flex mb-3">
-          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"  data-text="Remoshareをよろしくおねがいします！"  data-show-count="false">Tweet</a>
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Remoshareでリモートワークをもっと快適に！" data-url="https://remoshare.com/" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
       <p></p>
