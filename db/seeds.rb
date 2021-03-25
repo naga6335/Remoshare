@@ -4,7 +4,7 @@ User.create!(name:  "Test",
              password_confirmation: "testuser",
              admin: true)
 
-20.times do |n|
+30.times do |n|
   name  = "テストユーザー#{n+1}"
   email = "example-#{n+1}@exmaple.com"
   password = "password"
