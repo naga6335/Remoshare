@@ -36,7 +36,7 @@ RSpec.describe Like, type: :model do
       let(:like) { create(:like) }
 
       it 'post_idとuser_idの組み合わせは一意であること' do
-        another_like = create(:like, user_id: like.user_id, post_id: like.post_id)
+        another_like = build(:like, user_id: like.user_id, post_id: like.post_id)
         expect(another_like).to be_invalid
       end
     end
