@@ -19,7 +19,7 @@ RSpec.describe Like, type: :model do
     end
 
     context 'likeを保存できない場合' do
-      let(:like) { build(:like) }
+      let(:like) { create(:like) }
 
       it 'user_idが存在しないと保存できないこと' do
         like.user_id = ''

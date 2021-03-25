@@ -21,12 +21,5 @@ RSpec.describe Entry, type: :model do
         expect(entry).to be_invalid
       end
     end
-
-    context '一意性のテスト' do
-      it 'user_idとroom_idの組み合わせは一意であること' do
-        example_entry = build(:entry, user_id: entry.user_id, room_id: entry.room_id)
-        expect(example_entry).to be_invalid
-      end
-    end
   end
 end

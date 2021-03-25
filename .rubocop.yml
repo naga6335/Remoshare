@@ -16,6 +16,8 @@ AllCops:
     - "config/**/*"
     - "script/**/*"
     - "spec/**/*"
+    - "app/models/*"
+
   DisplayCopNames: true
   TargetRubyVersion: 3.0
 
