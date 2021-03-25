@@ -1,15 +1,15 @@
-# 1.upto(39) do |i|
-#   name  = Faker::Name.name
-#   email = "sample-#{i}@example.com"
-#   password = 'password'
-#   User.create!(name: name,
-#                 email: email,
-#                 password: password,
-#                 password_confirmation: password)
-# end
+User.create!(name:  "Test",
+             email: "test@example.com",
+             password:              "testuser",
+             password_confirmation: "testuser",
+             admin: true)
 
-# users = User.order(:created_at).take(6)
-# 30.times do
-#   content = Faker::Lorem.sentence(word_count: 5)
-#   users.each { |user| user.posts.create!(content: content) }
-# end
+32.times do |n|
+  name  = "テストユーザー#{n+1}"
+  email = "example-#{n+1}@exmaple.com"
+  password = "password"
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password)
+end

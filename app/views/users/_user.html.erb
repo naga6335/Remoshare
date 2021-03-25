@@ -11,9 +11,12 @@
         </div>
       <% end %>
     <% end %>
-    <div class="my-auto mx-4 text-sm md:text-base"><%= link_to user.name, user %><p><%= user.profile %></p></div>
+    <div class="my-auto mx-4 text-sm md:text-base">
+      <p><%= link_to user.name, user %><p>
+      <p><%= user.profile %></p>
+    </div>
     <% if current_user.admin? && !current_user?(user) %>
-      | <%= link_to "delete", user, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+      <%= link_to "退会", user, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "small-btn text-xs" %>
     <% end %>
   </li>
 </ul>
