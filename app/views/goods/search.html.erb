@@ -6,7 +6,7 @@
       <%= form_with url: search_path, method: :get do |f| %>
         <div class="flex mx-3 border border-gray-300 rounded-full p-1 focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200">
         <%= f.text_field :keyword, placeholder: "何をお探しですか？？", class: "w-full inline-block mx-2 focus:outline-none" %>
-        <%= f.submit '検索', class: "small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
+        <%= f.submit '検索', class: "small-btn cursor-pointer focus:outline-none transition duration-200 ease-in-out hover:bg-gray-500" %>
         </div>
       <% end %>
     </div>

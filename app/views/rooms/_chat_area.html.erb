@@ -1,11 +1,11 @@
-<div class='chat-title'>
+<div class="chat-title ">
   <% @entries.each do |e| %>
     <a href="/users/<%= e.user.id %>">
-    <% if e.user.name == current_user.name %>
-      <p><%= "あなた:" + e.user.name %></p>
-    <% else %>
-      <p><%= "相手:" + e.user.name + "さん" %></p>
-    <% end %>
+      <% if e.user.name == current_user.name %>
+        <p><%= "あなた:" + e.user.name %></p>
+      <% else %>
+        <p><%= "相手:" + e.user.name + "さん" %></p>
+      <% end %>
     </a>
   <% end %>
 </div>

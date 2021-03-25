@@ -17,7 +17,7 @@
         <div id="likes_buttons_<%= @post.id %>">
           <%= render 'likes/like', post: @post %>
         </div>
-        <div class="flex mb-3">
+        <div class="mb-3">
           <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Remoshareでリモートワークをもっと快適に！" data-url="https://remoshare.com/" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
@@ -46,7 +46,7 @@
     <div class="text-center">
       <% if current_user %>
         <%= form_with(model: [@post, @comment], local: false) do |f| %>
-          <%= f.text_area :comment, size: "60x5", placeholder: "200文字以内でコメントできます！", class: "resize-none block w-full p-2 mt-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200'" %>
+          <%= f.text_area :comment, size: "60x5", placeholder: "200文字以内でコメントできます！", class: "resize-none block w-full p-2 mt-2 mb-2 border border-gray-300 rounded-md focus:outline-none" %>
           <%= f.submit 'コメントする', class: "up-btn transition duration-200 ease-in-out hover:bg-gray-500 cursor-pointer" %>
         <% end %>
       <% else %>
