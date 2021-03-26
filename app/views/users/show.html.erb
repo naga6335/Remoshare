@@ -60,7 +60,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 bg-white p-6 rounded shadow-md">
         <% if @like_list.present? %>
           <% @like_list.each do |post| %>
-            <div class='overflow-hidden rounded-lg p-2 shadow-lg bg-white sm:w-full'>
+            <div class='overflow-hidden rounded-lg shadow-lg bg-white sm:w-full'>
               <%= link_to post do %>
                 <%= image_tag post.image.url(:small), class: 'block h-auto w-full' %>
                 <div class="flex justify-between items-center p-2 leading-tight">
