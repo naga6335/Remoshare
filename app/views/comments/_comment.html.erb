@@ -4,17 +4,18 @@
 <div class="mb-5">
   <% @comments.each do |comment| %>
     <div class="flex justify-between mb-3" id="comment-<%= comment.id %>">
-      <div>
+      <div class="flex text-xs">
         <%= link_to comment.user do %>
           <% if comment.user.avatar? %>
             <%= image_tag comment.user.avatar.url(:small), id: 'preview', class: 'small-icon'%>
           <% else %>
             <%= image_tag asset_path('default.png'), id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %>
           <% end %>
-        <%= comment.user.name %>
+        <p><%= comment.user.name %></p>
+        <p><%= comment.user.job %></p>
         <% end %>
       </div>
-      <div class="inline-block text-right">
+      <div class="inline-block text-sm text-right">
         <%= comment.comment %>
         <% if logged_in? && comment.user == current_user %>
           <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' }, class: "block text-xs"%>
