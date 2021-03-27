@@ -1,4 +1,4 @@
-server "54.168.50.41", user: "nagami", roles: %w{app db web}
+server "35.73.147.230", user: "nagami", roles: %w{app db web}
 
 set :ssh_options, {
   keys: %w(~/.ssh/remoshare.pem),
