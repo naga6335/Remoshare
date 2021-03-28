@@ -1,0 +1,8 @@
+<% if current_user %>
+  <%= form_with(model: [@post, @comment], local: false) do |f| %>
+    <%= f.text_area :comment, size: "60x5", placeholder: "200文字以内でコメントできます！", class: "resize-none block w-full p-2 mt-2 mb-2 border border-gray-300 rounded-md focus:outline-none" %>
+    <%= f.submit 'コメントする', class: "up-btn transition duration-200 ease-in-out hover:bg-gray-500 cursor-pointer" %>
+  <% end %>
+<% else %>
+  <p>コメントの投稿には新規登録/ログインが必要です</p>
+<% end %>

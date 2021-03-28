@@ -1,0 +1,25 @@
+<% @ranks.each.with_index(1) do |post, i| %>
+  <div>
+    <span class="block text-center mb-2"><i class="fas fa-crown"></i>第<%= i %>位</span>
+    <div class="overflow-hidden rounded-lg shadow-lg">
+      <%= link_to post do %>
+        <%= image_tag post.image.url(:small), class: "block h-auto w-full" %>
+        <div class="flex justify-between items-center p-2 leading-tight">
+          <p class="inline-block text-sm"><%= post.title.truncate(10) %></p>
+          <p class="text-xs"><%= time_ago_in_words(post.created_at) %>前</p>
+        </div>
+        <div class="flex items-center p-2 leading-tight text-xs">
+          <% if post.user.avatar? %>
+            <%= image_tag post.user.avatar.url, id: "preview", class: "small-icon" %>
+          <% else %>
+            <%= image_tag asset_path('default.png'), id: "preview", alt: "ユーザーアイコン", class: "small-icon" %>
+          <% end %>
+          <div class="ml-1">
+            <p><%= post.user.name %></p>
+            <p>職種:<%= post.user.job %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

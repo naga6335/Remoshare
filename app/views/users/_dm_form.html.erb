@@ -1,0 +1,17 @@
+<% if current_user.id == @user.id %>
+  <% @rooms.each do |r| %>
+    <% r.users.each do |u| %>
+      <div class="my-4 text-center">
+        <% if u.id == current_user.id %>
+        <% else %>
+          <% if u.avatar? %>
+            <%= image_tag u.avatar.url, id: 'preview', class: 'small-icon' %>
+          <% else %>
+            <%= image_tag asset_path('default.png'), id: 'preview', alt: 'ユーザーアイコン', class: 'small-icon' %>
+          <% end %>
+          <a href="/rooms/<%= r.id %>" class="font-bold hover:text-green-500 transition duration-200 ease-in-out"><%= u.name %>さんとのDMを再開する</a>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

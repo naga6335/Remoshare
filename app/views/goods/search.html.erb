@@ -1,6 +1,6 @@
 <%= render 'shared/header' %>
 <div class='container mx-auto'>
-  <div class='base flex flex-col sm:text-base'>
+  <div class='base flex flex-col sm:text-base hover:shadow-2xl transition duration-500 ease-in-out'>
     <h1 class="title">アイテムを探してみよう！</h1>
     <div class='text-center mb-3'>
       <%= form_with url: search_path, method: :get do |f| %>

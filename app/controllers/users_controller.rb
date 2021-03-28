@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @posts = @user.posts.page(params[:page]).per(6)
     likes = Like.where(user_id: current_user.id).pluck(:post_id)
     @like_list = Post.find(likes)
+    @rooms = @user.rooms.includes(:users)
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
     if @user.id == current_user.id
