@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 <div class="container mx-auto md:w-2/3">
-  <div class="base flex flex-col text-xs sm:text-base">
+  <div class="base flex flex-col text-xs sm:text-base hover:shadow-2xl transition duration-500 ease-in-out">
     <div class="text-right mb-8 text-xs"><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
     <h1 class='text-sm sm:text-2xl mb-2'><%= @post.title %></h1>
     <div class="w-full h-ful border-b border-gray-200">
@@ -41,17 +41,10 @@
       </div>
     </div>
     <div id="comment-text">
-      <%= render 'comments/comment', comments: @comments %>
+      <%= render "comments/comment", comments: @comments %>
     </div>
     <div class="text-center">
-      <% if current_user %>
-        <%= form_with(model: [@post, @comment], local: false) do |f| %>
-          <%= f.text_area :comment, size: "60x5", placeholder: "200文字以内でコメントできます！", class: "resize-none block w-full p-2 mt-2 mb-2 border border-gray-300 rounded-md focus:outline-none" %>
-          <%= f.submit 'コメントする', class: "up-btn transition duration-200 ease-in-out hover:bg-gray-500 cursor-pointer" %>
-        <% end %>
-      <% else %>
-        <p>コメントの投稿には新規登録/ログインが必要です</p>
-      <% end %>
+      <%= render "comments/form" %>
     </div>
   </div>
 </div>

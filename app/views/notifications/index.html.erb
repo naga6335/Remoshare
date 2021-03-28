@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 <div class="container mx-auto">
-  <div class="base flex flex-col sm:text-base">
+  <div class="base flex flex-col sm:text-base hover:shadow-2xl transition duration-500 ease-in-out">
     <h1 class="title">通知一覧</h1>
     <div><%= link_to "すべて削除", notification_path(@notifications), method: :delete, class: "fas fa-trash small-btn text-xs float-right" %></div>
     <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
