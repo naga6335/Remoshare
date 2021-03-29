@@ -16,7 +16,7 @@
     @apply inline-block w-12 h-12 rounded-full shadow-xl;
   }
   .large-icon {
-    @apply inline-block w-32 h-32 rounded-full shadow-xl;
+    @apply inline-block w-32 h-32 rounded-full;
   }
   .form-title {
     @apply block mb-2 text-sm text-gray-600;
@@ -66,6 +66,26 @@ body {
   border-radius: 9999px;
   height: 30px;
   width: 30px;
+}
+
+.page {
+  margin: 0 5px;
+}
+
+.preview {
+  margin: 0 5px;
+}
+
+.first {
+  margin: 0 5px;
+}
+
+.next {
+  margin: 0 5px;
+}
+
+.last {
+  margin: 0 5px;
 }
 
 .tab-group{

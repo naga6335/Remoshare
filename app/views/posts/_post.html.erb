@@ -19,7 +19,7 @@
     </div>
       <div class="p-2">
         <% post.tags.each do |tag|%>
-          <%= link_to "##{tag.tag_name}", tag_posts_path(tag), class: "small-tag" %>
+          <%= link_to "##{tag.tag_name}", tag_posts_path(tag), class: "small-tag transition duration-200 ease-in-out hover:bg-blue-800 focus:outline-none" %>
         <% end %>
       </div>
   <% end %>
