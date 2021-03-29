@@ -1,5 +1,5 @@
 <% if @user.avatar? %>
-  <%= image_tag @user.avatar.url(:small), class: "large-icon" %>
+  <%= image_tag @user.avatar.url(:small), class: "large-icon shadow-md" %>
 <% else %>
-  <%= image_tag asset_path("default.png"), class: "large-icon" %>
+  <%= image_tag asset_path("default.png"), class: "large-icon shadow-md" %>
 <% end %>

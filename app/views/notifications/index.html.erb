@@ -2,7 +2,7 @@
 <div class="container mx-auto">
   <div class="base flex flex-col sm:text-base hover:shadow-2xl transition duration-500 ease-in-out">
     <h1 class="title">通知一覧</h1>
-    <div><%= link_to "すべて削除", notification_path(@notifications), method: :delete, class: "fas fa-trash small-btn text-xs float-right" %></div>
+    <div><%= link_to "すべて削除", notification_path(@notifications), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "fas fa-trash small-btn text-xs float-right transition duration-200 ease-in-out hover:bg-gray-400 focus:outline-none" %></div>
     <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>
       <%= render notifications %>

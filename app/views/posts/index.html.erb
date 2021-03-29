@@ -6,16 +6,16 @@
       <div class="flex grid sm:grid-cols-2 grid-cols-1">
         <%= image_tag asset_path('manager.png'), class: "mx-auto" %>
         <div class="my-auto w-full">
-          <p class="text-base font-bold">リモートワークの悩みを解消しよう！</p>
+          <p class="text-base font-bold">リモートワークの術を探してみよう！</p>
           <%= form_tag(posts_path, method: :get) do %>
-            <div class='flex mx-3 my-2 border border-gray-300 rounded-full p-1 focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200'>
-              <%= text_field_tag :search, "", placeholder: "search....", class: 'w-full inline-block mx-2 focus:outline-none' %>
-              <%= submit_tag "検索", name: :nil, class:"small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
-            </div>
+          <div class='flex mx-3 my-2 border border-gray-300 rounded-full p-1 focus:outline-none '>
+            <%= text_field_tag :search, "", placeholder: "search....", class: 'w-full inline-block mx-2 focus:outline-none' %>
+            <%= submit_tag "検索", name: :nil, class:"small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
+          </div>
           <% end %>
           <p class="font-bold my-3">人気のタグ一覧</p>
           <% @tag_list.each do |list| %>
-            <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: 'medium-tag' %>
+            <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: 'medium-tag transition duration-200 ease-in-out hover:bg-blue-800 focus:outline-none' %>
             <%= "(#{list.posts.count})" %>
           <% end %>
         </div>

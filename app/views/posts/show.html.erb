@@ -23,7 +23,7 @@
       </div>
       <p></p>
       <% @post_tags.each do |tag| %>
-        <%= link_to "##{tag.tag_name}", tag_posts_path(tag_id: tag.id), class: "medium-tag" %>
+        <%= link_to "##{tag.tag_name}", tag_posts_path(tag_id: tag.id), class: "medium-tag transition duration-200 ease-in-out hover:bg-blue-800 focus:outline-none" %>
       <% end %>
     </div>
     <div class="flex py-5 mb-5 text-center border-b border-gray-200">
