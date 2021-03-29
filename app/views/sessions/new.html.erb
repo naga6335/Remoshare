@@ -20,9 +20,9 @@
           <%= f.submit "ログイン", class: "log-btn bg-blue-800 focus:bg-gray-400 focus:outline-none" %>
         </div>
         <div class="mb-6">
-          <%= link_to "ゲストログイン（閲覧用）", guest_path, class: "log-btn block text-center bg-green-500 focus:bg-gray-400 focus:outline-none" %>
+          <%= link_to "ゲストログイン（閲覧用）", guest_path, class: "log-btn block text-center bg-green-500 focus:bg-gray-400 focus:outline-none transition duration-200 ease-in-out hover:bg-gray-500" %>
         </div>
-          <p class= "text-sm text-center text-gray-600">新規登録の方は<%= link_to "こちら", signup_path, class: "font-bold text-blue-800 focus:text-gray-500" %></p>
+          <p class= "text-sm text-center text-gray-600">新規登録の方は<%= link_to "こちら", signup_path, class: "font-bold text-blue-800 focus:text-gray-500 focus:outline-none transition duration-200 ease-in-out hover:bg-gray-500" %></p>
         <% end %>
     </div>
   </div>
