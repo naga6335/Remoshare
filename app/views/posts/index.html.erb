@@ -1,19 +1,19 @@
-<%= render 'shared/header' %>
-<div class='container mx-auto'>
-  <div class='flex flex-col mx-auto text-sm sm:text-base text-gray-600'>
+<%= render "shared/header" %>
+<div class="container mx-auto">
+  <div class="flex flex-col mx-auto text-sm sm:text-base text-gray-600">
     <section class="text-center bg-white rounded py-5 hover:shadow-2xl transition duration-500 ease-in-out">
-      <h1 class="text-2xl sm:text-3xl text-blue-800 font-bold pt-5">Let's Comfortable Remote Work！</h1>
+      <h1 class="top-title sm:text-3xl">Let's Comfortable Remote Work！</h1>
       <div class="flex grid sm:grid-cols-2 grid-cols-1">
         <%= image_tag asset_path('manager.png'), class: "mx-auto" %>
         <div class="my-auto w-full">
-          <p class="text-base font-bold">リモートワークの術を探してみよう！</p>
+          <p class="text-lg font-bold">記事タイトル、職種で検索</p>
           <%= form_tag(posts_path, method: :get) do %>
-          <div class='flex mx-3 my-2 border border-gray-300 rounded-full p-1 focus:outline-none '>
-            <%= text_field_tag :search, "", placeholder: "search....", class: 'w-full inline-block mx-2 focus:outline-none' %>
+          <div class="flex mx-3 my-2 border border-gray-300 rounded-full p-1 focus:outline-none">
+            <%= text_field_tag :search, "", placeholder: "search....", class: "w-full inline-block mx-2 focus:outline-none" %>
             <%= submit_tag "検索", name: :nil, class:"small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
           </div>
           <% end %>
-          <p class="font-bold my-3">人気のタグ一覧</p>
+          <p class="font-bold my-3">人気のタグ</p>
           <% @tag_list.each do |list| %>
             <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: 'medium-tag transition duration-200 ease-in-out hover:bg-blue-800 focus:outline-none' %>
             <%= "(#{list.posts.count})" %>
@@ -38,7 +38,7 @@
     </div>
     <div class="fixed right-0 bottom-0 mb-16 mr-16">
       <%= link_to new_post_path do %>
-        <i class="far fa-edit text-3xl text-white rounded-full transition duration-200 ease-in-out bg-blue-800 hover:bg-gray-500 p-6"></i>
+        <i class="far fa-edit post-btn transition duration-200 ease-in-out hover:bg-gray-500"></i>
       <% end %>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6 text-gray-600 bg-white p-6 rounded hover:shadow-2xl transition duration-500 ease-in-out">
