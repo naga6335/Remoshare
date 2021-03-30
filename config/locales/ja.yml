@@ -7,6 +7,7 @@ ja:
         name: 名前
         email: メールアドレス
         password: パスワード
+        profile: プロフィール
       post:
         title: おすすめポイント
         content: 詳細

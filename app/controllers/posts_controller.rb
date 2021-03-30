@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     @posts = Post.all.includes(:user, :tags, :tagmaps, :likes).order(created_at: :desc).search(params[:search]).page(params[:page]).per(8)
     @user = User.find_by(params[:id])
     @ranks = Post.includes(:user).create_all_ranks
-    @tag_list = Tag.all.includes(:posts)
+    @tag_list = Tag.limit(7).order(id: :asc).includes(:posts)
   end
 
   def new

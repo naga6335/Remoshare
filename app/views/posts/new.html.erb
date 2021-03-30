@@ -20,7 +20,8 @@
       </div>
       <div class="mb-6">
         <%= f.label :詳細, class: "form-title" %>
-        <%= f.text_area :content, placeholder: "例）長時間座っていても腰が楽で在宅の必須アイテム！", size: "60x8", class: "form resize-none block focus:outline-none focus:shadow-outline" %>
+        <%= f.text_area :content, placeholder: "例）長時間座っていても腰が楽で在宅の必須アイテム！", size: "60x8", class: "form resize-none block focus:outline-none focus:shadow-outline", onkeyup: "count_down(this);" %>
+        <span id="count" class="float-right">200</span>
       </div>
       <div class="mb-6">
         <p class= "form-title">購入時価格</p>
@@ -50,5 +51,15 @@
     } else {
       reader.readAsDataURL(file);
     };
+  }
+
+  function count_down(obj) {
+    var element = document.getElementById('count');
+    element.innerHTML = 200 - obj.value.length;
+    if (200 - obj.value.length < 0) {
+        element.style.color = 'red';
+    } else {
+        element.style.color = 'grey';
+    }
   }
 </script>

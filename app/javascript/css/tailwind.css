@@ -9,6 +9,9 @@
   .title {
     @apply text-center text-xl text-gray-600 font-bold my-8;
   }
+  .top-title {
+    @apply text-2xl text-blue-800 font-bold pt-5 ;
+  }
   .small-icon {
     @apply inline-block h-8 w-8 rounded-full shadow-xl;
   }
@@ -50,6 +53,9 @@
   }
   .log-btn {
     @apply w-full px-2 py-3 text-white rounded-md;
+  }
+  .post-btn {
+    @apply text-3xl text-white  p-6 rounded-full bg-blue-800;
   }
 }
 

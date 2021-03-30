@@ -19,7 +19,8 @@
         </div>
         <div class="mb-6">
           <%= f.label :プロフィール, class: "form-title" %>
-          <%= f.text_area :profile, size: "54x3", class: "form resize-none resize-none block focus:outline-none focus:shadow-outline", placeholder: "例）26歳の会社員です！よろしくお願いします。" %>
+          <%= f.text_area :profile, size: "54x3", class: "form resize-none resize-none block focus:outline-none focus:shadow-outline", placeholder: "例）26歳の会社員です！よろしくお願いします。", onkeyup: "count_down(this);" %>
+          <span id="count" class="float-right text-gray-600">100</span>
         </div>
         <div class="mb-6">
           <%= f.label :名前, class: "form-title" %>
@@ -61,6 +62,16 @@ function previewAvatar(id) {
     reader.readAsDataURL(file);
   } else {
     reader.readAsDataURL(file);
+  }
+}
+
+function count_down(obj) {
+  var element = document.getElementById('count');
+  element.innerHTML = 100 - obj.value.length;
+  if (100 - obj.value.length < 0) {
+      element.style.color = 'red';
+  } else {
+      element.style.color = 'grey';
   }
 }
 </script>
