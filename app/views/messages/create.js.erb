@@ -1,2 +1,2 @@
-$("#chat_area").html("#{j(render("rooms/chat_area"))}");
-$("#chat_form").html("#{j(render("rooms/chat_form"))}");
+document.getElementById("chat_area").innerHTML = ("<%= j(render("rooms/chat_area")) %>");
+document.getElementById("chat_form").innerHTML = ("<%= j(render("rooms/chat_form")) %>");

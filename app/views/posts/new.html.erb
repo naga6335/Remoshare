@@ -31,6 +31,12 @@
         <p class= "form-title">#タグ（任意）※半角スペース区切りでタグ付けできます</p>
         <%= f.text_field :tag_name, placeholder: "例）リモートワーク 椅子", class: "form focus:outline-none focus:shadow-outline" %>
       </div>
+      <div class="my-2 text-xs">
+      <span>人気のタグ：</span>
+      <% @tag_list.each do |list| %>
+        <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: "small-tag transition duration-200 ease-in-out hover:bg-blue-800 focus:outline-none" %>
+      <% end %>
+      </div>
       <div class="text-center">
         <%= f.submit "投稿する", class: "up-btn transition duration-200 ease-in-out focus:outline-none hover:bg-gray-500 cursor-pointer" %>
       </div>

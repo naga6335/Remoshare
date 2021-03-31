@@ -75,23 +75,53 @@ body {
 }
 
 .page {
+  margin: 0 15px;
+}
+
+.page:hover {
+  display: inline-block;
+  color: #2c5282;
+  transition: all  0.3s ease;
+}
+
+.prev {
   margin: 0 5px;
 }
 
-.preview {
-  margin: 0 5px;
+.prev:hover {
+  display: inline-block;
+  color: #2c5282;
+  transition: all  0.3s ease;
 }
 
 .first {
   margin: 0 5px;
 }
 
+.first:hover {
+  display: inline-block;
+  color: #2c5282;
+  transition: all  0.3s ease;
+}
+
 .next {
   margin: 0 5px;
 }
 
+.next:hover {
+  display: inline-block;
+  color: #2c5282;
+  transition: all  0.3s ease;
+}
+
 .last {
   margin: 0 5px;
+}
+
+.last:hover {
+  display: inline-block;
+  color: #2c5282;
+  transition: all  0.3s ease;
 }
 
 .tab-group{
@@ -118,6 +148,7 @@ body {
 .tab.is-active{
   background: #2c5282;
   color: #ffffff;
+  text-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   transition: all 0.2s ease-out;
 }
 
