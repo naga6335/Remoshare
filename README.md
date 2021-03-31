@@ -96,6 +96,7 @@ ActiveRecordのメリット、デメリットを考察することができま�
 ### その他機能
 ・全ページ完全レスポンシブ対応<br>
 ・アラートは右からスライドインし2秒後にフェードアウト(javascriptで実装)<br>
+・プロフィール、記事投稿、編集の詳細入力部の文字カウンター(javascriptで実装)<br>
 ・要素ホバーでせり出すアニメーション(Tailwindcssで実装)<br>
 ## インフラ構成
 ![AWS](https://user-images.githubusercontent.com/74854952/112935694-38745200-915f-11eb-8fea-acea1cad292d.png)
