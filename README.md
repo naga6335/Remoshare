@@ -101,7 +101,7 @@ ActiveRecordのメリット、デメリットを考察することができま�
 ## インフラ構成
 ![AWS](https://user-images.githubusercontent.com/74854952/112935694-38745200-915f-11eb-8fea-acea1cad292d.png)
 ## ER図
-![ER図](https://user-images.githubusercontent.com/74854952/112935708-40cc8d00-915f-11eb-9b62-c213fd1e1c3e.png)
+![ER図]![ER図 (1)](https://user-images.githubusercontent.com/74854952/113102829-7fcf1100-9239-11eb-821b-6c7ff7274809.png)
 ## 今後の改良計画
 ・Vuejsによる部分SPA化、UXの向上（いいね、フォローなどのボタンアニメーション）<br>
 ・DM受信時の通知も適用<br>
