@@ -2,7 +2,7 @@
 <div class="container mx-auto md:w-2/3">
   <div class="base flex flex-col text-xs sm:text-base hover:shadow-2xl transition duration-500 ease-in-out">
     <div class="text-right mb-8 text-xs"><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
-    <h1 class='text-sm sm:text-2xl mb-2'><%= @post.title %></h1>
+    <h1 class='text-base sm:text-2xl mb-2'><%= @post.title %></h1>
     <div class="w-full h-ful border-b border-gray-200">
       <%= image_tag @post.image.url, class: 'w-full inline-block mt-2 mb-5 rounded'%>
       <div class="text-right text-sm my-4">
@@ -21,7 +21,6 @@
           <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Remoshareでリモートワークをもっと快適に！" data-url="https://remoshare.com/" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
       </div>
-      <p></p>
       <% @post_tags.each do |tag| %>
         <%= link_to "##{tag.tag_name}", tag_posts_path(tag_id: tag.id), class: "medium-tag transition duration-200 ease-in-out hover:bg-blue-800 focus:outline-none" %>
       <% end %>
