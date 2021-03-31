@@ -5,12 +5,12 @@ class PostsController < ApplicationController
     @posts = Post.all.includes(:user, :tags, :tagmaps, :likes).order(created_at: :desc).search(params[:search]).page(params[:page]).per(8)
     @user = User.find_by(params[:id])
     @ranks = Post.includes(:user).create_all_ranks
-    @tag_list = Tag.limit(10).order(id: :asc).includes(:posts)
+    @tag_list = Tag.find(Tagmap.group(:tag_id).order('count(tag_id) desc').limit(10).includes(:post).pluck(:tag_id))
   end
 
   def new
     @post = Post.new
-    @tag_list = Tag.limit(5).order(id: :asc).includes(:posts)
+    @tag_list = Tag.find(Tagmap.group(:tag_id).order('count(tag_id) desc').limit(5).includes(:post).pluck(:tag_id))
   end
 
   def show
