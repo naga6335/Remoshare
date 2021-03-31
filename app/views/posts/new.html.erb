@@ -11,7 +11,7 @@
         <%= f.label :画像, class: "hidden" %>
         <label>
         <%= f.file_field :image, class: "hidden", onchange: "previewImage(preview)", alt: "投稿画像" %>
-        <%= image_tag @post.image.url, id: "preview", class: "inline-block w-full h-full sm:w-4/6 sm:h-4/6 mt-2 mb-5 object-contain rounded transition duration-200 ease-inut cursor-pointer hover:opacity-70" %>
+        <%= image_tag @post.image.url, id: "preview", class: "inline-block w-full h-full sm:w-4/6 sm:h-4/6 mt-2 mb-5 object-contain rounded transition duration-200 ease-in-out cursor-pointer hover:opacity-75" %>
         </label>
       </div>
       <div class="mb-6">
