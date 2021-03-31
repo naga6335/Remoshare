@@ -2,14 +2,14 @@
 <div class="container mx-auto">
   <div class="flex flex-col mx-auto text-sm sm:text-base text-gray-600">
     <section class="text-center bg-white rounded py-5 hover:shadow-2xl transition duration-500 ease-in-out">
-      <h1 class="top-title sm:text-3xl">Let's Comfortable Remote Work！</h1>
+      <h1 class="top-title sm:text-3xl">Let's Start Comfortable Remote Work!</h1>
       <div class="flex grid sm:grid-cols-2 grid-cols-1">
         <%= image_tag asset_path('manager.png'), class: "mx-auto" %>
         <div class="my-auto w-full">
-          <p class="text-lg font-bold">記事タイトル、職種で検索</p>
+          <p class="text-lg font-bold">記事、改善ポイントから検索</p>
           <%= form_tag(posts_path, method: :get) do %>
           <div class="flex mx-3 my-2 border border-gray-300 rounded-full p-1 focus:outline-none">
-            <%= text_field_tag :search, "", placeholder: "search....", class: "w-full inline-block mx-2 focus:outline-none" %>
+            <%= text_field_tag :search, "", placeholder: "例）リモート、在宅", class: "w-full inline-block mx-2 focus:outline-none" %>
             <%= submit_tag "検索", name: :nil, class:"small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
           </div>
           <% end %>
@@ -26,11 +26,12 @@
         <p class="text-center mb-5">ユーザーデータ</p>
         <div class="flex grid grid-cols-1 sm:grid-cols-2 text-center gap-3">
           <div class="mx-auto">職種一覧<%= pie_chart User.group(:job).order('count_all DESC').count %></div>
-          <div class="mx-auto">改善されたこと<%= pie_chart Post.group(:issue).order('count_all DESC').count %></div>
+          <div class="mx-auto">改善ポイント<%= pie_chart Post.group(:issue).order('count_all DESC').count %></div>
         </div>
       </section>
       <section class="bg-white rounded p-4 hover:shadow-2xl transition duration-500 ease-in-out">
         <p class="text-base text-center mb-3">いいねが多い記事</p>
+
         <div class="grid grid-cols-1 sm:grid-cols-3 mx-auto sm:w-full gap-5 text-gray-600 w-2/3">
           <%= render "rank_post" %>
         </div>

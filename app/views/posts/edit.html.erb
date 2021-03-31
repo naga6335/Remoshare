@@ -1,18 +1,18 @@
 <%= render "shared/header" %>
 <div class="container mx-auto md:w-2/3 hover:shadow-2xl transition duration-500 ease-in-out">
   <div class="base flex flex-col  text-xs sm:text-base">
-  <h1 class='title'>投稿の編集</h1>
+  <h1 class="title">投稿の編集</h1>
     <%= form_with(model: @post, local: true) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+    <%= render "shared/error_messages", object: f.object %>
       <div class="mb-6">
         <%= f.label :おすすめポイント, class: "form-title" %>
         <%= f.text_field :title, placeholder: "例）1日座っていても疲れにくい", class: "form block focus:outline-none focus:shadow-outline"%>
       </div>
-      <div class='text-center'>
+      <div class="text-center">
         <%= f.label :画像, class: 'hidden' %>
         <label>
         <%= f.file_field :image, class: 'hidden', onchange: 'previewImage(preview)', alt: '投稿画像' %>
-        <%= image_tag @post.image.url, id: 'preview', class: 'inline-block w-full h-full sm:w-4/6 sm:h-4/6 mt-2 mb-5 object-contain rounded transition duration-200 ease-inut cursor-pointer hover:opacity-70' %>
+        <%= image_tag @post.image.url, id: 'preview', class: "inline-block w-full h-full sm:w-4/6 sm:h-4/6 mt-2 mb-5 object-contain rounded transition duration-200 ease-inut cursor-pointer hover:opacity-70" %>
         </label>
       </div>
       <div class="mb-6">
@@ -21,7 +21,8 @@
       </div>
       <div class="mb-6">
         <%= f.label :詳細, class: "form-title" %>
-        <%= f.text_area :content, placeholder: "例）職場にリモートワークが導入され週3で在宅勤務することになったので購入してみました！首の支えや座面も柔らかくずっと座っていても疲れないです。仕事に集中させてくれるアイテムです！", size: "60x8", class: 'form resize-none block focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200' %>
+        <%= f.text_area :content, placeholder: "例）職場にリモートワークが導入され週3で在宅勤務することになったので購入してみました！首の支えや座面も柔らかくずっと座っていても疲れないです。仕事に集中させてくれるアイテムです！", size: "60x8", class: "form resize-none block focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200", onkeyup: "count_down(this);" %>
+      <span id="count" class="float-right">200</span>
       </div>
       <div class="mb-6">
         <p class="form-title">購入時価格（任意）</p>
@@ -29,7 +30,7 @@
       </div>
       <div class="mb-6">
         <p class= "form-title">#タグ（任意）※半角スペース区切りでタグ付けできます</p>
-        <%= f.text_field :tag_name, placeholder: "例）リモートワーク 椅子", class: 'form focus:outline-none focus:shadow-outline' %>
+        <%= f.text_field :tag_name, placeholder: "例）リモートワーク 椅子", class: "form focus:outline-none focus:shadow-outline" %>
       </div>
       <div class="text-center">
         <%= f.submit "更新する", class: "up-btn transition duration-200 ease-in-out hover:bg-gray-500 cursor-pointer" %>
@@ -38,17 +39,27 @@
   </div>
 </div>
 <script>
-function previewImage(id) {
-  const target = this.event.target;
-  const file = target.files[0];
-  const reader = new FileReader();
-  reader.onloadend = function() {
-    preview.src = reader.result;
-  };
-  if (file) {
-    reader.readAsDataURL(file);
-  } else {
-    reader.readAsDataURL(file);
+  function previewImage(id) {
+    const target = this.event.target;
+    const file = target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = function() {
+      preview.src = reader.result;
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      reader.readAsDataURL(file);
+    }
   }
-}
+
+  function count_down(obj) {
+    var element = document.getElementById('count');
+    element.innerHTML = 200 - obj.value.length;
+    if (200 - obj.value.length < 0) {
+        element.style.color = 'red';
+    } else {
+        element.style.color = 'grey';
+    }
+  }
 </script>

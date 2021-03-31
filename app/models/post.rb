@@ -72,7 +72,7 @@ class Post < ApplicationRecord
 
   def self.search(search)
     if search
-      Post.where(["title LIKE ?", "%#{search}%"])
+      Post.where(["title LIKE ? OR content LIKE ? OR issue LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%"])
     else
       Post.all
     end
