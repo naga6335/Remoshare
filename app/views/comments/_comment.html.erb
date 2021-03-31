@@ -18,7 +18,7 @@
       <div class="inline-block w-2/3 text-xs md:text-sm text-right">
         <%= comment.comment %>
         <% if logged_in? && comment.user == current_user %>
-          <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' }, class: "inline-block text-xs"%>
+          <p><%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' }, class: "inline-block text-xs"%></p>
         <% end %>
       </div>
     </div>
