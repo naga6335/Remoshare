@@ -14,7 +14,7 @@
 ### フロントエンド
 ・HTML/CSS<br>
 ・Tailwindcss<br>
-・Javascript/JQuery<br>
+・Javascript(jQuery不使用)<br>
 ### バックエンド
 ・Ruby(2.7.2)<br>
 ・Rails(6.1.3)<br>
