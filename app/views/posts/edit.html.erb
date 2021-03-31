@@ -12,12 +12,7 @@
         <%= f.label :画像, class: 'hidden' %>
         <label>
         <%= f.file_field :image, class: 'hidden', onchange: 'previewImage(preview)', alt: '投稿画像' %>
-<<<<<<< HEAD
-        <%= image_tag @post.image.url, id: 'preview', class: "inline-block w-full h-full sm:w-4/6 sm:h-4/6 mt-2 mb-5 object-contain rounded transition duration-200 ease-in-out cursor-pointer hover:opacity-75" %>
-=======
-
         <%= image_tag @post.image.url, id: 'preview', class: 'inline-block w-full h-full sm:w-4/6 sm:h-4/6 mt-2 mb-5 object-contain rounded transition duration-200 ease-in-out cursor-pointer hover:opacity-75' %>
->>>>>>> d0422648ea16ca0ad4f5067fff9473e95b1e0f5a
         </label>
       </div>
       <div class="mb-6">
@@ -26,12 +21,8 @@
       </div>
       <div class="mb-6">
         <%= f.label :詳細, class: "form-title" %>
-<<<<<<< HEAD
-        <%= f.text_area :content, placeholder: "", size: "60x8", class: "form resize-none block focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200", onkeyup: "count_down(this);" %>
-=======
         <%= f.text_area :content, placeholder: "例）職場にリモートワークが導入され週3で在宅勤務することになったので購入してみました！首の支えや座面も柔らかくずっと座っていても疲れないです。仕事に集中させてくれるアイテムです！", size: "60x8", class: "form resize-none block focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200", onkeyup: "count_down(this);" %>
       <span id="count" class="float-right">200</span>
->>>>>>> d0422648ea16ca0ad4f5067fff9473e95b1e0f5a
       </div>
       <div class="mb-6">
         <p class="form-title">購入時価格（任意）</p>
