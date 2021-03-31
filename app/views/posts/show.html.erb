@@ -4,7 +4,7 @@
     <div class="text-right mb-8 text-xs"><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
     <h1 class='text-base sm:text-2xl mb-2'><%= @post.title %></h1>
     <div class="w-full h-ful border-b border-gray-200">
-      <%= image_tag @post.image.url, class: 'w-full inline-block mt-2 mb-5 rounded'%>
+      <%= image_tag @post.image.url, class: "mx-auto block mt-2 mb-5 rounded" %>
       <div class="text-right text-sm my-4">
         <p class="mb-2">改善ポイント：<%= @post.issue %></p>
         <p class="mb-2">購入時価格：¥<%= @post.price %></p>
