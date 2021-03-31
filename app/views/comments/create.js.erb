@@ -1,2 +1,2 @@
-$('#comment-text').html("<%= j(render 'comments/comment',{ comments: @comments }) %>");
-$('textarea').val('');
+document.getElementById("comment-text").innerHTML =("<%= j(render 'comments/comment',{ comments: @comments }) %>");
+document.getElementById('comment_comment').value = ''
