@@ -6,7 +6,7 @@
 リモートワークの悩みや、他のリモートワーカーを近しい職種から探し交流を広げることができます。<br>
 公式マニュアル、技術記事を参考に全て独学で開発しました。<br>
 
-<img width="1418" alt="スクリーンショット 2021-03-29 18 08 07" src="https://user-images.githubusercontent.com/74854952/112814041-d44b8280-90b9-11eb-98c6-76a18525585d.png"><br>
+<img width="1267" alt="Remoshare_shot" src="https://user-images.githubusercontent.com/74854952/113101784-1bf81880-9238-11eb-923e-17c15b28d662.png"><br>
 
 サイトURL・・・<a href="https://remoshare.com/">Remoshare</a>（ログイン画面からゲストユーザーとして簡単ログインできます）
 
