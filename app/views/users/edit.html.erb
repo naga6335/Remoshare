@@ -10,7 +10,7 @@
           <label class="inline-block">
             <% if @user.avatar? %>
               <%= f.file_field :avatar, class: "hidden", onchange: "previewAvatar(preview)", alt: "ユーザーアイコン" %>
-              <div><%= image_tag @user.avatar.url, id: "preview", class: "large-icon" %></div>
+              <div><%= image_tag @user.avatar.url, id: "preview", class: "large-icon hover:shadow-2xl transition duration-500 ease-in-out cursor-pointer" %></div>
             <% else %>
               <%= f.file_field :avatar, class: "hidden", onchange: "previewAvatar(preview)" %>
               <div><%= image_tag asset_path("default.png"), id: "preview", alt: "ユーザーアイコン", class: "large-icon hover:shadow-2xl transition duration-500 ease-in-out cursor-pointer" %></div>
