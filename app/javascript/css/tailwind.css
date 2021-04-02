@@ -57,6 +57,12 @@
   .post-btn {
     @apply text-3xl text-white  p-6 rounded-full bg-blue-800;
   }
+  .rakuten-form {
+    @apply w-full mx-auto border-2 border-gray-300 p-5 rounded-md shadow-lg my-3;
+  }
+  .rakuten-detail {
+    @apply text-right text-base font-bold;
+  }
 }
 
 body {

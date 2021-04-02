@@ -4,7 +4,7 @@
     <h1 class="title">アイテムを探してみよう！</h1>
     <div class='text-center mb-3'>
       <%= form_with url: search_path, method: :get do |f| %>
-        <div class="flex mx-3 border border-gray-300 rounded-full p-1 focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-200">
+        <div class="flex mx-3 border border-gray-300 rounded-full p-1 focus:outline-none focus:ring">
         <%= f.text_field :keyword, placeholder: "何をお探しですか？？", class: "w-full inline-block mx-2 focus:outline-none" %>
         <%= f.submit '検索', class: "small-btn cursor-pointer focus:outline-none transition duration-200 ease-in-out hover:bg-gray-500" %>
         </div>
@@ -12,12 +12,12 @@
     </div>
     <% if @goods.present? %>
       <% @goods.first(20).each do |item| %>
-          <div class="w-full mx-auto border-2 border-gray-300 p-5 rounded-md shadow-lg my-3 sm:flex">
+          <div class="rakuten-form sm:flex">
             <img src="<%= item['mediumImageUrls'][0] %>" class="rounded mx-auto my-auto block rounded-md">
             <div class="sm:my-auto sm:p-4">
               <a href="<%= item['itemUrl'] %>", class="block mt-3"><%= item['itemName'].truncate(80) %></a>
-              <p class="text-right text-base font-bold"><%= item['itemPrice'] %>円</p>
-              <p class="text-right text-base font-bold">楽天レビュー平均：<%= item['reviewAverage'] %>点</p>
+              <p class="rakuten-detail"><%= item['itemPrice'] %>円</p>
+              <p class="rakuten-detail">楽天レビュー平均：<%= item['reviewAverage'] %>点</p>
             </div>
           </div>
       <% end %>
