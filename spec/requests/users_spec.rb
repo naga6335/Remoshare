@@ -51,4 +51,19 @@ RSpec.describe 'Users', type: :request do
       expect(response).to have_http_status(302)
     end
   end
+
+  describe "POST /users" do
+    let(:user) { attributes_for(:user) }
+
+    it "ユーザーが新規登録に成功した場合" do
+      aggregate_failures do
+        expect do
+          post users_path, params: { user: user }
+        end.to change(User, :count).by(1)
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to root_path(User.last)
+        expect(is_logged_in?).to be_truthy
+      end
+    end
+  end
 end
