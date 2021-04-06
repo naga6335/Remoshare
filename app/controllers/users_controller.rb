@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page]).per(6)
+    @posts = @user.posts.includes(:tags, :likes).page(params[:page]).per(6)
     likes = Like.where(user_id: current_user.id).pluck(:post_id)
     @like_list = Post.find(likes)
     @rooms = @user.rooms.includes(:users)
@@ -18,18 +18,18 @@ class UsersController < ApplicationController
     if @user.id == current_user.id
     else
       @currentUserEntry.each do |cu|
-          @userEntry.each do |u|
-            if cu.room_id == u.room_id then
-              @isRoom = true
-              @roomId = cu.room_id
-            end
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
           end
         end
-        if @isRoom != true
-          @room = Room.new
-          @entry = Entry.new
-        end
       end
+      if @isRoom != true
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def new
