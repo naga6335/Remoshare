@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :destroy]
 
   def index
-    @posts = Post.all.includes(:user, :tags, :tagmaps, :likes).order(created_at: :desc).search(params[:search]).page(params[:page]).per(8)
+    @posts = Post.all.includes(:user, :tags, :tagmaps, :likes).order(created_at: :desc).page(params[:page]).per(8)
     @user = User.find_by(params[:id])
     @ranks = Post.includes(:user).create_all_ranks
     @tag_list = Tag.find(Tagmap.group(:tag_id).order('count(tag_id) desc').limit(10).pluck(:tag_id))
@@ -56,10 +56,15 @@ class PostsController < ApplicationController
     redirect_to request.referer
   end
 
-  def search
+  def tags
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all.includes(:user, :tags, :tagmaps, :likes)
+  end
+
+  def search
+    @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(8)
+    @tag_list = Tag.find(Tagmap.group(:tag_id).order('count(tag_id) desc').limit(10).pluck(:tag_id))
   end
 
   private

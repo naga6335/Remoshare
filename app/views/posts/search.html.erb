@@ -1,10 +1,33 @@
 <%= render "shared/header" %>
 <div class="container mx-auto">
-  <div class="base flex flex-col sm:text-base">
-    <h1 class="title text-sm sm:text-xl"><%= "##{@tag.tag_name}" %> のタグの投稿 <%= "#{@posts.count}件" %></h1>
-    <div class="grid grid-cols-1 sm:grid-cols-4 w-full gap-6">
-    <% @posts.each do |post| %>
-      <%= render post %>
-    <% end %>
+  <div class="flex flex-col mx-auto text-sm sm:text-base text-gray-600">
+    <section class="text-center bg-white rounded py-5 mb-5 hover:shadow-2xl transition duration-500 ease-in-out">
+      <h1 class="top-title sm:text-3xl">もっと快適で、もっと生産的なリモートワークを。</h1>
+      <div class="flex grid sm:grid-cols-2 grid-cols-1">
+        <%= image_tag asset_path('manager.png'), class: "mx-auto" %>
+        <div class="my-auto w-full">
+          <p class="text-lg font-bold">記事、改善ポイントから検索</p>
+          <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
+          <div class="flex mx-3 my-2 border border-gray-300 rounded-full p-1 focus:outline-none">
+            <%= f.text_field :keyword, placeholder: "例）リモート、在宅", class: "w-full inline-block mx-2 focus:outline-none" %>
+            <%= f.submit :"検索", class:"small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
+          </div>
+          <% end %>
+          <p class="font-bold my-3">人気のタグ</p>
+          <% @tag_list.each do |list| %>
+            <%= link_to "##{list.tag_name}", tag_posts_path(tag_id: list.id), class: 'medium-tag transition duration-200 ease-in-out hover:bg-blue-800 focus:outline-none' %>
+            <%= "(#{list.posts.count})" %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6 text-gray-600 bg-white p-6 rounded hover:shadow-2xl transition duration-500 ease-in-out">
+      <% @posts.each do |post| %>
+        <%= render post %>
+      <% end %>
+    </div>
+    <div class="mt-10 mx-auto text-center text-xl">
+      <%= paginate @posts %>
+    </div>
   </div>
 </div>
