@@ -63,6 +63,9 @@
   .rakuten-detail {
     @apply text-right text-base font-bold;
   }
+  .important {
+    @apply inline-block ml-1 text-red-500 text-xs;
+  }
 }
 
 body {
