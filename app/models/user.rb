@@ -71,4 +71,12 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  def self.search(search)
+    if search != ""
+      User.where(["job LIKE ?", "%#{search}%"])
+    else
+      User.all
+    end
+  end
 end

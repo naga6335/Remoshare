@@ -18,10 +18,11 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: [:create, :destroy]
     resource  :likes,    only: [:create, :destroy]
+    get :search, on: :collection
   end
 
   resources :tags do
-    get 'posts', to: 'posts#search'
+    get 'posts', to: 'posts#tags'
   end
 
   resources :relationships, only: [:create, :destroy]

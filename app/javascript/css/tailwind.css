@@ -22,7 +22,7 @@
     @apply inline-block w-32 h-32 rounded-full;
   }
   .form-title {
-    @apply block mb-2 text-sm text-gray-600;
+    @apply inline-block mb-2 text-sm text-gray-600;
   }
   .form {
     @apply w-full px-3 py-2 border border-gray-300 rounded-md;
