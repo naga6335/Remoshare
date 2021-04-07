@@ -4,7 +4,7 @@
     <%= form_with(model: @post, local: true) do |f| %>
     <%= render "shared/error_messages", object: f.object %>
       <div>
-        <%= f.label :おすすめポイント, class: "form-title" %>
+        <%= f.label :おすすめポイント, class: "form-title inline-block" %><span class="inline-block ml-1 text-red-500 text-xs">*必須</span>
         <%= f.text_field :title, placeholder: "例）リモートワークが快適になった", class: "form block focus:outline-none focus:shadow-outline" %>
       </div>
       <div class="text-center">
@@ -15,16 +15,16 @@
         </label>
       </div>
       <div class="mb-6">
-        <%= f.label :一番の役立ちポイント, class: "form-title" %>
+        <%= f.label :一番の役立ちポイント, class: "form-title" %><span class="inline-block ml-1 text-red-500 text-xs">*必須</span>
         <%= f.select :issue, [['コミュニケーション','コミュニケーション'],['作業効率','作業効率'],['モチベーション','モチベーション'],['働き方','働き方'],['健康面','健康面'],['私生活','私生活'],['その他','その他']], {}, class: "form focus:outline-none focus:shadow-outline" %>
       </div>
       <div class="mb-6">
-        <%= f.label :詳細, class: "form-title" %>
+        <%= f.label :詳細, class: "form-title" %><span class="inline-block ml-1 text-red-500 text-xs">*必須</span>
         <%= f.text_area :content, placeholder: "例）長時間座っていても腰が楽で在宅の必須アイテム！", size: "60x8", class: "form resize-none block focus:outline-none focus:shadow-outline", onkeyup: "count_down(this);" %>
         <span id="count" class="float-right">200</span>
       </div>
       <div class="mb-6">
-        <p class= "form-title">購入時価格</p>
+        <p class= "form-title">購入時価格</p><span class="inline-block ml-1 text-red-500 text-xs">*必須</span>
         <%= f.number_field :price, class: "form text-right focus:outline-none focus:shadow-outline", max: 200000, min: 1000, placeholder: "¥0" %>
       </div>
       <div>

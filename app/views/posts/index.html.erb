@@ -7,10 +7,10 @@
         <%= image_tag asset_path('manager.png'), class: "mx-auto" %>
         <div class="my-auto w-full">
           <p class="text-lg font-bold">記事、改善ポイントから検索</p>
-          <%= form_tag(posts_path, method: :get) do %>
+          <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
           <div class="flex mx-3 my-2 border border-gray-300 rounded-full p-1 focus:outline-none">
-            <%= text_field_tag :search, "", placeholder: "例）リモート、在宅", class: "w-full inline-block mx-2 focus:outline-none" %>
-            <%= submit_tag "検索", name: :nil, class:"small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
+            <%= f.text_field :keyword, placeholder: "例）リモート、在宅", class: "w-full inline-block mx-2 focus:outline-none" %>
+            <%= f.submit :"検索", class:"small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
           </div>
           <% end %>
           <p class="font-bold my-3">人気のタグ</p>
