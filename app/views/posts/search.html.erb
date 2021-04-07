@@ -22,9 +22,13 @@
       </div>
     </section>
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6 text-gray-600 bg-white p-6 rounded hover:shadow-2xl transition duration-500 ease-in-out">
+    <% if @posts.present? %>
       <% @posts.each do |post| %>
         <%= render post %>
       <% end %>
+    <% else %>
+      <p class="my-auto">検索結果は0件です</p>
+    <% end %>
     </div>
     <div class="mt-10 mx-auto text-center text-xl">
       <%= paginate @posts %>
