@@ -4,7 +4,8 @@
     <div class="flex flex-wrap grid grid-cols-2 gap-5 p-4 text-center">
       <div class="my-auto">
         <%= render "shared/large_avatar" %>
-        <p class="text-xl my-2"><%= @user.name%></p>
+        <p class="text-lg my-2"><%= @user.name%></p>
+        <p class="text-xs my-2">職種：<%= @user.job %></p>
       </div>
       <div class="flex my-auto mx-auto text-xs">
         <div>
