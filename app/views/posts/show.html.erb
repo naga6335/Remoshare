@@ -12,7 +12,7 @@
         <p class= "small-btn text-xs transition duration-200 ease-in-out hover:bg-gray-500">探してみる</p>
         <% end %>
       </div>
-      <p class="text-center text-base mb-8"><%= @post.content %></p>
+      <p class="text-center text-base mb-8 w-2/3 mx-auto"><%= @post.content %></p>
       <div class="flex justify-between">
         <div id="likes_buttons_<%= @post.id %>">
           <%= render 'likes/like', post: @post %>
