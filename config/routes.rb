@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get    '/guest',   to: 'users#guest'
+  get    '/timeline',   to: 'users#timeline'
   get    '/search',  to: 'goods#search'
 
   resources  :users do
