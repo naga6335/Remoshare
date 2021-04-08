@@ -4,7 +4,7 @@
       <ul class='text-blue-800 list-none py-2 items-center text-xs flex'>
         <li>
         <%= link_to root_url do %>
-          <i class="far fa-newspaper header hover:text-gray-500">記事一覧</i>
+          <i class="fas fa-home header hover:text-gray-500">ホーム</i>
         <% end %>
       </li>
       <li>
@@ -16,6 +16,11 @@
       <li>
         <%= link_to users_path do %>
           <i class="fas fa-users header hover:text-gray-500">ユーザー一覧</i>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to timeline_path do %>
+          <i class="fa fa-clock header hover:text-gray-500">タイムライン</i>
         <% end %>
       </li>
       <li>
@@ -54,7 +59,7 @@
     <ul class='text-blue-800 list-none py-2 items-center text-sm'>
       <li>
       <%= link_to root_url do %>
-        <i class="far fa-newspaper header mb-4 hover:text-gray-500">記事一覧</i>
+        <i class="fas fa-home header mb-4 hover:text-gray-500">ホーム</i>
       <% end %>
     </li>
     <li>
@@ -71,6 +76,11 @@
     <li>
       <%= link_to users_path do %>
         <i class="fas fa-users header mb-4 hover:text-gray-500">ユーザー一覧</i>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to timeline_path do %>
+        <i class="far fa-clock header mb-4 hover:text-gray-500">タイムライン</i>
       <% end %>
     </li>
     <li>
