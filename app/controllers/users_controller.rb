@@ -91,10 +91,10 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
-   def timeline
-      @user = User.find(current_user.id)
-      @following_users = @user.following
-      @posts = Post.includes(:user, :tags, :likes).where(user_id: @following_users).order('created_at desc').page(params[:page]).per(9)
+  def timeline
+    @user = User.find(current_user.id)
+    @following_users = @user.following
+    @posts = Post.includes(:user, :tags, :likes).where(user_id: @following_users).order('created_at desc').page(params[:page]).per(9)
   end
 
   private
