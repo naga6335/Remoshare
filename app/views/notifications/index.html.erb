@@ -9,5 +9,8 @@
     <% else %>
       <p class='text-gray-500 text-center'>通知はありません</p>
     <% end %>
+    <div class="mt-10 mx-auto text-center text-xl">
+      <%= paginate @notifications %>
+    </div>
   </div>
 </div>
