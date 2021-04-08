@@ -1,0 +1,9 @@
+<%= render "shared/header" %>
+<div class="container mx-auto">
+  <div class="base flex flex-col sm:text-base">
+    <h1 class="title text-sm sm:text-xl">タイムライン</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-3 w-auto gap-6 mt-5">
+      <%= render @posts %>
+    </div>
+  </div>
+</div>
