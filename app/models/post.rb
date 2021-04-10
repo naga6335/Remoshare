@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   validates  :title,          presence: true, length: { maximum: 30}
   validates  :content,        presence: true, length: { maximum: 200 }
   validates  :image,          presence: true
+  validates  :price,          presence: true
   validates  :issue,          presence: true
   has_many   :comments,      dependent: :destroy
   has_many   :users,           through: :likes
