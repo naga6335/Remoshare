@@ -2,13 +2,13 @@
   <%= @msg %>
 <% else %>
   <% if @isRoom == true %>
-    <%= link_to 'DMへ', room_path(@roomId), class: "small-btn bg-green-500 focus:outline-none" %>
+    <%= link_to 'DMへ', room_path(@roomId), class: "small-btn  px-8 bg-green-500 cursor-pointer transition duration-200 ease-in-out hover:bg-gray-400 focus:outline-none" %>
   <% else %>
     <%= form_with(model: @room, local: true) do |f| %>
       <%= fields_for @entry do |e|%>
         <% e.hidden_field :user_id, value: @user.id %>
       <% end %>
-      <%= f.submit "DMを開始する",  class:"small-btn bg-green-500 focus:outline-none" %>
+      <%= f.submit "DMを送る",  class:"small-btn px-5 bg-green-500 cursor-pointer transition duration-200 ease-in-out hover:bg-gray-400 focus:outline-none" %>
     <% end %>
   <% end %>
 <% end %>

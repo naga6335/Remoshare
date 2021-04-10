@@ -2,12 +2,12 @@
   <div id="follow_form">
     <% if current_user.following?(@user) %>
       <%= form_with(model: current_user.active_relation.find_by(followed_id: @user.id),  method: :delete, local: false) do |f| %>
-        <%= f.submit "フォロー解除", class: "small-btn bg-gray-500 mb-2 focus:outline-none cursor-pointer" %>
+        <%= f.submit "フォロー解除", class: "small-btn bg-gray-500 mb-2 cursor-pointer transition duration-200 ease-in-out hover:bg-gray-700 focus:outline-none" %>
       <% end %>
     <% else %>
       <%= form_with(model: current_user.active_relation.build, method: :post, local: false) do |f| %>
         <%= hidden_field_tag :followed_id, @user.id %>
-        <%= f.submit "フォローする", class: "small-btn mb-2 focus:outline-none cursor-pointer" %>
+        <%= f.submit "フォローする", class: "small-btn mb-2 cursor-pointer transition duration-200 ease-in-out hover:bg-blue-600 focus:outline-none" %>
       <% end %>
     <% end %>
   </div>
