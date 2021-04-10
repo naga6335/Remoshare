@@ -7,11 +7,13 @@ ja:
         name: 名前
         email: メールアドレス
         password: パスワード
+        password_confirmation: パスワード再入力
         profile: プロフィール
       post:
         title: おすすめポイント
         content: 詳細
         image: 画像
+        price: 購入時価格
   views:
     pagination:
         first: <i class="fas fa-angle-double-left"></i>
