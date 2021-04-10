@@ -41,6 +41,11 @@ RSpec.describe Post, type: :model do
         post.image = ''
         expect(post).to be_invalid
       end
+
+      it '価格が未入力だと保存できないこと' do
+        post.price = ''
+        expect(post).to be_invalid
+      end
     end
   end
 
