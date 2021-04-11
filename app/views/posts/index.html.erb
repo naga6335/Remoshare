@@ -31,7 +31,6 @@
       </section>
       <section class="bg-white rounded p-4 hover:shadow-2xl transition duration-500 ease-in-out">
         <p class="text-base text-center mb-3">いいねが多い記事</p>
-
         <div class="grid grid-cols-1 sm:grid-cols-3 mx-auto sm:w-full gap-5 text-gray-600 w-2/3">
           <%= render "rank_post" %>
         </div>
@@ -42,10 +41,13 @@
         <i class="far fa-edit post-btn transition duration-200 ease-in-out hover:bg-gray-500"></i>
       <% end %>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6 text-gray-600 bg-white p-6 rounded hover:shadow-2xl transition duration-500 ease-in-out">
+    <div class="text-gray-600 bg-white p-6 rounded hover:shadow-2xl transition duration-500 ease-in-out">
+      <%= render "target_post" %>
+    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6">
       <% @posts.each do |post| %>
         <%= render post %>
       <% end %>
+    </div>
     </div>
   <div class="mt-10 mx-auto text-center text-xl">
     <%= paginate @posts %>
