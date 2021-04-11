@@ -76,4 +76,21 @@ class Post < ApplicationRecord
     Post.where(["title LIKE ? OR content LIKE ? OR issue LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%"])
   end
 
+  def self.sort(selection)
+    case selection
+    when 'new'
+      return all.order(created_at: :DESC)
+    when 'old'
+      return all.order(created_at: :ASC)
+    when 'likes'
+      return find(Like.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    when 'dislikes'
+      return find(Like.group(:post_id).order(Arel.sql('count(post_id) asc')).pluck(:post_id))
+    when 'comments'
+      return find(Comment.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    when 'discomments'
+      return find(Comment.group(:post_id).order(Arel.sql('count(post_id) asc')).pluck(:post_id))
+    end
+  end
+
 end
