@@ -66,11 +66,11 @@ class PostsController < ApplicationController
     selection = params[:keyword]
     @posts = Post.sort(selection)
     @tag_list = Tag.find(Tagmap.group(:tag_id).order('count(tag_id) desc').limit(10).pluck(:tag_id))
-    if @posts.present?
-      @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
-    else
-      @posts = Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(10)
-    end
+    @posts = if @posts.present?
+               Kaminari.paginate_array(@posts).page(params[:page]).per(10)
+             else
+               Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(10)
+             end
   end
 
   private
