@@ -1,6 +1,6 @@
 <div class="text-right mb-5">
   <%= form_with model: @post, url: search_posts_path, method: :get, local: true do |f| %>
-    <%= f.select :keyword, [['いいねが多い順','likes'],['いいねが少ない順','dislikes'],['コメントが多い順','comments'],['コメントが少ない順','discomments'],], {}, class: "border border-gray-300 p-1 rounded" %>
+    <%= f.select :keyword, [['価格が高い順','price'],['価格が安い順','lessprice'],['いいねが多い順','likes'],['いいねが少ない順','dislikes'],['コメントが多い順','comments'],['コメントが少ない順','discomments'],], {}, class: "border border-gray-300 p-1 rounded" %>
     <%= f.submit :"絞り込み", class: "small-btn cursor-pointer focus:outline-none transition duration-200 ease-in-out hover:bg-gray-500" %>
   <% end %>
 </div>

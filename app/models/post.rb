@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   validates  :title,          presence: true, length: { maximum: 30}
-  validates  :content,        presence: true, length: { maximum: 200 }
+  validates  :content,        presence: true, length: { maximum: 400 }
   validates  :image,          presence: true
   validates  :price,          presence: true
   validates  :issue,          presence: true
@@ -78,10 +78,10 @@ class Post < ApplicationRecord
 
   def self.sort(selection)
     case selection
-    when 'new'
-      return all.order(created_at: :DESC)
-    when 'old'
-      return all.order(created_at: :ASC)
+    when 'price'
+      return all.order(price: :DESC)
+    when 'lessprice'
+      return all.order(price: :ASC)
     when 'likes'
       return find(Like.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
     when 'dislikes'
