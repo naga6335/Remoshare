@@ -8,7 +8,7 @@
         <div class="my-auto w-full">
           <p class="text-lg font-bold">記事、改善ポイントから検索</p>
           <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
-          <div class="flex mx-3 my-2 border border-gray-300 rounded-full p-1 focus:outline-none">
+          <div class="search flex focus:outline-none">
             <%= f.text_field :keyword, placeholder: "例）リモート、在宅", class: "w-full inline-block mx-2 focus:outline-none" %>
             <%= f.submit :"検索", class:"small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
           </div>
@@ -22,14 +22,14 @@
       </div>
     </section>
     <div class="flex grid grid-col-1 lg:grid-cols-2 gap-5 my-5">
-      <section class="w-full bg-white rounded p-4 hover:shadow-2xl transition duration-500 ease-in-out">
+      <section class="part hover:shadow-2xl transition duration-500 ease-in-out">
         <p class="text-center mb-5">ユーザーデータ</p>
         <div class="flex grid grid-cols-1 sm:grid-cols-2 text-center gap-3">
           <div class="mx-auto">職種一覧<%= pie_chart User.group(:job).order('count_all DESC').count %></div>
           <div class="mx-auto">改善ポイント<%= pie_chart Post.group(:issue).order('count_all DESC').count %></div>
         </div>
       </section>
-      <section class="bg-white rounded p-4 hover:shadow-2xl transition duration-500 ease-in-out">
+      <section class="part hover:shadow-2xl transition duration-500 ease-in-out">
         <p class="text-base text-center mb-3">いいねが多い記事</p>
         <div class="grid grid-cols-1 sm:grid-cols-3 mx-auto sm:w-full gap-5 text-gray-600 w-2/3">
           <%= render "rank_post" %>
@@ -38,7 +38,7 @@
     </div>
     <div class="fixed right-0 bottom-0 mb-16 mr-16">
       <%= link_to new_post_path do %>
-        <i class="far fa-edit post-btn transition duration-200 ease-in-out hover:bg-gray-500"></i>
+        <i class="far fa-edit post-btn transition duration-200 ease-in-out hover:bg-gray-600"></i>
       <% end %>
     </div>
     <div class="text-gray-600 bg-white p-6 rounded hover:shadow-2xl transition duration-500 ease-in-out">
