@@ -55,7 +55,7 @@
     @apply w-full px-2 py-3 text-white rounded-md;
   }
   .post-btn {
-    @apply text-3xl text-white  p-6 rounded-full bg-blue-800;
+    @apply text-3xl text-white p-4 rounded-full bg-blue-800;
   }
   .rakuten-form {
     @apply w-full mx-auto border-2 border-gray-300 p-5 rounded-md shadow-lg my-3;
@@ -65,6 +65,12 @@
   }
   .important {
     @apply inline-block ml-1 text-red-500 text-xs;
+  }
+  .search {
+    @apply mx-3 my-2 border border-gray-300 rounded-full p-1;
+  }
+  .part {
+    @apply w-full bg-white rounded p-4;
   }
 }
 
