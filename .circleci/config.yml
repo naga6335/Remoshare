@@ -78,6 +78,7 @@ jobs:
       steps:
       - add_ssh_keys:
           fingerprints: "74:c5:97:41:84:41:fa:f6:20:34:f4:75:86:22:a3:e1"
+      - run:    
           name: 自動デプロイ
           command: bundle exec cap production deploy
 
