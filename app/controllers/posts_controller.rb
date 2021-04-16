@@ -13,7 +13,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @posts = Post.all
     @post = Post.find(params[:id])
     @user = User.find_by(params[:id])
     @comment = Comment.new
@@ -65,11 +64,11 @@ class PostsController < ApplicationController
   def search
     selection = params[:keyword]
     @posts = Post.sort(selection)
-    @tag_list = Tag.find(Tagmap.group(:tag_id).order('count(tag_id) desc').limit(10).pluck(:tag_id))
+    @tag_list = Tag.find(Tagmap.group(:tag_id).order('count(tag_id) desc').limit(8).pluck(:tag_id))
     @posts = if @posts.present?
-               Kaminari.paginate_array(@posts).page(params[:page]).per(10)
+               Kaminari.paginate_array(@posts).page(params[:page]).per(8)
              else
-               Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(10)
+               Post.search(params[:keyword]).order(created_at: :desc).page(params[:page]).per(8)
              end
   end
 
