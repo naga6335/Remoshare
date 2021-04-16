@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
 
   def index
-    @notifications = current_user.passive_notifications
+    @notifications = current_user.passive_notifications.includes(:visitor, :visited)
   end
 
   def destroy
