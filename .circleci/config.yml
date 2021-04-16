@@ -72,23 +72,13 @@ jobs:
       - store_test_results:
           path: /tmp/test-results
 
-  deploy:
-      machine:
-        enabled: true
-      steps:
       - add_ssh_keys:
           fingerprints: "74:c5:97:41:84:41:fa:f6:20:34:f4:75:86:22:a3:e1"
-          name: 自動デプロイ
-          command: bundle exec cap production deploy
 
-workflows:
-  version: 2
-  build-deploy:
-    jobs:
-      - build
       - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+          name: マスターブランチでの自動デプロイ
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy
