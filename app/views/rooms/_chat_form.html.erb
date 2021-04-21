@@ -1,5 +1,5 @@
 <%= form_with(model: @message, local: false) do |f| %>
-  <div class="flex mx-3 border border-gray-300 rounded-full p-1 focus:outline-none focus:ring">
+  <div class="flex mx-3 my-3 border border-gray-300 rounded-full p-1 focus:outline-none focus:ring">
   <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , size: "60×1", class: "w-full inline-block mx-2 focus:outline-none" %>
   <%= f.hidden_field :room_id, :value => @room.id %>
   <%= f.submit "送信", class: "small-btn cursor-pointer focus:outline-none transition duration-200 ease-in-out hover:bg-gray-500" %>
