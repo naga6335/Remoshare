@@ -20,7 +20,13 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resource  :likes,    only: [:create, :destroy]
     get :search, on: :collection
+    namespace :api, format: :json do
+      namespace :v1 do
+        resources :likes, only: [:create, :destroy]
+      end
+    end
   end
+
 
   resources :tags do
     get 'posts', to: 'posts#tags'
