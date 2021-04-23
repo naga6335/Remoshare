@@ -6,6 +6,9 @@
   .base {
     @apply w-full mx-auto bg-white p-6 text-xs text-gray-600 rounded;
   }
+  .logo {
+    @apply block text-2xl font-bold text-blue-800 my-auto ml-6;
+  }
   .title {
     @apply text-center text-xl text-gray-600 font-bold my-8;
   }

@@ -4,7 +4,7 @@
   <h1 class="title">ユーザー一覧</h1>
   <%= form_with url: users_path, method: :get, local: true do |f| %>
     <div class="search flex focus:outline-none mx-6">
-      <%= f.text_field :keyword, placeholder: "例）ユーザー名、営業職、、", class: "w-full inline-block mx-2 focus:outline-none" %>
+      <%= f.text_field :keyword, placeholder: "例）ユーザー名、営業、、", class: "w-full inline-block mx-2 focus:outline-none" %>
       <%= f.submit :"検索", class:"small-btn cursor-pointer focus:outline-none　transition duration-200 ease-in-out hover:bg-gray-500" %>
     </div>
   <% end %>
